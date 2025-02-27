@@ -74,7 +74,7 @@ export const BackgroundBeamsWithCollision = ({ children, className }) => {
       initialY: -140,
       translateX: 3000,
       translateY: 1700,
-      duration: 6,  
+      duration: 6,
       repeatDelay: 4,
       delay: 2,
       className: "h-6",
@@ -197,7 +197,7 @@ const CollisionMechanism = React.forwardRef(
           }}
           className={cn(
             // Modified to create a diagonal meteor effect
-            "absolute left-0 top-20 m-auto w-px rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-transparent",
+            "absolute left-0 top-20 m-auto w-px rounded-full bg-gradient-to-br from-green-400 via-green-500 to-transparent",
             beamOptions.className || "h-14"
           )}
           style={{
@@ -244,7 +244,7 @@ const Explosion = ({ ...props }) => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        className="absolute -inset-x-10 top-0 m-auto h-2 w-10 rounded-full bg-gradient-to-r from-transparent via-indigo-500 to-transparent blur-sm transform rotate-45"
+        className="absolute -inset-x-10 top-0 m-auto h-2 w-10 rounded-full bg-gradient-to-r from-transparent via-green-500 to-transparent blur-sm transform rotate-45"
       ></motion.div>
       {spans.map((span) => (
         <motion.span
@@ -256,7 +256,7 @@ const Explosion = ({ ...props }) => {
             opacity: 0,
           }}
           transition={{ duration: Math.random() * 1.5 + 0.5, ease: "easeOut" }}
-          className="absolute h-1 w-1 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500"
+          className="absolute h-1 w-1 rounded-full bg-gradient-to-br from-green-400 to-green-600"
         />
       ))}
     </div>

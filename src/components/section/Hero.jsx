@@ -1,0 +1,128 @@
+"use client";
+import { BackgroundBeamsWithCollision } from "../ui/BackgroundBeams";
+import { motion } from "framer-motion";
+
+export default function HeroSection() {
+  return (
+    <div className="relative min-h-screen w-full overflow-hidden">
+      {/* Background with beams */}
+      <BackgroundBeamsWithCollision className="absolute inset-0" />
+
+      {/* Gradient overlay for more depth */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-cyan-900/20 " />
+
+      {/* Accent circles for visual interest */}
+      <div className="absolute top-20 right-20 w-80 h-80 rounded-full bg-gradient-to-r from-pink-500/20 to-orange-500/10 blur-3xl" />
+      <div className="absolute -bottom-40 -left-20 w-96 h-96 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/10 blur-3xl" />
+
+      {/* Main content */}
+      <main className="relative z-10 container mx-auto px-6 md:px-12 pt-48 pb-20">
+        <div className="flex flex-col max-w-5xl">
+          {/* Introduction section with subtle animation */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mb-4"
+          >
+            <h2 className="font-heading text-cyan-400 text-xl font-medium tracking-wider mb-4">
+              INTRODUCTION
+            </h2>
+            <div className="h-1 w-24 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full " />
+          </motion.div>
+
+          {/* Name and title section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mb-12"
+          >
+            <h1 className="font-heading text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+              Ngurah Arya{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
+                Pratama
+              </span>
+            </h1>
+
+            <div className="flex items-center space-x-4">
+              <div className="h-[1px] w-12 bg-purple-400" />
+              <h2 className="font-heading text-lg md:text-xl text-purple-100 font-medium tracking-wide">
+                Fullstack Developer | Mobile Developer
+              </h2>
+            </div>
+          </motion.div>
+
+          {/* Bio section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mb-8"
+          >
+            <p className="text-gray-300 text-lg leading-relaxed max-w-3xl">
+              <span className="text-white font-medium">Hi there! </span>
+              <span className="inline-block animate-wave origin-bottom-right">
+                👋
+              </span>{" "}
+              My name is Arya, Im a System Information student at Universitas
+              BSI with a strong interest in mobile and web application
+              development.
+            </p>
+          </motion.div>
+
+          {/* Call to action buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="flex flex-col sm:flex-row gap-5"
+          >
+            <button className="font-heading px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-medium transition-transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/25 focus:outline-none focus:ring-2 focus:ring-cyan-500/50">
+              DOWNLOAD CV
+            </button>
+            <button className="font-heading px-8 py-3 rounded-lg border border-purple-400 text-white font-medium transition-all hover:bg-purple-500/10 hover:shadow-lg hover:shadow-purple-500/10 focus:outline-none focus:ring-2 focus:ring-purple-400/50">
+              CONTACT ME
+            </button>
+          </motion.div>
+        </div>
+      </main>
+
+      {/* Social links (optional) */}
+      <div className="absolute bottom-10 right-10 flex space-x-5">
+        <div className="w-10 h-10 rounded-full border border-gray-500 flex items-center justify-center text-gray-400 hover:border-cyan-400 hover:text-cyan-400 transition-colors cursor-pointer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </div>
+        <div className="w-10 h-10 rounded-full border border-gray-500 flex items-center justify-center text-gray-400 hover:border-cyan-400 hover:text-cyan-400 transition-colors cursor-pointer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+  );
+}

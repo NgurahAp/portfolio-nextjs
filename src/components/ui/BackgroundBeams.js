@@ -56,7 +56,7 @@ export const BackgroundBeamsWithCollision = ({ children, className }) => {
       translateY: 1800,
       duration: 11,
       repeatDelay: 2,
-      className: "h-20",
+      className: "h-10",
       rotate: -45,
     },
     {
@@ -74,7 +74,7 @@ export const BackgroundBeamsWithCollision = ({ children, className }) => {
       initialY: -140,
       translateX: 3000,
       translateY: 1700,
-      duration: 6,
+      duration: 6,  
       repeatDelay: 4,
       delay: 2,
       className: "h-6",
@@ -86,7 +86,7 @@ export const BackgroundBeamsWithCollision = ({ children, className }) => {
     <div
       ref={parentRef}
       className={cn(
-        "h-96 md:h-[40rem] bg-gradient-to-b from-white to-neutral-100 dark:from-neutral-950 dark:to-neutral-800 relative flex items-center w-full justify-center overflow-hidden",
+        "h-96 md:h-screen  bg-neutral-950  relative  w-full justify-end overflow-hidden",
         // h-screen if you want bigger
         className
       )}

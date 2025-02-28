@@ -11,7 +11,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 opacity-20 transform skew-y-[45deg]">
         <div className="absolute h-[1px] w-full top-[-20%] bg-gradient-to-r from-transparent via-gray-100 to-transparent" />
         <div className="absolute h-[1px] w-full top-[50%] bg-gradient-to-r from-transparent via-gray-100 to-transparent" />
-        <div className="absolute h-[30rem] w-full top-[52%] bg-gradient-to-r from-transparent via-gray-400 to-transparent" />
+        <div className="absolute h-[30rem] w-[80%] top-[52%] bg-gradient-to-l from-transparent via-gray-400 to-transparent" />
         <div className="absolute h-[1px] w-full top-[120%] bg-gradient-to-r from-transparent via-gray-100 to-transparent" />
         <div className="absolute h-[1px] w-full top-[170%] bg-gradient-to-r from-transparent via-gray-100 to-transparent" />
       </div>

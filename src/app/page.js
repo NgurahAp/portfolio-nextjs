@@ -3,16 +3,20 @@ import Marquee from "react-fast-marquee";
 
 export default function Home() {
   const techs = [
-    { name: "HTML5", icon: "/css.png" },
+    { name: "HTML5", icon: "/html.png" },
     { name: "CSS3", icon: "/css.png" },
-    { name: "JavaScript", icon: "/css.png" },
-    { name: "Git", icon: "/css.png" },
-    { name: "Supabase", icon: "/css.png" },
-    { name: "MySQL", icon: "/css.png" },
-    { name: "MySQL", icon: "/css.png" },
-    { name: "MySQL", icon: "/css.png" },
-    { name: "MySQL", icon: "/css.png" },
-    { name: "MySQL", icon: "/css.png" },
+    { name: "JavaScript", icon: "/js.png" },
+    { name: "Firebase", icon: "/firebase.png" },
+    { name: "API", icon: "/API.png" },
+    { name: "Flutter", icon: "/flutter.png" },
+    { name: "GraphQL", icon: "/graphql.svg" },
+    { name: "Mongo DB", icon: "/mongo.png" },
+    { name: "NextJS", icon: "/next.png" },
+    { name: "Laravel", icon: "/laravel.png" },
+    { name: "Python", icon: "/python.svg" },
+    { name: "React", icon: "/react.png" },
+    { name: "Tailwind", icon: "/tailwind.png" },
+    { name: "TypeScript", icon: "/ts.png" },
   ];
 
   const skills = [

@@ -4,16 +4,16 @@ import { BackgroundBeamsWithCollision } from "../ui/BackgroundBeams";
 
 export default function HeroSection() {
   return (
-    <div className="relative min-h-screen w-full bg-black overflow-hidden">
-      <BackgroundBeamsWithCollision className="absolute inset-0" />
+    <div className="relative min-h-screen w-full bg-[#1a1a1a] overflow-hidden">
+      <BackgroundBeamsWithCollision className="absolute inset-0 opacity-30" />
 
-      {/* Dynamic background elements */}
+      {/* Diagonal lines - preserved as requested */}
       <div className="absolute inset-0 opacity-20 transform skew-y-[45deg]">
-        {/* Garis horizontal */}
-        <div className="absolute h-[1px] w-full top-[-20%] bg-gradient-to-r from-transparent via-emerald-500 to-transparent" />
-        <div className="absolute h-[1px] w-full top-[50%] bg-gradient-to-r from-transparent via-emerald-500 to-transparent" />
-        <div className="absolute h-[1px] w-full top-[110%] bg-gradient-to-r from-transparent via-emerald-500 to-transparent" />
-        <div className="absolute h-[1px] w-full top-[170%] bg-gradient-to-r from-transparent via-emerald-500 to-transparent" />
+        <div className="absolute h-[1px] w-full top-[-20%] bg-gradient-to-r from-transparent via-gray-100 to-transparent" />
+        <div className="absolute h-[1px] w-full top-[50%] bg-gradient-to-r from-transparent via-gray-100 to-transparent" />
+        <div className="absolute h-[30rem] w-full top-[52%] bg-gradient-to-r from-transparent via-gray-400 to-transparent" />
+        <div className="absolute h-[1px] w-full top-[120%] bg-gradient-to-r from-transparent via-gray-100 to-transparent" />
+        <div className="absolute h-[1px] w-full top-[170%] bg-gradient-to-r from-transparent via-gray-100 to-transparent" />
       </div>
 
       <main className="relative z-10 container mx-auto px-6 md:px-12 pt-48 pb-20">
@@ -25,10 +25,10 @@ export default function HeroSection() {
             transition={{ duration: 0.6 }}
             className="mb-4"
           >
-            <h2 className="font-heading text-emerald-400 text-xl font-medium tracking-wider mb-4">
+            <h2 className="font-heading text-gray-400 text-xl font-medium tracking-wider mb-4">
               INTRODUCTION
             </h2>
-            <div className="h-1 w-24 bg-gradient-to-r from-emerald-400 to-green-600 rounded-full " />
+            <div className="h-1 w-24 bg-[#ffb84d] rounded-full" />
           </motion.div>
 
           {/* Name and title section */}
@@ -39,15 +39,12 @@ export default function HeroSection() {
             className="mb-12"
           >
             <h1 className="font-heading text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              Ngurah Arya{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-500">
-                Pratama
-              </span>
+              Ngurah Arya <span className="text-[#ffb84d]">Pratama</span>
             </h1>
 
             <div className="flex items-center space-x-4">
-              <div className="h-[1px] w-12 bg-emerald-400" />
-              <h2 className="font-heading text-lg md:text-xl text-emerald-100 font-medium tracking-wide">
+              <div className="h-[1px] w-12 bg-gray-500" />
+              <h2 className="font-heading text-lg md:text-xl text-gray-300 font-medium tracking-wide">
                 Fullstack Developer | Mobile Developer
               </h2>
             </div>
@@ -60,7 +57,7 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mb-8"
           >
-            <p className="text-gray-300 text-lg leading-relaxed max-w-3xl">
+            <p className="text-gray-400 text-lg leading-relaxed max-w-3xl">
               <span className="text-white font-medium">Hi there! </span>
               <span className="inline-block animate-wave origin-bottom-right">
                 👋
@@ -78,17 +75,17 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-5"
           >
-            <button className="font-heading px-8 py-3 rounded-lg bg-gradient-to-r from-emerald-500 to-green-600 text-white font-medium transition-transform hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/25 focus:outline-none focus:ring-2 focus:ring-emerald-500/50">
-            DOWNLOAD CV
+            <button className="font-heading px-8 py-3 rounded-md bg-white text-black font-medium transition-transform hover:scale-105">
+              DOWNLOAD CV
             </button>
-            <button className="font-heading px-8 py-3 rounded-lg border border-emerald-400 text-white font-medium transition-all hover:bg-emerald-500/10 hover:shadow-lg hover:shadow-emerald-500/10 focus:outline-none focus:ring-2 focus:ring-emerald-400/50">
+            <button className="font-heading px-8 py-3 rounded-md border border-gray-600 text-white font-medium transition-all hover:bg-white/5">
               CONTACT ME
             </button>
           </motion.div>
         </div>
       </main>
       <div className="absolute bottom-10 right-10 flex space-x-5">
-        <div className="w-10 h-10 rounded-full border border-gray-500 flex items-center justify-center text-gray-400 hover:border-emerald-400 hover:text-emerald-400 transition-colors cursor-pointer">
+        <div className="w-10 h-10 rounded-full flex items-center justify-center text-gray-400 hover:text-[#ffb84d] transition-colors cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -105,7 +102,7 @@ export default function HeroSection() {
             <circle cx="4" cy="4" r="2"></circle>
           </svg>
         </div>
-        <div className="w-10 h-10 rounded-full border border-gray-500 flex items-center justify-center text-gray-400 hover:border-emerald-400 hover:text-emerald-400 transition-colors cursor-pointer">
+        <div className="w-10 h-10 rounded-full flex items-center justify-center text-gray-400 hover:text-[#ffb84d] transition-colors cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"

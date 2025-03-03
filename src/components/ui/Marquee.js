@@ -22,7 +22,7 @@ export default function MarqueeSection() {
       {/* Gradient overlay left */}
       <div className="absolute left-0 top-0 h-full w-32 z-10 bg-gradient-to-r from-black to-transparent"></div>
 
-      <Marquee speed={40} gradient={false} pauseOnHover={true}>
+      <Marquee speed={40} gradient={false} >
         {techs.map((tech, index) => (
           <div key={index} className="flex items-center mx-4 gap-1 bg-[#141517] py-1 px-2 rounded-full">
             <div className="h-8 w-8 flex items-center justify-center">

@@ -1,4 +1,4 @@
-import { Inter, Montserrat } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 
 // Font configurations
@@ -6,12 +6,13 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
 });
 
-const montserrat = Montserrat({
+const poppins = Poppins({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-montserrat",
+  variable: "--font-poppins",
   weight: ["400", "500", "600", "700", "800"],
 });
 
@@ -23,7 +24,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${montserrat.variable}`}>
+      <body className={`${inter.variable} ${poppins.variable}`}>
         {children}
       </body>
     </html>

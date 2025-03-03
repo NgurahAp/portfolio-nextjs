@@ -25,9 +25,9 @@ export default function HeroSection() {
             transition={{ duration: 0.6 }}
             className="mb-4"
           >
-            <h2 className="font-heading text-gray-400 text-xl font-medium tracking-wider mb-4">
+            <h3 className="font-heading text-gray-400 text-xl font-medium tracking-wider mb-4">
               INTRODUCTION
-            </h2>
+            </h3>
             <div className="h-1 w-24 bg-[#ffb84d] rounded-full" />
           </motion.div>
 

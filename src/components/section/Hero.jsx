@@ -4,7 +4,7 @@ import { BackgroundBeamsWithCollision } from "../ui/BackgroundBeams";
 
 export default function HeroSection() {
   return (
-    <div className="relative min-h-screen w-full bg-[#1a1a1a] overflow-hidden">
+    <div className="relative min-h-screen w-full bg-black overflow-hidden">
       <BackgroundBeamsWithCollision className="absolute inset-0 opacity-30" />
 
       {/* Diagonal lines - preserved as requested */}

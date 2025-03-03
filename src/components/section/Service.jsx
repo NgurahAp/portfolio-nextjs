@@ -122,7 +122,7 @@ export default function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-              className="bg-[#252525] border border-gray-800 rounded-lg p-6 hover:border-[#ffb84d]/40 transition-all group"
+              className="bg-transparent border border-gray-800 rounded-lg p-6 hover:border-[#ffb84d]/40 transition-all group"
             >
               <div className="flex flex-col justify-between h-full">
                 <div>

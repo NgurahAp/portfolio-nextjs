@@ -86,7 +86,7 @@ export const BackgroundBeamsWithCollision = ({ children, className }) => {
     <div
       ref={parentRef}
       className={cn(
-        "h-96 md:h-screen  bg-neutral-950  relative  w-full justify-end overflow-hidden",
+        "h-96 md:h-screen   relative  w-full justify-end overflow-hidden",
         // h-screen if you want bigger
         className
       )}
@@ -103,7 +103,6 @@ export const BackgroundBeamsWithCollision = ({ children, className }) => {
       <div
         ref={containerRef}
         className="absolute bottom-0 bg-neutral-100 w-full inset-x-0 pointer-events-none"
-       
       ></div>
     </div>
   );

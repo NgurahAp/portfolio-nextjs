@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { BackgroundBeamsWithCollision } from "../ui/BackgroundBeams";
+import { BsStars } from "react-icons/bs";
 
 export default function HeroSection() {
   return (
@@ -19,17 +20,14 @@ export default function HeroSection() {
       <main className="relative z-10 container mx-auto px-6 md:px-12 pt-48 pb-20">
         <div className="flex flex-col max-w-5xl">
           {/* Introduction section with subtle animation */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-4"
-          >
-            <h3 className="font-heading text-gray-400 text-xl font-medium tracking-wider mb-4">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="text-amber-300 text-lg">
+              <BsStars />
+            </div>
+            <h3 className="text-amber-300 uppercase text-lg font-medium tracking-wider">
               INTRODUCTION
             </h3>
-            <div className="h-1 w-24 bg-[#ffb84d] rounded-full" />
-          </motion.div>
+          </div>
 
           {/* Name and title section */}
           <motion.div
@@ -39,7 +37,7 @@ export default function HeroSection() {
             className="mb-12"
           >
             <h1 className="font-heading text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              Ngurah Arya <span className="text-[#ffb84d]">Pratama</span>
+              Ngurah Arya <span className="text-white">Pratama</span>
             </h1>
 
             <div className="flex items-center space-x-4">

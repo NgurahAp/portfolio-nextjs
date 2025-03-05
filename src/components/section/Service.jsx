@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { BsStars } from "react-icons/bs";
 
 export default function ServicesSection() {
   const services = [
@@ -23,7 +24,7 @@ export default function ServicesSection() {
       ),
       title: "Web Development",
       description:
-        "Building responsive and dynamic web applications using modern frameworks and libraries.",
+        "Building responsive and dynamic web app using modern frameworks and libraries.",
       technologies: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
     },
     {
@@ -80,21 +81,17 @@ export default function ServicesSection() {
   ];
 
   return (
-    <div className="w-full bg-black py-24">
-      <div className="container mx-auto px-6 md:px-12">
+    <div className="w-full bg-black py-32">
+      <div className="container mx-auto px-6 ">
         {/* Section header with the same styling as hero */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-4"
-        >
-          <h2 className="font-heading text-gray-400 text-xl font-medium tracking-wider mb-4">
-            MY SERVICES
-          </h2>
-          <div className="h-1 w-24 bg-[#ffb84d] rounded-full" />
-        </motion.div>
+        <div className="flex items-center gap-2 mb-4">
+          <div className="text-amber-300">
+            <BsStars />
+          </div>
+          <h3 className="text-amber-300 uppercase text-sm font-medium tracking-wider">
+            SERVICES
+          </h3>
+        </div>
 
         {/* Section title */}
         <motion.div
@@ -102,12 +99,12 @@ export default function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-16"
+          className="mb-8"
         >
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            What I <span className="text-[#ffb84d]">Offer</span>
+            What I Offer
           </h2>
-          <p className="text-gray-400 text-lg max-w-3xl">
+          <p className="text-gray-400 text-sm">
             Delivering comprehensive development solutions with a focus on
             quality, performance, and user experience.
           </p>
@@ -122,9 +119,9 @@ export default function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-              className="bg-transparent border border-gray-800 rounded-lg p-6 hover:border-[#ffb84d]/40 transition-all group"
+              className="bg-transparent border border-[#1E2023] rounded-lg p-6"
             >
-              <div className="flex flex-col justify-between h-full">
+              <div className="flex flex-col  h-full">
                 <div>
                   {/* Service icon */}
                   <div className="w-12 h-12 rounded-md bg-[#1a1a1a] flex items-center justify-center text-[#ffb84d] mb-6 group-hover:bg-[#ffb84d]/10 transition-colors">
@@ -132,12 +129,12 @@ export default function ServicesSection() {
                   </div>
 
                   {/* Service title */}
-                  <h3 className="font-heading text-xl font-semibold text-white mb-4">
+                  <h3 className="font-heading  font-semibold text-white mb-4">
                     {service.title}
                   </h3>
 
                   {/* Service description */}
-                  <p className="text-gray-400 mb-6">{service.description}</p>
+                  <p className="text-gray-400 text-sm mb-6">{service.description}</p>
                 </div>
                 {/* Technologies used */}
                 <div className="flex flex-wrap gap-2 items-end ">

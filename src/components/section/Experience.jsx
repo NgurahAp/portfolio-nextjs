@@ -29,11 +29,11 @@ const ExperienceItem = ({
         </div>
         <div>
           <h3 className="text-white font-medium">{role}</h3>
-          <p className="text-gray-400 text-xs">{company}</p>
+          <p className="text-gray-400 text-sm">{company}</p>
         </div>
       </div>
       <div className="flex items-center gap-3">
-        <div className="text-gray-400 text-sm">{period}</div>
+        <div className="text-gray-400 text-xs">{period}</div>
         <motion.div
           animate={{ rotate: isActive ? 180 : 0 }}
           transition={{ duration: 0.3 }}
@@ -127,7 +127,7 @@ export default function ExperienceSection() {
   ];
 
   return (
-    <section className="w-full py-20 px-6 md:px-16 lg:px-24 bg-black text-white">
+    <section className="w-full py-20 pt-44 px-6 md:px-16 lg:px-24 bg-black text-white">
       <div className="max-w-full mx-auto">
         <div className="flex flex-col md:flex-row w-full gap-20">
           {/* Left side */}

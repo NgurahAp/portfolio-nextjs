@@ -2,7 +2,10 @@
 import HeroSection from "@/components/section/Hero";
 import MarqueeSection from "@/components/ui/Marquee";
 import ExperienceSection from "@/components/section/Experience";
+import ServicesSection from "@/components/section/Service";
 import { motion } from "framer-motion";
+import { HeroParallax } from "@/components/ui/Parallax";
+import { products } from "@/components/ui/product";
 
 export default function Home() {
   return (
@@ -15,9 +18,8 @@ export default function Home() {
       <HeroSection />
       <MarqueeSection />
       <ExperienceSection />
-
-      {/* Optional: Subtle gradient for visual depth */}
-      <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-blue-900/10 via-transparent to-purple-900/10 z-0"></div>
+      <ServicesSection />
+      <HeroParallax products={products} />
     </motion.div>
   );
 }

@@ -2,7 +2,7 @@ export const products = [
   {
     title: "Moonbeam",
     link: "https://gomoonbeam.com",
-    thumbnail: "/herolxp.jpg",
+    thumbnail: "/anm.jpg",
   },
   {
     title: "Cursor",
@@ -14,11 +14,10 @@ export const products = [
     link: "https://userogue.com",
     thumbnail: "/carikuli.jpg",
   },
-
   {
     title: "Editorially",
     link: "https://editorially.org",
-    thumbnail: "/herolxp.jpg",
+    thumbnail: "/loginlxp.jpg",
   },
   {
     title: "Editrix AI",
@@ -28,53 +27,21 @@ export const products = [
   {
     title: "Pixel Perfect",
     link: "https://app.pixelperfect.quest",
-    thumbnail: "/herolxp.jpg",
+    thumbnail: "/dashboard.jpg",
   },
-
   {
     title: "Algochurn",
     link: "https://algochurn.com",
-    thumbnail: "/herolxp.jpg",
+    thumbnail: "/bersihbersama.jpg",
   },
   {
     title: "Aceternity UI",
     link: "https://ui.aceternity.com",
-    thumbnail: "/herolxp.jpg",
+    thumbnail: "/anm1.jpg",
   },
   {
     title: "Tailwind Master Kit",
     link: "https://tailwindmasterkit.com",
-    thumbnail: "/herolxp.jpg",
-  },
-  {
-    title: "SmartBridge",
-    link: "https://smartbridgetech.com",
-    thumbnail: "/herolxp.jpg",
-  },
-  {
-    title: "Renderwork Studio",
-    link: "https://renderwork.studio",
-    thumbnail: "/herolxp.jpg",
-  },
-
-  {
-    title: "Creme Digital",
-    link: "https://cremedigital.com",
-    thumbnail: "/herolxp.jpg",
-  },
-  {
-    title: "Golden Bells Academy",
-    link: "https://goldenbellsacademy.com",
-    thumbnail: "/herolxp.jpg",
-  },
-  {
-    title: "Invoker Labs",
-    link: "https://invoker.lol",
-    thumbnail: "/herolxp.jpg",
-  },
-  {
-    title: "E Free Invoice",
-    link: "https://efreeinvoice.com",
-    thumbnail: "/herolxp.jpg",
+    thumbnail: "/bersihbersama.jpg",
   },
 ];

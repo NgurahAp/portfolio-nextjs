@@ -20,6 +20,7 @@ export default function Home() {
       <ExperienceSection />
       <ServicesSection />
       <HeroParallax products={products} />
+      <section className="h-screen"></section>
     </motion.div>
   );
 }

@@ -16,8 +16,8 @@ export default function Home() {
       className="bg-black min-h-screen overflow-hidden"
     >
       <HeroSection />
-      <MarqueeSection />
       <ExperienceSection />
+      <MarqueeSection />
       <ServicesSection />
       <HeroParallax products={products} />
       <section className="h-screen"></section>

@@ -5,7 +5,7 @@ import { BsStars } from "react-icons/bs";
 
 export default function HeroSection() {
   return (
-    <div className="relative min-h-screen w-full bg-black overflow-hidden">
+    <div className="relative min-h-screen w-full bg-black overflow-hidden border-b border-[#1E2023]">
       <BackgroundBeamsWithCollision className="absolute inset-0 opacity-30" />
 
       {/* Diagonal lines - preserved as requested */}

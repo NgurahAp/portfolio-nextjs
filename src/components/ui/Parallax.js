@@ -66,7 +66,7 @@ export const HeroParallax = ({ products }) => {
   }, [rowWidth]);
 
   return (
-    <div className="h-[100vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto">
+    <div className="h-[100vh] py-20 overflow-hidden antialiased relative flex flex-col self-auto">
       <Header />
 
       {/* Static tilted container with fixed perspective and rotation */}

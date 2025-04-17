@@ -6,6 +6,7 @@ import ServicesSection from "@/components/section/Service";
 import { motion } from "framer-motion";
 import { HeroParallax } from "@/components/ui/Parallax";
 import { products } from "@/components/ui/product";
+import ContactForm from "@/components/section/ContactUs";
 
 export default function Home() {
   return (
@@ -20,7 +21,7 @@ export default function Home() {
       <MarqueeSection />
       <ServicesSection />
       <HeroParallax products={products} />
-      <section className="h-screen"></section>
+      <ContactForm />
     </motion.div>
   );
 }

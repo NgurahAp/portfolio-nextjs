@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,81 +7,49 @@ export const HeroParallax = ({ products }) => {
   const firstRow = products.slice(0, 3);
   const secondRow = products.slice(3, 6);
   const thirdRow = products.slice(6, 9);
-  const ref = React.useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
 
-  const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
-
-  const translateX = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, 1000]),
-    springConfig
-  );
-  const translateXReverse = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, -1000]),
-    springConfig
-  );
-  const rotateX = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [15, 0]),
-    springConfig
-  );
-  const opacity = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [0.2, 1]),
-    springConfig
-  );
-  const rotateZ = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [20, 0]),
-    springConfig
-  );
-  const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [-700, 100]),
-    springConfig
-  );
   return (
-    <div
-      ref={ref}
-      className="h-[300vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
-    >
+    <div className="h-[120vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto">
       <Header />
-      <motion.div
+
+      {/* Static tilted container with fixed perspective and rotation */}
+      <div
+        className="[perspective:1000px] [transform-style:preserve-3d]"
         style={{
-          rotateX,
-          rotateZ,
-          translateY,
-          opacity,
+          opacity: 0.2, // Keep the initial opacity from your original code
         }}
-        className=""
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-10 mb-10">
+        <div
+          className="flex flex-row-reverse space-x-reverse space-x-10 mb-5"
+          style={{
+            transform: "rotateX(8deg) rotateZ(20deg) translateY(-700px)",
+          }}
+        >
           {firstRow.map((product) => (
-            <ProductCard
-              product={product}
-              translate={translateX}
-              key={product.title}
-            />
+            <ProductCard product={product} key={product.title} />
           ))}
-        </motion.div>
-        <motion.div className="flex flex-row mb-10 space-x-10 ">
+        </div>
+        <div
+          className="flex flex-row-reverse space-x-reverse mb-5 space-x-10"
+          style={{
+            transform: "rotateX(8deg) rotateZ(20deg) translateY(-700px)",
+          }}
+        >
           {secondRow.map((product) => (
-            <ProductCard
-              product={product}
-              translate={translateXReverse}
-              key={product.title}
-            />
+            <ProductCard product={product} key={product.title} />
           ))}
-        </motion.div>
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-10">
+        </div>
+        <div
+          className="flex flex-row-reverse space-x-reverse space-x-10"
+          style={{
+            transform: "rotateX(8deg) rotateZ(20deg) translateY(-700px)",
+          }}
+        >
           {thirdRow.map((product) => (
-            <ProductCard
-              product={product}
-              translate={translateX}
-              key={product.title}
-            />
+            <ProductCard product={product} key={product.title} />
           ))}
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </div>
   );
 };
@@ -101,25 +68,20 @@ export const Header = () => {
   );
 };
 
-export const ProductCard = ({ product, translate }) => {
+export const ProductCard = ({ product }) => {
   return (
-    <motion.div
-      style={{
-        x: translate,
-      }}
+    <div
       key={product.title}
-      // Ubah tinggi kontainer untuk membuat rasio persegi panjang
       className="group/product h-[24rem] w-[48rem] relative flex-shrink-0"
     >
       <Link href={product.link} className="block h-full w-full">
         <Image
           src={product.thumbnail}
           fill
-          // Pastikan objek gambar menutupi seluruh area dengan benar
           className="object-cover object-center absolute"
           alt={product.title}
         />
       </Link>
-    </motion.div>
+    </div>
   );
 };

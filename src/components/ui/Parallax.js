@@ -5,78 +5,43 @@ import Link from "next/link";
 
 export const HeroParallax = ({ products }) => {
   // Custom slicing for rows
-  // First row: Products from indices 0 to 9
   const firstRow = products.slice(0, 10);
+  const secondRow = [...products.slice(3), ...products.slice(0, 3)];
+  const thirdRow = [...products.slice(6), ...products.slice(0, 6)];
 
-  // Second row: Products from indices 3, 4, 5, 6, 7, 8, 9, 0, 1, 2 (wrapping around)
-  const secondRow = [
-    ...products.slice(3), // From 3 to end
-    ...products.slice(0, 3), // From 0 to 2
-  ];
-
-  // Third row: Products from indices 6, 7, 8, 9, 0, 1, 2, 3, 4, 5 (wrapping around)
-  const thirdRow = [
-    ...products.slice(6), // From 6 to end
-    ...products.slice(0, 6), // From 0 to 5
-  ];
-
-  // Calculate the total width of a row
-  const cardWidth = 48 * 16; // 48rem in pixels
-  const cardSpacing = 10 * 4; // space-x-10 is approximately 40px
+  const cardWidth = 48 * 16;
+  const cardSpacing = 10 * 4;
   const singleCardWithSpacing = cardWidth + cardSpacing;
-  const rowWidth = singleCardWithSpacing * firstRow.length; // Width based on number of cards
+  const rowWidth = singleCardWithSpacing * firstRow.length;
 
-  // Set initial positions - offset rows 1 and 3 to eliminate the gap
-  // For row 1 and 3, start with a negative position (shifted left)
-  const [position1, setPosition1] = useState(-singleCardWithSpacing / 2); // Shift left by half a card
-  const [position2, setPosition2] = useState(0); // Row 2 is fine as is
-  const [position3, setPosition3] = useState(-singleCardWithSpacing / 2); // Slightly different offset for variety
+  const [position1, setPosition1] = useState(-singleCardWithSpacing / 2);
+  const [position2, setPosition2] = useState(0);
+  const [position3, setPosition3] = useState(-singleCardWithSpacing / 2);
 
-  // Animation effect
   useEffect(() => {
     const animateRows = () => {
-      // First row (moving left)
-      setPosition1((prev) => {
-        const newPos = prev - 0.5;
-        // When the entire row has moved left by rowWidth, reset
-        return newPos < -rowWidth ? 0 : newPos;
-      });
-
-      // Second row (moving right)
-      setPosition2((prev) => {
-        const newPos = prev + 0.4;
-        // When the entire row has moved right by rowWidth, reset
-        return newPos > rowWidth ? 0 : newPos;
-      });
-
-      // Third row (moving left faster)
-      setPosition3((prev) => {
-        const newPos = prev - 0.6;
-        // When the entire row has moved left by rowWidth, reset
-        return newPos < -rowWidth ? 0 : newPos;
-      });
-
+      setPosition1((prev) => (prev - 0.5 < -rowWidth ? 0 : prev - 0.5));
+      setPosition2((prev) => (prev + 0.4 > rowWidth ? 0 : prev + 0.4));
+      setPosition3((prev) => (prev - 0.6 < -rowWidth ? 0 : prev - 0.6));
       requestAnimationFrame(animateRows);
     };
 
     const animationId = requestAnimationFrame(animateRows);
-
-    // Cleanup function
     return () => cancelAnimationFrame(animationId);
   }, [rowWidth]);
 
   return (
     <div className="h-[100vh] py-20 overflow-hidden antialiased relative flex flex-col self-auto">
+      {/* Overlay gelap biar teks lebih kontras */}
+      <div
+        className="absolute inset-0 bg-black/20 w-[60%] z-40 pointer-events-none"
+      ></div>
+
+      {/* Header dengan text shadow */}
       <Header />
 
-      {/* Static tilted container with fixed perspective and rotation */}
-      <div
-        className="[perspective:1000px] [transform-style:preserve-3d]"
-        style={{
-          opacity: 0.2,
-        }}
-      >
-        {/* First row - moving left */}
+      <div className="[perspective:1000px] [transform-style:preserve-3d]">
+        {/* First row */}
         <div
           className="flex flex-row space-x-10 mb-2"
           style={{
@@ -84,23 +49,15 @@ export const HeroParallax = ({ products }) => {
             transition: "transform 0.05s linear",
           }}
         >
-          {/* Products from indices 0-9 */}
           {firstRow.map((product, index) => (
-            <ProductCard
-              product={product}
-              key={`row1-${product.title}-${index}`}
-            />
+            <ProductCard product={product} key={`row1-${index}`} />
           ))}
-          {/* Duplicate for infinite scrolling */}
           {firstRow.map((product, index) => (
-            <ProductCard
-              product={product}
-              key={`row1-dup-${product.title}-${index}`}
-            />
+            <ProductCard product={product} key={`row1-dup-${index}`} />
           ))}
         </div>
 
-        {/* Second row - moving right */}
+        {/* Second row */}
         <div
           className="flex flex-row-reverse space-x-reverse space-x-10 mb-5"
           style={{
@@ -108,23 +65,15 @@ export const HeroParallax = ({ products }) => {
             transition: "transform 0.05s linear",
           }}
         >
-          {/* Products from indices 3, 4, 5, 6, 7, 8, 9, 0, 1, 2 */}
           {secondRow.map((product, index) => (
-            <ProductCard
-              product={product}
-              key={`row2-${product.title}-${index}`}
-            />
+            <ProductCard product={product} key={`row2-${index}`} />
           ))}
-          {/* Duplicate for infinite scrolling */}
           {secondRow.map((product, index) => (
-            <ProductCard
-              product={product}
-              key={`row2-dup-${product.title}-${index}`}
-            />
+            <ProductCard product={product} key={`row2-dup-${index}`} />
           ))}
         </div>
 
-        {/* Third row - moving left faster */}
+        {/* Third row */}
         <div
           className="flex flex-row space-x-10"
           style={{
@@ -132,19 +81,11 @@ export const HeroParallax = ({ products }) => {
             transition: "transform 0.05s linear",
           }}
         >
-          {/* Products from indices 6, 7, 8, 9, 0, 1, 2, 3, 4, 5 */}
           {thirdRow.map((product, index) => (
-            <ProductCard
-              product={product}
-              key={`row3-${product.title}-${index}`}
-            />
+            <ProductCard product={product} key={`row3-${index}`} />
           ))}
-          {/* Duplicate for infinite scrolling */}
           {thirdRow.map((product, index) => (
-            <ProductCard
-              product={product}
-              key={`row3-dup-${product.title}-${index}`}
-            />
+            <ProductCard product={product} key={`row3-dup-${index}`} />
           ))}
         </div>
       </div>
@@ -155,10 +96,10 @@ export const HeroParallax = ({ products }) => {
 export const Header = () => {
   return (
     <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full z-50 left-0 top-0">
-      <h1 className="text-2xl md:text-7xl font-bold dark:text-white">
+      <h1 className="text-2xl md:text-7xl font-bold text-white drop-shadow-[2px_2px_6px_rgba(0,0,0,0.8)]">
         My Development <br /> Works
       </h1>
-      <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
+      <p className="max-w-2xl text-base md:text-xl mt-8 text-white drop-shadow-[1px_1px_4px_rgba(0,0,0,0.8)]">
         A showcase of my web and mobile development projects, built with modern
         technologies and a focus on seamless user experience.
       </p>

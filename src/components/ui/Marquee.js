@@ -18,29 +18,29 @@ export default function MarqueeSection() {
   ];
 
   return (
-    <div className="relative w-full overflow-hidden py-6 bg-black">
-      {/* Gradient overlay left */}
-      <div className="absolute left-0 top-0 h-full w-32 z-10 bg-gradient-to-r from-black to-transparent"></div>
+    <div className="relative w-full overflow-hidden py-12 bg-white border-y border-gray-100">
+      {/* Subtle gradient overlay left */}
+      <div className="absolute left-0 top-0 h-full w-36 z-10 bg-gradient-to-r from-white to-transparent"></div>
 
-      <Marquee speed={40} gradient={false} >
+      <Marquee speed={25} gradient={false}>
         {techs.map((tech, index) => (
-          <div key={index} className="flex items-center mx-4 gap-1 bg-[#141517] py-1 px-2 rounded-full">
-            <div className="h-8 w-8 flex items-center justify-center">
+          <div key={index} className="flex items-center mx-8 group">
+            <div className="h-4 w-4 flex items-center justify-center opacity-40 group-hover:opacity-70 transition-opacity duration-300">
               <img
                 src={tech.icon}
                 alt={tech.name}
-                className="max-h-6 max-w-6"
+                className="max-h-5 max-w-5 grayscale"
               />
             </div>
-            <span className="text-gray-300 text-sm font-medium opacity-80 pr-1">
+            <span className="text-gray-400 text-xs font-light ml-2 opacity-60 group-hover:opacity-80 transition-opacity duration-300">
               {tech.name}
             </span>
           </div>
         ))}
       </Marquee>
 
-      {/* Gradient overlay right */}
-      <div className="absolute right-0 top-0 h-full w-32 z-10 bg-gradient-to-l from-black to-transparent"></div>
+      {/* Subtle gradient overlay right */}
+      <div className="absolute right-0 top-0 h-full w-36 z-10 bg-gradient-to-l from-white to-transparent"></div>
     </div>
   );
 }

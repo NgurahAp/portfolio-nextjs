@@ -16,8 +16,8 @@ const HeroSection = () => {
               transition={{ duration: 0.6 }}
               className="inline-flex items-center gap-4 mb-4 py-2"
             >
-              <BsStars />
-              <span className="text-sm font-medium text-gray-600 uppercase tracking-wide">
+              <BsStars className="text-gray-400 text-xs" />
+              <span className="text-xs font-medium text-gray-600 uppercase tracking-wide">
                 Introduction
               </span>
             </motion.div>

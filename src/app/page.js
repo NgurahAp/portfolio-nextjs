@@ -14,7 +14,7 @@ export default function Home() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="bg-black min-h-screen overflow-hidden"
+      className="bg-gray-100 min-h-screen overflow-hidden"
     >
       <HeroSection />
       <ExperienceSection />

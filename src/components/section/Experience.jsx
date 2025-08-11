@@ -218,10 +218,10 @@ export default function ExperienceSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-4 mb-4 py-2"
+              className="inline-flex items-center gap-4 mb-2 py-2"
             >
-              <BsStars className="text-gray-600" />
-              <span className="text-sm font-medium text-gray-600 uppercase tracking-wide">
+              <BsStars className="text-gray-400 text-xs" />
+              <span className="text-xs font-medium text-gray-600 uppercase tracking-wide">
                 Work History
               </span>
             </motion.div>
@@ -231,7 +231,7 @@ export default function ExperienceSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl md:text-5xl font-semibold text-gray-900 mb-6 leading-tight"
+              className="text-3xl md:text-4xl font-light text-gray-900 mb-4 leading-tight"
             >
               Experience
             </motion.h2>

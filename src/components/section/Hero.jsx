@@ -94,8 +94,8 @@ const HeroSection = () => {
                 <div className="text-sm text-gray-600">Vue / Nuxt.js</div>
                 <div className="text-sm text-gray-600">React / Next.js</div>
                 <div className="text-sm text-gray-600">Node.js / Express</div>
-                <div className="text-sm text-gray-600">Dart / Flutter</div>
                 <div className="text-sm text-gray-600">PHP / Laravel</div>
+                <div className="text-sm text-gray-600">Dart / Flutter</div>
                 <div className="text-sm text-gray-600">Go - Lang</div>
               </div>
             </motion.div>
@@ -136,19 +136,19 @@ const HeroSection = () => {
             <div className="flex gap-3">
               <a
                 href="#"
-                className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-all"
+                className="w-10 h-10 rounded-full flex items-center justify-center text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-all"
               >
                 <FaGithub size={20} />
               </a>
               <a
                 href="#"
-                className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-all"
+                className="w-10 h-10 rounded-full flex items-center justify-center text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-all"
               >
                 <FaLinkedin size={20} />
               </a>
               <a
                 href="#"
-                className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-all"
+                className="w-10 h-10 rounded-full flex items-center justify-center text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-all"
               >
                 <FaInstagram size={20} />
               </a>

@@ -26,27 +26,24 @@ const ExperienceItem = ({
         duration: 0.6,
         delay: index * 0.1,
       }}
-      className="border-b border-gray-100 last:border-b-0"
+      className="border-b border-gray-100 last:border-b-0 px-6"
     >
       <motion.div
-        whileHover={{ backgroundColor: "rgba(0, 0, 0, 0.02)" }}
         transition={{ duration: 0.2 }}
-        className={`flex items-center justify-between w-full py-6 cursor-pointer ${
-          isActive ? "bg-gray-50/50" : ""
-        }`}
+        className={`flex items-center justify-between w-full py-4 cursor-pointer `}
         onClick={onClick}
       >
         <div className="flex items-center gap-4">
-          <div className="bg-gray-100 rounded-full w-12 h-12 overflow-hidden flex items-center justify-center">
+          <div className="bg-gray-100 rounded-full w-8 h-8 overflow-hidden  flex items-center justify-center">
             {icon}
           </div>
           <div>
-            <h3 className="text-gray-900 font-medium text-lg">{role}</h3>
-            <p className="text-gray-600 text-sm">{company}</p>
+            <h3 className="text-gray-900 font-medium text-md">{role}</h3>
+            <p className="text-gray-600 text-xs">{company}</p>
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <div className="text-gray-500 text-sm font-light">{period}</div>
+          <div className="text-gray-700 text-xs font-light">{period}</div>
           <motion.div
             animate={{
               rotate: isActive ? 180 : 0,
@@ -54,7 +51,7 @@ const ExperienceItem = ({
             transition={{ duration: 0.3 }}
             className="text-gray-400"
           >
-            <FiChevronDown size={18} />
+            <FiChevronDown size={12} />
           </motion.div>
         </div>
       </motion.div>
@@ -81,8 +78,8 @@ const ExperienceItem = ({
             }}
             className="overflow-hidden"
           >
-            <div className="pb-6 pl-16">
-              <ul className="space-y-3">
+            <div className="pb-6 pl-3">
+              <ul className="space-y-2">
                 {details.map((detail, idx) => (
                   <motion.li
                     key={idx}
@@ -93,7 +90,7 @@ const ExperienceItem = ({
                       duration: 0.3,
                       delay: 0.1 + idx * 0.1,
                     }}
-                    className="text-gray-600 text-sm leading-relaxed flex items-start gap-2"
+                    className="text-gray-600 text-xs leading-relaxed flex items-start gap-2"
                   >
                     <span className="w-1 h-1 rounded-full bg-gray-400 mt-2 flex-shrink-0"></span>
                     <span>{detail}</span>
@@ -121,14 +118,48 @@ export default function ExperienceSection() {
     {
       icon: (
         <img
+          src="/dmx.png"
+          alt="DB Klik"
+          className="object-cover w-10 h-10 rounded-full"
+        />
+      ),
+      role: "Fullstack Developer",
+      company: "Dreamaxtion (Internship)",
+      period: "Jul 2025 — Sep 2025",
+      details: [
+        "Developed a complete attendance tracking system from check-in/check-out functionality to attendance report generation",
+        "Built the frontend using Nuxt.js and the backend using Express.js",
+        "Designed and integrated APIs to handle attendance data efficiently and securely",
+      ],
+    },
+    {
+      icon: (
+        <img
+          src="/db.webp"
+          alt="DB Klik"
+          className="object-cover w-8 h-8 rounded-full"
+        />
+      ),
+      role: "Mobile Developer",
+      company: "DB Klik (Internship)",
+      period: "Jun 2025 — Aug 2025",
+      details: [
+        "Developed new features for DB Klik and DB News applications",
+        "Restyled application interfaces to enhance user experience",
+        "Contributed to testing and bug fixing to ensure optimal application performance",
+      ],
+    },
+    {
+      icon: (
+        <img
           src="/thc.webp"
           alt="Taharica"
-          className="object-cover w-12 h-12 rounded-full"
+          className="object-cover w-8 h-8 rounded-full"
         />
       ),
       role: "Web Developer",
-      company: "@Taharica (Internship)",
-      period: "Dec 2024 — March 2025",
+      company: "Taharica (Internship)",
+      period: "Dec 2024 — Mar 2025",
       details: [
         "Developed a Company Profile website using React.js, focusing on responsive design and optimal user experience",
         "Designed and structured key sections to effectively showcase company information",
@@ -140,17 +171,16 @@ export default function ExperienceSection() {
         <img
           src="/mknows.jfif"
           alt="PT Menara Indonesia"
-          className="object-cover w-12 h-12 rounded-full"
+          className="object-cover w-8 h-8 rounded-full"
         />
       ),
       role: "Frontend Web Developer",
-      company: "@PT Menara Indonesia (Internship)",
-      period: "Sept 2024 — Dec 2024",
+      company: "PT Menara Indonesia (Internship)",
+      period: "Sep 2024 — Dec 2024",
       details: [
         "Developed a Learning Management System (LMS) using Next.js, focusing on responsive design and seamless user experience",
         "Collaborated with UI/UX and backend teams to implement intuitive interfaces and key features like user authentication and course management",
         "Optimized application performance and responsiveness, ensuring smooth user interactions",
-        "Successfully completed the project within the 3-month timeline, meeting both technical and business requirements",
       ],
     },
     {
@@ -158,11 +188,11 @@ export default function ExperienceSection() {
         <img
           src="/alterra.png"
           alt="Alterra"
-          className="object-cover w-12 h-12 rounded-full"
+          className="object-cover w-7 h-7 rounded-full"
         />
       ),
       role: "Mobile Developer",
-      company: "@Alterra (Apprenticeship)",
+      company: "Alterra Academy (Apprenticeship)",
       period: "Aug 2023 — Dec 2023",
       details: [
         "Developed feature-rich applications using Flutter and Dart",
@@ -180,7 +210,7 @@ export default function ExperienceSection() {
       className="relative min-h-screen w-full bg-white"
     >
       <div className="relative z-10 container mx-auto px-6 md:px-12 pt-32 pb-20">
-        <div className="grid md:grid-cols-2 gap-16 items-start">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
           {/* Left Column */}
           <div className="max-w-xl">
             {/* Introduction Badge */}
@@ -211,7 +241,7 @@ export default function ExperienceSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-md text-gray-600 font-light leading-relaxed"
+              className="text-md text-gray-800 font-light leading-relaxed"
             >
               I have worked with some of the most innovative industry leaders to
               help build their top-notch products and gain valuable experience
@@ -220,12 +250,12 @@ export default function ExperienceSection() {
           </div>
 
           {/* Right Column - Experience List */}
-          <div className="pt-12">
+          <div className="">
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="bg-white border border-gray-100 rounded-lg shadow-sm"
+              className="bg-white border border-gray-100 rounded-lg"
             >
               {experiences.map((exp, index) => (
                 <ExperienceItem

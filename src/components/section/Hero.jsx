@@ -5,7 +5,7 @@ import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 const HeroSection = () => {
   return (
     <section id="home" className="relative min-h-screen w-full bg-white">
-      <div className="relative z-10 container mx-auto px-6 md:px-12 pt-32 pb-20 flex flex-col justify-between">
+      <div className="relative z-10 container mx-auto px-6 md:px-12 pt-32 pb-20">
         <div className="grid md:grid-cols-2 gap-12 items-start">
           {/* Left Column - Main Content */}
           <div className="max-w-xl pt-12">
@@ -60,12 +60,31 @@ const HeroSection = () => {
             </motion.div>
           </div>
 
-          {/* Right Column - Tech Stack (Vertically Centered) */}
-          <div className="flex flex-col justify-center h-full pt-14">
+          {/* Right Column - Status & Tech Stack */}
+          <div className="flex flex-col justify-center space-y-12 pt-14">
+            {/* Status */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
+              className="text-right"
+            >
+              <div className="inline-flex items-center gap-2 py-1 rounded-full mb-1">
+                <div className="w-2 h-2 rounded-full bg-gray-700 animate-pulse" />
+                <span className="text-xs text-gray-800 font-medium">
+                  Currently building
+                </span>
+              </div>
+              <p className="text-sm text-gray-500">
+                Innovative software solutions
+              </p>
+            </motion.div>
+
+            {/* Tech Stack */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 1 }}
               className="text-right"
             >
               <p className="text-xs text-gray-500 mb-3 uppercase tracking-wide">
@@ -75,8 +94,8 @@ const HeroSection = () => {
                 <div className="text-sm text-gray-600">Vue / Nuxt.js</div>
                 <div className="text-sm text-gray-600">React / Next.js</div>
                 <div className="text-sm text-gray-600">Node.js / Express</div>
-                <div className="text-sm text-gray-600">PHP / Laravel</div>
                 <div className="text-sm text-gray-600">Dart / Flutter</div>
+                <div className="text-sm text-gray-600">PHP / Laravel</div>
                 <div className="text-sm text-gray-600">Go - Lang</div>
               </div>
             </motion.div>

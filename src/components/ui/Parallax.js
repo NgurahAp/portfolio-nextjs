@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { BsStars } from "react-icons/bs";
 
 export const HeroParallax = ({ products }) => {
   // Custom slicing for rows
@@ -31,16 +33,65 @@ export const HeroParallax = ({ products }) => {
   }, [rowWidth]);
 
   return (
-    <div className="h-[100vh] py-20 overflow-hidden antialiased relative flex flex-col self-auto">
-      {/* Overlay gelap biar teks lebih kontras */}
+    <div className="h-[100vh] overflow-hidden antialiased relative flex flex-col bg-gray-50">
+      {/* White diagonal overlay - miring mengikuti perspektif cards */}
       <div
-        className="absolute inset-0 bg-black/20 w-[60%] z-40 pointer-events-none"
-      ></div>
+        className="absolute inset-0 bg-white z-40 pointer-events-none"
+        style={{
+          clipPath: "polygon(0 0, 55% 0, 42% 100%, 0% 100%)",
+          transform: "skew(-8deg, 0deg)",
+          transformOrigin: "left center",
+          marginLeft: "-5%",
+        }}
+      />
 
-      {/* Header dengan text shadow */}
-      <Header />
+      {/* Content container */}
+      <div className="relative z-50 container mx-auto px-6 md:px-12 pt-32 pb-20">
+        {/* Section Header - sama seperti Services */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="inline-flex items-center gap-3 mb-4"
+        >
+          <BsStars className="text-gray-400 text-xs w-4 h-4" />
+          <span className="text-xs font-medium text-gray-600 uppercase tracking-wide">
+            Portfolio
+          </span>
+        </motion.div>
 
-      <div className="[perspective:1000px] [transform-style:preserve-3d]">
+        {/* Section Title & Description - konsisten dengan Services */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="max-w-xl mb-20"
+        >
+          <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4 leading-tight">
+            My Development Works
+          </h2>
+          <p className="text-md text-gray-800 font-light leading-relaxed mb-4">
+            A showcase of my web and mobile development projects, built with
+            modern technologies and a focus on seamless user experience.
+          </p>
+          {/* CTA Button di kanan - untuk detail projects */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <button className="px-8 py-3 text-gray-900 text-sm font-medium border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-200 rounded-none bg-white/90 backdrop-blur-sm">
+              View All Projects
+            </button>
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Parallax Cards Container */}
+      <div className="[perspective:1200px] [transform-style:preserve-3d] relative z-30">
         {/* First row */}
         <div
           className="flex flex-row space-x-10 mb-2"
@@ -93,30 +144,35 @@ export const HeroParallax = ({ products }) => {
   );
 };
 
-export const Header = () => {
-  return (
-    <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full z-50 left-0 top-0">
-      <h1 className="text-2xl md:text-7xl font-bold text-white drop-shadow-[2px_2px_6px_rgba(0,0,0,0.8)]">
-        My Development <br /> Works
-      </h1>
-      <p className="max-w-2xl text-base md:text-xl mt-8 text-white drop-shadow-[1px_1px_4px_rgba(0,0,0,0.8)]">
-        A showcase of my web and mobile development projects, built with modern
-        technologies and a focus on seamless user experience.
-      </p>
-    </div>
-  );
-};
-
 export const ProductCard = ({ product }) => {
   return (
     <div className="group/product h-[24rem] w-[48rem] relative flex-shrink-0">
       <Link href={product.link} className="block h-full w-full">
-        <Image
-          src={product.thumbnail || "/placeholder.svg"}
-          fill
-          className="object-cover object-center absolute"
-          alt={product.title}
-        />
+        <div className="relative h-full w-full overflow-hidden rounded-lg shadow-2xl border border-gray-200/50">
+          {/* Card background */}
+          <div className="absolute inset-0 bg-white"></div>
+
+          {/* Image */}
+          <div className="relative h-full w-full p-4">
+            <div className="h-full w-full relative overflow-hidden rounded-md shadow-lg">
+              <Image
+                src={product.thumbnail || "/api/placeholder/768/384"}
+                fill
+                className="object-cover object-center transition-transform duration-500 group-hover/product:scale-105"
+                alt={product.title}
+              />
+            </div>
+          </div>
+
+          {/* Project title overlay on hover */}
+          <div className="absolute bottom-4 left-4 right-4 transform translate-y-2 opacity-0 group-hover/product:translate-y-0 group-hover/product:opacity-100 transition-all duration-300">
+            <div className="bg-white/95 backdrop-blur-sm rounded-md p-3 shadow-lg border border-gray-200/50">
+              <h3 className="text-sm font-medium text-gray-900 truncate">
+                {product.title}
+              </h3>
+            </div>
+          </div>
+        </div>
       </Link>
     </div>
   );

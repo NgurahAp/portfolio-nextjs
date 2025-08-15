@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, CheckCircle } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 // BsStars component (since we can't import from react-icons)
 const BsStars = ({ className }) => (
@@ -11,308 +11,152 @@ const BsStars = ({ className }) => (
 );
 
 export default function ContactForm() {
-  const [formState, setFormState] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
+  const [hoveredLink, setHoveredLink] = useState(null);
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormState((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-
-      setTimeout(() => {
-        setIsSubmitted(false);
-        setFormState({
-          name: "",
-          email: "",
-          subject: "",
-          message: "",
-        });
-      }, 3000);
-    }, 1500);
-  };
+  const contactLinks = [
+    { label: "LinkedIn", href: "#" },
+    { label: "Email", href: "mailto:contact@yourname.com" },
+    { label: "GitHub", href: "#" },
+  ];
 
   return (
     <section className="relative min-h-screen w-full bg-white">
-      <div className="relative z-10 container mx-auto px-6 md:px-12 pt-32 pb-20">
-        {/* Section Header - konsisten dengan Services dan Portfolio */}
+      <div className="relative z-10 container mx-auto px-6 md:px-12 pt-72 pb-20">
+        {/* Main Content */}
+        <div className="flex flex-col lg:flex-row justify-between w-full items-end gap-12 lg:gap-0">
+          {/* Left Side - Empty space for balance */}
+          <div className="flex-1"></div>
+
+          {/* Center - Social Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex-shrink-0 lg:mr-32"
+          >
+            <div className="space-y-4 min-w-[200px] ">
+              {contactLinks.map((link, index) => (
+                <motion.div
+                  key={link.label}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                >
+                  <a
+                    href={link.href}
+                    className="group flex items-center justify-between"
+                    onMouseEnter={() => setHoveredLink(index)}
+                    onMouseLeave={() => setHoveredLink(null)}
+                  >
+                    <span className="text-sm text-gray-900 font-light group-hover:text-black transition-colors">
+                      {link.label}
+                    </span>
+                  </a>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Bottom Section - Title and Arrow aligned */}
+        <div className="flex justify-between items-end  w-full h-full">
+          {/* Left - Main Title with Contact label */}
+          <div className="">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center gap-4 mb-4"
+            >
+              <BsStars className="text-gray-400 text-xs w-4 h-4" />
+              <span className="text-xs font-medium text-gray-600 uppercase tracking-wide">
+                Contact
+              </span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900 mb-6 leading-tight"
+            >
+              LET'S TALK
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-md text-gray-800 font-light leading-relaxed max-w-2xl"
+            >
+              Ready to bring your ideas to life? I'm always excited to discuss
+              new opportunities, collaborate on interesting projects, or just
+              have a chat about technology and innovation.
+            </motion.p>
+          </div>
+
+          {/* Right - Large Arrow Icon */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="flex items-end justify-end h-full"
+          >
+            <ArrowUpRight size={90} className="text-gray-400" />
+          </motion.div>
+        </div>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-3 mb-4"
+          transition={{ duration: 0.6, delay: 1.2 }}
+          className="mt-12 pt-8 border-t border-contact-border border-gray-300"
         >
-          <BsStars className="text-gray-400 text-xs w-4 h-4" />
-          <span className="text-xs font-medium text-gray-600 uppercase tracking-wide">
-            Contact
-          </span>
-        </motion.div>
-
-        {/* Section Title & Description */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-xl mb-20"
-        >
-          <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4 leading-tight">
-            Get in Touch
-          </h2>
-          <p className="text-md text-gray-800 font-light leading-relaxed">
-            Have a project in mind or want to collaborate? I'd love to hear from
-            you.
-          </p>
-        </motion.div>
-
-        {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 lg:gap-20">
-          {/* Contact Form - 3/5 width */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="lg:col-span-3"
-          >
-            {!isSubmitted ? (
-              <div className="space-y-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="name"
-                      className="text-sm font-medium text-gray-700 block"
-                    >
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formState.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-0 py-3 bg-transparent border-0 border-b border-gray-200 focus:outline-none focus:border-gray-400 transition-colors placeholder-gray-400 text-gray-900"
-                      placeholder="Your name"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="email"
-                      className="text-sm font-medium text-gray-700 block"
-                    >
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formState.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-0 py-3 bg-transparent border-0 border-b border-gray-200 focus:outline-none focus:border-gray-400 transition-colors placeholder-gray-400 text-gray-900"
-                      placeholder="your.email@example.com"
-                    />
-                  </div>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            {/* Left - Status */}
+            <div className="flex items-center gap-8">
+              <div>
+                <div className="text-2xl font-light text-contact-text text-gray-600">
+                  Available
                 </div>
-
-                <div className="space-y-2">
-                  <label
-                    htmlFor="subject"
-                    className="text-sm font-medium text-gray-700 block"
-                  >
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formState.subject}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-0 py-3 bg-transparent border-0 border-b border-gray-200 focus:outline-none focus:border-gray-400 transition-colors placeholder-gray-400 text-gray-900"
-                    placeholder="What is this regarding?"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label
-                    htmlFor="message"
-                    className="text-sm font-medium text-gray-700 block"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formState.message}
-                    onChange={handleChange}
-                    required
-                    rows={5}
-                    className="w-full px-0 py-3 bg-transparent border-0 border-b border-gray-200 focus:outline-none focus:border-gray-400 transition-colors resize-none placeholder-gray-400 text-gray-900"
-                    placeholder="Tell me about your project..."
-                  />
-                </div>
-
-                <div className="pt-4">
-                  <motion.button
-                    type="button"
-                    onClick={handleSubmit}
-                    whileHover={{ x: 4 }}
-                    whileTap={{ scale: 0.98 }}
-                    className={`px-8 py-3 text-gray-900 text-sm font-medium border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-200 rounded-none flex items-center gap-2 ${
-                      isSubmitting ? "opacity-70 cursor-not-allowed" : ""
-                    }`}
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <svg
-                          className="animate-spin h-4 w-4 text-gray-900"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                        >
-                          <circle
-                            className="opacity-25"
-                            cx="12"
-                            cy="12"
-                            r="10"
-                            stroke="currentColor"
-                            strokeWidth="4"
-                          ></circle>
-                          <path
-                            className="opacity-75"
-                            fill="currentColor"
-                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                          ></path>
-                        </svg>
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        Send Message
-                        <Send size={16} />
-                      </>
-                    )}
-                  </motion.button>
+                <div className="text-xs text-contact-light uppercase text-gray-400 tracking-wide">
+                  For Projects
                 </div>
               </div>
-            ) : (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-16"
-              >
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: "spring", stiffness: 200, damping: 10 }}
-                  className="flex justify-center mb-6"
-                >
-                  <CheckCircle size={48} className="text-gray-400" />
-                </motion.div>
-                <h3 className="text-xl font-light text-gray-900 mb-2">
-                  Message Sent
-                </h3>
-                <p className="text-gray-600 font-light">
-                  Thank you for reaching out. I'll get back to you soon.
-                </p>
-              </motion.div>
-            )}
-          </motion.div>
-
-          {/* Contact Information - 2/5 width */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="lg:col-span-2 space-y-12"
-          >
-            {/* Contact Info */}
-            <div className="space-y-8">
               <div>
-                <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-4">
-                  Contact Information
-                </h3>
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-sm text-gray-500 mb-1">Email</p>
-                    <p className="text-gray-900 font-light">
-                      contact@yourname.com
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500 mb-1">Location</p>
-                    <p className="text-gray-900 font-light">
-                      Jakarta, Indonesia
-                    </p>
-                  </div>
+                <div className="text-2xl font-light text-contact-text text-gray-600">
+                  24h
                 </div>
-              </div>
-
-              <div>
-                <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-4">
-                  Working Hours
-                </h3>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">Monday - Friday</span>
-                    <span className="text-gray-900 font-light">
-                      9:00 AM - 6:00 PM
-                    </span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">Weekend</span>
-                    <span className="text-gray-900 font-light">
-                      By appointment
-                    </span>
-                  </div>
+                <div className="text-xs text-contact-light uppercase tracking-wide text-gray-400">
+                  Response Time
                 </div>
               </div>
             </div>
 
-            {/* Social Links */}
-            <div className="pt-8 border-t border-gray-100">
-              <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-4">
-                Connect
-              </h3>
-              <div className="flex gap-4">
-                {["LinkedIn", "GitHub", "Twitter", "Instagram"].map(
-                  (platform, index) => (
-                    <a
-                      key={platform}
-                      href="#"
-                      className="text-sm text-gray-500 hover:text-gray-900 transition-colors font-light"
-                    >
-                      {platform}
-                    </a>
-                  )
-                )}
-              </div>
+            {/* Middle - Response indicator */}
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-gray-700 animate-pulse" />
+              <span className="text-xs text-contact-medium font-medium">
+                Usually responds within hours
+              </span>
             </div>
-          </motion.div>
-        </div>
+
+            {/* Right - Location */}
+            <div className="text-right">
+              <div className="text-xs text-gray-400 uppercase tracking-wide mb-1">
+                Based in
+              </div>
+              <div className="text-sm text-gray-600">Indonesia</div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -69,7 +69,7 @@ export const HeroParallax = ({ products }) => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="max-w-xl mb-20"
         >
-          <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4 leading-tight">
+          <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 leading-tight">
             My Development Works
           </h2>
           <p className="text-md text-gray-800 font-light leading-relaxed mb-4">

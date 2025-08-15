@@ -112,7 +112,7 @@ export default function ServicesSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="max-w-xl mb-20"
         >
-          <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4 leading-tight">
+          <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 leading-tight">
             What I Offer
           </h2>
           <p className="text-md text-gray-800 font-light leading-relaxed">
@@ -139,9 +139,7 @@ export default function ServicesSection() {
                     <div className="text-gray-400 group-hover:text-gray-600 transition-colors duration-300">
                       {service.icon}
                     </div>
-                    <h3 className="text-lg  text-gray-900">
-                      {service.title}
-                    </h3>
+                    <h3 className="text-lg  text-gray-900">{service.title}</h3>
                   </div>
                 </div>
 

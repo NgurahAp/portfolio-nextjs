@@ -72,7 +72,7 @@ export const HeroParallax = ({ products }) => {
           <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 leading-tight">
             My Development Works
           </h2>
-          <p className="text-md text-gray-800 font-light leading-relaxed mb-4">
+          <p className="text-md text-gray-800 font-light leading-relaxed mb-8">
             A showcase of my web and mobile development projects, built with
             modern technologies and a focus on seamless user experience.
           </p>
@@ -83,9 +83,9 @@ export const HeroParallax = ({ products }) => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <button className="px-8 py-3 text-gray-900 text-sm font-medium border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-200 rounded-none bg-white/90 backdrop-blur-sm">
+            <Link  href={"/playground"} className="px-8 py-3 text-gray-900 text-sm font-medium border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-200 rounded-none bg-white/90 backdrop-blur-sm">
               View All Projects
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

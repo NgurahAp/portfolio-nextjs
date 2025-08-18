@@ -12,12 +12,12 @@ export const products = [
   {
     title: "Rogue",
     link: "https://userogue.com",
-    thumbnail: "/attendance/login.png",
+    thumbnail: "/attendance/Login.png",
   },
   {
     title: "Editorially",
     link: "https://editorially.org",
-    thumbnail: "/attendance/dashboard.png",
+    thumbnail: "/attendance/Dashboard.png",
   },
   {
     title: "Editrix AI",
@@ -37,7 +37,7 @@ export const products = [
   {
     title: "Aceternity UI",
     link: "https://ui.aceternity.com",
-    thumbnail: "/attendance/attendances.png",
+    thumbnail: "/attendance/Attendances.png",
   },
   {
     title: "Tailwind Master Kit",
@@ -57,6 +57,6 @@ export const products = [
   {
     title: "Aceternity UI",
     link: "https://ui.aceternity.com",
-    thumbnail: "/attendance/Time-Off.png",
+    thumbnail: "/attendance/Time-Off-Request-List.png",
   },
 ];

@@ -96,7 +96,7 @@ export const HeroParallax = ({ products }) => {
         <div
           className="flex flex-row space-x-10 mb-2"
           style={{
-            transform: `rotateX(8deg) rotateZ(20deg) translateY(-600px) translateX(${position1}px)`,
+            transform: `rotateX(8deg) rotateZ(20deg) translateY(-700px) translateX(${position1}px)`,
             transition: "transform 0.05s linear",
           }}
         >
@@ -112,7 +112,7 @@ export const HeroParallax = ({ products }) => {
         <div
           className="flex flex-row-reverse space-x-reverse space-x-10 mb-5"
           style={{
-            transform: `rotateX(8deg) rotateZ(20deg) translateY(-600px) translateX(${position2}px)`,
+            transform: `rotateX(8deg) rotateZ(20deg) translateY(-700px) translateX(${position2}px)`,
             transition: "transform 0.05s linear",
           }}
         >
@@ -128,7 +128,7 @@ export const HeroParallax = ({ products }) => {
         <div
           className="flex flex-row space-x-10"
           style={{
-            transform: `rotateX(8deg) rotateZ(20deg) translateY(-600px) translateX(${position3}px)`,
+            transform: `rotateX(8deg) rotateZ(20deg) translateY(-700px) translateX(${position3}px)`,
             transition: "transform 0.05s linear",
           }}
         >

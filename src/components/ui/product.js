@@ -12,12 +12,12 @@ export const products = [
   {
     title: "Rogue",
     link: "https://userogue.com",
-    thumbnail: "/carikuli.jpg",
+    thumbnail: "/attendance/login.png",
   },
   {
     title: "Editorially",
     link: "https://editorially.org",
-    thumbnail: "/loginlxp.jpg",
+    thumbnail: "/attendance/dashboard.png",
   },
   {
     title: "Editrix AI",
@@ -37,11 +37,26 @@ export const products = [
   {
     title: "Aceternity UI",
     link: "https://ui.aceternity.com",
-    thumbnail: "/anm1.jpg",
+    thumbnail: "/attendance/attendances.png",
   },
   {
     title: "Tailwind Master Kit",
     link: "https://tailwindmasterkit.com",
     thumbnail: "/bersihbersama.jpg",
+  },
+  {
+    title: "Aceternity UI",
+    link: "https://ui.aceternity.com",
+    thumbnail: "/attendance/Employee.png",
+  },
+  {
+    title: "Aceternity UI",
+    link: "https://ui.aceternity.com",
+    thumbnail: "/attendance/Report.png",
+  },
+  {
+    title: "Aceternity UI",
+    link: "https://ui.aceternity.com",
+    thumbnail: "/attendance/Time-Off.png",
   },
 ];

@@ -7,9 +7,9 @@ import { BsStars } from "react-icons/bs";
 
 export const HeroParallax = ({ products }) => {
   // Custom slicing for rows
-  const firstRow = products.slice(0, 10);
-  const secondRow = [...products.slice(3), ...products.slice(0, 3)];
-  const thirdRow = [...products.slice(6), ...products.slice(0, 6)];
+  const firstRow = products.slice(0, 12);
+  const secondRow = [...products.slice(4), ...products.slice(0, 4)];
+  const thirdRow = [...products.slice(8), ...products.slice(0, 8)];
 
   const cardWidth = 48 * 16;
   const cardSpacing = 10 * 4;
@@ -96,7 +96,7 @@ export const HeroParallax = ({ products }) => {
         <div
           className="flex flex-row space-x-10 mb-2"
           style={{
-            transform: `rotateX(8deg) rotateZ(20deg) translateY(-700px) translateX(${position1}px)`,
+            transform: `rotateX(8deg) rotateZ(20deg) translateY(-600px) translateX(${position1}px)`,
             transition: "transform 0.05s linear",
           }}
         >
@@ -112,7 +112,7 @@ export const HeroParallax = ({ products }) => {
         <div
           className="flex flex-row-reverse space-x-reverse space-x-10 mb-5"
           style={{
-            transform: `rotateX(8deg) rotateZ(20deg) translateY(-700px) translateX(${position2}px)`,
+            transform: `rotateX(8deg) rotateZ(20deg) translateY(-600px) translateX(${position2}px)`,
             transition: "transform 0.05s linear",
           }}
         >
@@ -128,7 +128,7 @@ export const HeroParallax = ({ products }) => {
         <div
           className="flex flex-row space-x-10"
           style={{
-            transform: `rotateX(8deg) rotateZ(20deg) translateY(-700px) translateX(${position3}px)`,
+            transform: `rotateX(8deg) rotateZ(20deg) translateY(-600px) translateX(${position3}px)`,
             transition: "transform 0.05s linear",
           }}
         >

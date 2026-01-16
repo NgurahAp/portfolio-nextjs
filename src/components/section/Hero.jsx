@@ -1,8 +1,12 @@
 import { motion } from "framer-motion";
 import { BsStars } from "react-icons/bs";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
+import BlurText from "../ui/BlurText";
 
 const HeroSection = () => {
+  // Base delay untuk menunggu splash screen selesai (3 detik)
+  const baseDelay = 3;
+
   return (
     <section
       id="home"
@@ -31,7 +35,7 @@ const HeroSection = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.6, delay: baseDelay }}
               className="inline-flex items-center gap-4 mb-4 py-2"
             >
               <BsStars className="text-gray-400 text-xs" />
@@ -40,19 +44,25 @@ const HeroSection = () => {
               </span>
             </motion.div>
 
-            <motion.h3
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl md:text-5xl font-semibold text-gray-900 mb-6 leading-tight"
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0, delay: baseDelay + 0.2 }}
             >
-              Ngurah Arya Pratama
-            </motion.h3>
+              <BlurText
+                text="Ngurah Arya Pratama"
+                delay={200}
+                initialDelay={baseDelay + 0.2} 
+                animateBy="words"
+                direction="top"
+                className="text-4xl md:text-5xl font-semibold text-gray-900 mb-6 leading-tight"
+              />
+            </motion.div>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: baseDelay + 0.4 }}
               className="text-md text-gray-800 mb-8 font-light leading-relaxed"
             >
               System Information student at Universitas BSI with a passion for
@@ -63,7 +73,7 @@ const HeroSection = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+              transition={{ duration: 0.6, delay: baseDelay + 0.6 }}
               className="flex flex-col sm:flex-row gap-4"
             >
               <button className="px-6 py-3 bg-gray-900 text-white text-sm font-medium rounded hover:bg-gray-800 transition-colors">
@@ -80,7 +90,7 @@ const HeroSection = () => {
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
+              transition={{ duration: 0.6, delay: baseDelay + 0.8 }}
               className="text-right"
             >
               <div className="inline-flex items-center gap-2 py-1 rounded-full mb-1">
@@ -97,7 +107,7 @@ const HeroSection = () => {
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 1 }}
+              transition={{ duration: 0.6, delay: baseDelay + 1 }}
               className="text-right"
             >
               <p className="text-xs text-gray-500 mb-3 uppercase tracking-wide">
@@ -125,7 +135,7 @@ const HeroSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.2 }}
+          transition={{ duration: 0.6, delay: baseDelay + 1.2 }}
           className="mt-12 pt-8 border-t border-gray-100"
         >
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">

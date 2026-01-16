@@ -4,6 +4,7 @@ import { motion, AnimatePresence, useInView } from "framer-motion";
 import { BsStars } from "react-icons/bs";
 import { FiChevronDown } from "react-icons/fi";
 import Image from "next/image";
+import TextType from "../ui/TextType";
 
 const ExperienceItem = ({
   logo,
@@ -234,9 +235,15 @@ export default function ExperienceSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 leading-tight"
             >
-              Experience
+              <TextType
+                text={["Experience"]}
+                typingSpeed={75}
+                pauseDuration={1500}
+                showCursor={true}
+                cursorCharacter="|"
+                className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 leading-tight"
+              />
             </motion.h2>
 
             {/* Description */}

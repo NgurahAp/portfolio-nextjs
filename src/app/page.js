@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import { HeroParallax } from "@/components/ui/Parallax";
 import { products } from "@/components/ui/product";
 import ContactForm from "@/components/section/ContactUs";
+import CurvedLoop from "@/components/ui/CurvedLoop";
 
 export default function Home() {
   return (
@@ -20,7 +21,14 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <ExperienceSection />
-      <MarqueeSection />
+      <CurvedLoop
+        marqueeText="✦  NextJS  ✦  NestJS  ✦  NuxtJS  ✦  Flutter  ✦  Laravel  ✦   Go  ✦  Firebase  ✦  Docker  ✦  MongoDB  ✦  PostgreSQL  ✦  MySQL  ✦  REST API  ✦  Git  ✦  Jenkins "
+        speed={1.1}
+        className="text-2xl md:text-5xl fill-gray-900"
+        curveAmount={200}
+        direction="left"
+        interactive={true}
+      />
       <ServicesSection />
       <HeroParallax products={products} />
       <ContactForm />

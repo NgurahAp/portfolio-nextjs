@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { BsStars } from "react-icons/bs";
+import TextType from "../ui/TextType";
 
 export default function ServicesSection() {
   const services = [
@@ -112,9 +113,14 @@ export default function ServicesSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="max-w-xl mb-20"
         >
-          <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 leading-tight">
-            What I Offer
-          </h2>
+          <TextType
+            text={["What I Offer"]}
+            typingSpeed={75}
+            pauseDuration={1500}
+            showCursor={true}
+            cursorCharacter="|"
+            className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 leading-tight"
+          />
           <p className="text-md text-gray-800 font-light leading-relaxed">
             Comprehensive development solutions focused on quality and
             performance.

@@ -25,10 +25,10 @@ export const HeroParallax = ({ products }) => {
 
   useEffect(() => {
     const animateRows = () => {
-      setPosition1((prev) => (prev - 0.5 < -rowWidth ? 0 : prev - 0.5));
-      setPosition2((prev) => (prev + 0.4 > rowWidth ? 0 : prev + 0.4));
-      setPosition3((prev) => (prev - 0.6 < -rowWidth ? 0 : prev - 0.6));
-      setPosition4((prev) => (prev + 0.5 > rowWidth ? 0 : prev + 0.5));
+      setPosition1((prev) => (prev - 0.2 < -rowWidth ? 0 : prev - 0.2));
+      setPosition2((prev) => (prev + 0.2 > rowWidth ? 0 : prev + 0.2));
+      setPosition3((prev) => (prev - 0.2 < -rowWidth ? 0 : prev - 0.2));
+      setPosition4((prev) => (prev + 0.2 > rowWidth ? 0 : prev + 0.2));
       requestAnimationFrame(animateRows);
     };
 

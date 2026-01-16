@@ -1,11 +1,12 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { BsStars } from "react-icons/bs";
 import { FiChevronDown } from "react-icons/fi";
+import Image from "next/image";
 
 const ExperienceItem = ({
-  icon,
+  logo,
   role,
   company,
   period,
@@ -28,22 +29,32 @@ const ExperienceItem = ({
       }}
       className="border-b border-gray-100 last:border-b-0 px-6"
     >
-      <motion.div
-        transition={{ duration: 0.2 }}
-        className={`flex items-center justify-between w-full py-4 cursor-pointer `}
+      <button
+        type="button"
+        className="flex items-center justify-between w-full py-4 cursor-pointer text-left focus:outline-none"
         onClick={onClick}
       >
         <div className="flex items-center gap-4">
-          <div className="bg-gray-100 rounded-full w-8 h-8 overflow-hidden  flex items-center justify-center">
-            {icon}
+          {/* IMAGE FIX: Wrapper Relative + Fill */}
+          <div className="relative w-8 h-8 rounded-full overflow-hidden shrink-0">
+            <Image
+              src={logo}
+              alt={`${company} Logo`}
+              fill
+              className="object-cover"
+            />
           </div>
+
           <div>
             <h3 className="text-gray-900 font-medium text-md">{role}</h3>
             <p className="text-gray-600 text-xs">{company}</p>
           </div>
         </div>
+
         <div className="flex items-center gap-4">
-          <div className="text-gray-700 text-xs font-light">{period}</div>
+          <div className="text-gray-700 text-xs font-light hidden sm:block">
+            {period}
+          </div>
           <motion.div
             animate={{
               rotate: isActive ? 180 : 0,
@@ -54,7 +65,14 @@ const ExperienceItem = ({
             <FiChevronDown size={12} />
           </motion.div>
         </div>
-      </motion.div>
+      </button>
+
+      {/* Mobile Period Display (Optional: jika ingin tanggal muncul di bawah saat accordion buka di HP) */}
+      <div className="sm:hidden mb-2">
+        {isActive && (
+          <p className="text-xs text-gray-500 font-light">{period}</p>
+        )}
+      </div>
 
       <AnimatePresence>
         {isActive && (
@@ -64,7 +82,7 @@ const ExperienceItem = ({
               height: "auto",
               opacity: 1,
               transition: {
-                height: { duration: 0.4 },
+                height: { duration: 0.4, ease: "easeInOut" },
                 opacity: { duration: 0.3, delay: 0.1 },
               },
             }}
@@ -72,13 +90,15 @@ const ExperienceItem = ({
               height: 0,
               opacity: 0,
               transition: {
-                height: { duration: 0.3 },
+                height: { duration: 0.3, ease: "easeInOut" },
                 opacity: { duration: 0.2 },
               },
             }}
             className="overflow-hidden"
           >
-            <div className="pb-6 pl-3">
+            <div className="pb-6 pl-14 pr-4">
+              {" "}
+              {/* pl-14 agar sejajar dengan teks judul */}
               <ul className="space-y-2">
                 {details.map((detail, idx) => (
                   <motion.li
@@ -114,15 +134,22 @@ export default function ExperienceSection() {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
+  // DATA REFACTOR: Hanya simpan path image, jangan komponen Image
   const experiences = [
     {
-      icon: (
-        <img
-          src="/dmx.png"
-          alt="DB Klik"
-          className="object-cover w-10 h-10 rounded-full"
-        />
-      ),
+      logo: "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768551702/theAesthetics_yaeqqe.jpg",
+      role: "Fullstack Developer",
+      company: "PT Estetindo Global Indonesia (Contract)",
+      period: "Oct 2025 — Now",
+      details: [
+        "Developed a complete clinic web platform for treatment booking, product sales, and multi branch management using NextJS (frontend) and NestJS (backend).",
+        "Implemented secure authentication, JWT token flow, and role based access.",
+        "Integrated external services such as Midtrans, Biteship, and Google Maps API into the system architecture.",
+        "Collaborate directly with clinic management to translate operational workflows into efficient system features.",
+      ],
+    },
+    {
+      logo: "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768551809/dmx_cktint.png",
       role: "Fullstack Developer",
       company: "Dreamaxtion (Internship)",
       period: "Jul 2025 — Sep 2025",
@@ -133,15 +160,9 @@ export default function ExperienceSection() {
       ],
     },
     {
-      icon: (
-        <img
-          src="/db.webp"
-          alt="DB Klik"
-          className="object-cover w-8 h-8 rounded-full"
-        />
-      ),
+      logo: "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768553280/db_qqr0kq.webp",
       role: "Mobile Developer",
-      company: "DB Klik (Internship)",
+      company: "CV DB Klik (Internship)",
       period: "Jun 2025 — Aug 2025",
       details: [
         "Developed new features for DB Klik and DB News applications",
@@ -150,15 +171,9 @@ export default function ExperienceSection() {
       ],
     },
     {
-      icon: (
-        <img
-          src="/thc.webp"
-          alt="Taharica"
-          className="object-cover w-8 h-8 rounded-full"
-        />
-      ),
+      logo: "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768553445/thc_tembhx.jpg",
       role: "Web Developer",
-      company: "Taharica (Internship)",
+      company: "PT Taharica (Internship)",
       period: "Dec 2024 — Mar 2025",
       details: [
         "Developed a Company Profile website using React.js, focusing on responsive design and optimal user experience",
@@ -167,13 +182,7 @@ export default function ExperienceSection() {
       ],
     },
     {
-      icon: (
-        <img
-          src="/mknows.jfif"
-          alt="PT Menara Indonesia"
-          className="object-cover w-8 h-8 rounded-full"
-        />
-      ),
+      logo: "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768553333/mknows_cter41.jpg",
       role: "Frontend Web Developer",
       company: "PT Menara Indonesia (Internship)",
       period: "Sep 2024 — Dec 2024",
@@ -184,13 +193,7 @@ export default function ExperienceSection() {
       ],
     },
     {
-      icon: (
-        <img
-          src="/alterra.png"
-          alt="Alterra"
-          className="object-cover w-7 h-7 rounded-full"
-        />
-      ),
+      logo: "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768553355/alterra_mc2gs1.png",
       role: "Mobile Developer",
       company: "Alterra Academy (Apprenticeship)",
       period: "Aug 2023 — Dec 2023",
@@ -210,9 +213,9 @@ export default function ExperienceSection() {
       className="relative min-h-screen w-full bg-white"
     >
       <div className="relative z-10 container mx-auto px-6 md:px-12 pt-32 pb-20">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Column */}
-          <div className="max-w-xl">
+          <div className="max-w-xl flex flex-col justify-center">
             {/* Introduction Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -260,7 +263,7 @@ export default function ExperienceSection() {
               {experiences.map((exp, index) => (
                 <ExperienceItem
                   key={index}
-                  icon={exp.icon}
+                  logo={exp.logo}
                   role={exp.role}
                   company={exp.company}
                   period={exp.period}

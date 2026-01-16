@@ -33,10 +33,10 @@ export const HeroParallax = ({ products }) => {
   }, [rowWidth]);
 
   return (
-    <div className="h-[100vh] overflow-hidden antialiased relative flex flex-col bg-gray-50">
-      {/* White diagonal overlay - miring mengikuti perspektif cards */}
+    <div className="min-h-[100vh] lg:h-[100vh] overflow-hidden antialiased relative flex flex-col bg-gray-50">
+      {/* White diagonal overlay - hanya tampil di desktop */}
       <div
-        className="absolute inset-0 bg-white z-40 pointer-events-none"
+        className="hidden lg:block absolute inset-0 bg-white z-40 pointer-events-none"
         style={{
           clipPath: "polygon(0 0, 55% 0, 42% 100%, 0% 100%)",
           transform: "skew(-8deg, 0deg)",
@@ -45,9 +45,9 @@ export const HeroParallax = ({ products }) => {
         }}
       />
 
-      {/* Content container */}
+      {/* Content container - full width di mobile/tablet */}
       <div className="relative z-50 container mx-auto px-6 md:px-12 pt-32 pb-20">
-        {/* Section Header - sama seperti Services */}
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -61,37 +61,40 @@ export const HeroParallax = ({ products }) => {
           </span>
         </motion.div>
 
-        {/* Section Title & Description - konsisten dengan Services */}
+        {/* Section Title & Description - full width di mobile/tablet */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-xl mb-20"
+          className="max-w-full lg:max-w-xl mb-20"
         >
-          <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 leading-tight">
+          <h2 className="text-3xl md:text-4xl lg:text-4xl font-semibold text-gray-900 mb-4 leading-tight">
             My Development Works
           </h2>
           <p className="text-md text-gray-800 font-light leading-relaxed mb-8">
             A showcase of my web and mobile development projects, built with
             modern technologies and a focus on seamless user experience.
           </p>
-          {/* CTA Button di kanan - untuk detail projects */}
+          {/* CTA Button */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <Link  href={"/playground"} className="px-8 py-3 text-gray-900 text-sm font-medium border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-200 rounded-none bg-white/90 backdrop-blur-sm">
+            <Link
+              href={"/playground"}
+              className="inline-block px-8 py-3 text-gray-900 text-sm font-medium border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all duration-200 rounded-none bg-white/90 backdrop-blur-sm"
+            >
               View All Projects
             </Link>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Parallax Cards Container */}
-      <div className="[perspective:1200px] [transform-style:preserve-3d] relative z-30">
+      {/* Parallax Cards Container - hidden di mobile/tablet, tampil di desktop */}
+      <div className="hidden lg:block [perspective:1200px] [transform-style:preserve-3d] relative z-30">
         {/* First row */}
         <div
           className="flex flex-row space-x-10 mb-2"

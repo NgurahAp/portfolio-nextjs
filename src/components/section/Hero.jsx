@@ -4,12 +4,30 @@ import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 const HeroSection = () => {
   return (
-    <section id="home" className="relative min-h-screen w-full bg-white">
+    <section
+      id="home"
+      className="relative min-h-screen w-full bg-white overflow-hidden"
+    >
+      {/* 🔹 Dotted Background */}
+      <motion.div
+        className="absolute inset-0 z-0
+        bg-[radial-gradient(#d1d5db_1px,transparent_1px)]
+        bg-[size:20px_20px]"
+        animate={{
+          backgroundPosition: ["0px 0px", "40px 40px"],
+        }}
+        transition={{
+          duration: 40,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      />
+
+      {/* 🔹 Content */}
       <div className="relative z-10 container mx-auto px-6 md:px-12 pt-32 pb-20">
         <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* Left Column - Main Content */}
+          {/* Left Column */}
           <div className="max-w-xl pt-12">
-            {/* Introduction Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -22,7 +40,6 @@ const HeroSection = () => {
               </span>
             </motion.div>
 
-            {/* Main Heading */}
             <motion.h3
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -32,7 +49,6 @@ const HeroSection = () => {
               Ngurah Arya Pratama
             </motion.h3>
 
-            {/* Subtitle */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -44,7 +60,6 @@ const HeroSection = () => {
               solve real problems.
             </motion.p>
 
-            {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -60,9 +75,8 @@ const HeroSection = () => {
             </motion.div>
           </div>
 
-          {/* Right Column - Status & Tech Stack */}
+          {/* Right Column */}
           <div className="flex flex-col justify-center space-y-12 pt-14">
-            {/* Status */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -80,7 +94,6 @@ const HeroSection = () => {
               </p>
             </motion.div>
 
-            {/* Tech Stack */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -91,18 +104,24 @@ const HeroSection = () => {
                 Tech Stack
               </p>
               <div className="space-y-2">
-                <div className="text-sm text-gray-600">Vue / Nuxt.js</div>
-                <div className="text-sm text-gray-600">React / Next.js</div>
-                <div className="text-sm text-gray-600">Node.js / Express</div>
-                <div className="text-sm text-gray-600">PHP / Laravel</div>
-                <div className="text-sm text-gray-600">Dart / Flutter</div>
-                <div className="text-sm text-gray-600">Go - Lang</div>
+                {[
+                  "Vue / Nuxt.js",
+                  "React / Next.js",
+                  "Node.js / Express",
+                  "PHP / Laravel",
+                  "Dart / Flutter",
+                  "Go - Lang",
+                ].map((tech) => (
+                  <div key={tech} className="text-sm text-gray-600">
+                    {tech}
+                  </div>
+                ))}
               </div>
             </motion.div>
           </div>
         </div>
 
-        {/* Bottom Stats + Social */}
+        {/* Bottom */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -110,7 +129,6 @@ const HeroSection = () => {
           className="mt-12 pt-8 border-t border-gray-100"
         >
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-            {/* Left - Stats */}
             <div className="flex items-center gap-8">
               <div>
                 <div className="text-2xl font-light text-gray-900">1+</div>
@@ -132,29 +150,12 @@ const HeroSection = () => {
               </div>
             </div>
 
-            {/* Middle - Social Media */}
             <div className="flex gap-3">
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full flex items-center justify-center text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-all"
-              >
-                <FaGithub size={20} />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full flex items-center justify-center text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-all"
-              >
-                <FaLinkedin size={20} />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full flex items-center justify-center text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-all"
-              >
-                <FaInstagram size={20} />
-              </a>
+              <FaGithub />
+              <FaLinkedin />
+              <FaInstagram />
             </div>
 
-            {/* Right - Location */}
             <div className="text-right">
               <div className="text-xs text-gray-400 uppercase tracking-wide mb-1">
                 Based in

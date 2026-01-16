@@ -36,7 +36,7 @@ const ExperienceItem = ({
       >
         <div className="flex items-center gap-4">
           {/* IMAGE FIX: Wrapper Relative + Fill */}
-          <div className="relative w-8 h-8 rounded-full overflow-hidden shrink-0">
+          <div className="relative w-6 h-6 rounded-full overflow-hidden shrink-0">
             <Image
               src={logo}
               alt={`${company} Logo`}

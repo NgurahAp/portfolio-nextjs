@@ -3,39 +3,55 @@
 import { motion } from "framer-motion";
 import { BsStars } from "react-icons/bs";
 import { FiExternalLink, FiGithub } from "react-icons/fi";
+import Image from "next/image";
 
 const PlaygroundSection = () => {
   const projects = [
     {
       id: 1,
-      title: "Attendance Dreamation",
+      title: "The Aesthetics Skin",
       description:
-        "A web-based application for managing and tracking attendance records",
-      techDescription: "Developed using ExpressJS & NuxtJS framework.",
-      image: "/Attendance-DMX.png",
-      tags: ["Flutter", "Dart", "Firebase"],
+        "A platform for booking aesthetic treatments and purchasing skincare products.",
+      techDescription: "Developed using Next.js & NestJS framework.",
+      image:
+        "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768555105/The_Aesthetics_jmrhjl.png",
+      tags: ["Next.js", "Nest.js", "PostgreSQL"],
       link: "#",
       github: "#",
     },
     {
       id: 2,
-      title: "LXP M-Knows",
+      title: "Attendance Dreamation",
       description:
-        "A web-based Learning Management System that facilitates online education",
-      techDescription: "Developed using ExpressJS & NextJS framework.",
-      image: "/lxp.png",
-      tags: ["React", "Next.js", "Tailwind"],
+        "A web-based application for managing and tracking attendance records",
+      techDescription: "Developed using ExpressJS & NuxtJS framework.",
+      image:
+        "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768555124/Attendance_DMX_kli5wa.png",
+      tags: ["Nuxt.js", "Nest.js", "PostgreSQL"],
       link: "#",
       github: "#",
     },
     {
       id: 3,
+      title: "LXP M-Knows",
+      description:
+        "A web-based Learning Management System that facilitates online education",
+      techDescription: "Developed using ExpressJS & NextJS framework.",
+      image:
+        "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768555117/M_Knows_LXP_cisygq.png",
+      tags: ["React", "Node.js", "Tailwind"],
+      link: "#",
+      github: "#",
+    },
+    {
+      id: 4,
       title: "BersihBersama",
       description:
         "A platform that allows public to report cases of environmental cleanliness",
       techDescription: "Developed using Laravel framework.",
-      image: "/Berber.png",
-      tags: ["React", "Next.js", "Tailwind"],
+      image:
+        "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768555084/Berber_yycxvl.png",
+      tags: ["Laravel", "Tailwind", "MySQL"],
       link: "#",
       github: "#",
     },
@@ -114,12 +130,13 @@ const PlaygroundSection = () => {
             <motion.div
               key={project.id}
               variants={itemVariants}
-              className="group bg-white overflow-hidden hover:shadow-lg hover:border-gray-200 transition-all duration-300"
+              // UPDATED: Menghapus hover:shadow-lg dan hover:border-gray-200
+              className="group bg-white overflow-hidden transition-all duration-300"
             >
               {/* Top Border Line */}
               <div className="h-[3px] bg-gray-200 rounded-full"></div>
 
-              {/* Project Info - Now Above Image */}
+              {/* Project Info */}
               <div className="p-6 pb-4">
                 <div className="flex items-start justify-between mb-3">
                   <div>
@@ -153,13 +170,17 @@ const PlaygroundSection = () => {
                 </p>
               </div>
 
-              {/* Project Image - Now Below Info */}
+              {/* Project Image */}
               <div className="aspect-video bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden mx-6 mb-6 rounded-lg">
-                <div className="w-full h-full bg-gray-100 flex items-center justify-center">
-                  <img
+                <div className="relative w-full h-full bg-gray-100 overflow-hidden rounded-lg">
+                  <Image
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    quality={100}
+                    // UPDATED: Menambahkan efek zoom saat group di-hover
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
               </div>

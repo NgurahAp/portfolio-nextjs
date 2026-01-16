@@ -1,62 +1,99 @@
 export const products = [
   {
-    title: "Moonbeam",
-    link: "https://gomoonbeam.com",
-    thumbnail: "/anm.jpg",
+    id: 1,
+    title: "DMX Attendance",
+    thumbnail:
+      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768563300/Login_kkrw2v.png",
   },
   {
-    title: "Cursor",
-    link: "https://cursor.so",
-    thumbnail: "/heromknows.jpg",
+    id: 2,
+    title: "LXP M-knows",
+    thumbnail:
+      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768563842/heromknows_gzajix.jpg",
   },
   {
-    title: "Rogue",
-    link: "https://userogue.com",
-    thumbnail: "/attendance/Login.png",
+    id: 3,
+    title: "DMX Attendance",
+    thumbnail:
+      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768563300/Login_kkrw2v.png",
   },
   {
-    title: "Editorially",
-    link: "https://editorially.org",
-    thumbnail: "/attendance/Dashboard.png",
+    id: 4,
+    title: "The Aesthetics Skin",
+    thumbnail:
+      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768562977/review_uw3au8.png",
   },
   {
-    title: "Editrix AI",
-    link: "https://editrix.ai",
-    thumbnail: "/herolxp.jpg",
+    id: 5,
+    title: "DMX Attendance",
+    thumbnail:
+      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768563166/Attendances_mqp8b0.png",
   },
   {
-    title: "Pixel Perfect",
-    link: "https://app.pixelperfect.quest",
-    thumbnail: "/dashboard.jpg",
+    id: 6,
+    title: "LXP M-knows",
+    thumbnail:
+      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768562844/lxp-landing_zbzsdf.jpg",
   },
   {
-    title: "Algochurn",
-    link: "https://algochurn.com",
-    thumbnail: "/bersihbersama.jpg",
+    id: 7,
+    title: "The Aesthetics Skin",
+    thumbnail:
+      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768562548/phylosophy_xybenw.png",
   },
   {
-    title: "Aceternity UI",
-    link: "https://ui.aceternity.com",
-    thumbnail: "/attendance/Attendances.png",
+    id: 8,
+    title: "LXP M-knows",
+    thumbnail:
+      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768563657/lxp-login_onavog.jpg",
   },
   {
-    title: "Tailwind Master Kit",
-    link: "https://tailwindmasterkit.com",
-    thumbnail: "/bersihbersama.jpg",
+    id: 9,
+    title: "Bersih Bersama",
+    thumbnail:
+      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768563884/bersihbersama_ds4xyb.jpg",
   },
   {
-    title: "Aceternity UI",
-    link: "https://ui.aceternity.com",
-    thumbnail: "/attendance/Employee.png",
+    id: 10,
+    title: "DMX Attendance",
+    thumbnail:
+      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768563906/Employee_uiqcmu.png",
   },
   {
-    title: "Aceternity UI",
-    link: "https://ui.aceternity.com",
-    thumbnail: "/attendance/Report.png",
+    id: 11,
+    title: "LXP M-knows",
+    thumbnail:
+      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768563065/lxp-dashboard-peserta_r8tt0i.jpg",
   },
   {
-    title: "Aceternity UI",
-    link: "https://ui.aceternity.com",
-    thumbnail: "/attendance/Time-Off-Request-List.png",
+    id: 12,
+    title: "The Aesthetics Skin",
+    thumbnail:
+      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768562387/home_ed9vul.png",
+  },
+  {
+    id: 13,
+    title: "Bersih Bersama",
+    thumbnail:
+      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768563884/bersihbersama_ds4xyb.jpg",
+  },
+  {
+    id: 14,
+    title: "DMX Attendance",
+    thumbnail:
+      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768563951/Attendances_ix67rs.png",
+  },
+  {
+    id: 15,
+    title: "DMX Attendance",
+    thumbnail:
+      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768563981/Report_wp9zsv.png",
+  },
+  {
+    id: 16,
+    id: 15,
+    title: "DMX Attendance",
+    thumbnail:
+      "/https://res.cloudinary.com/do5hgkrgi/image/upload/v1768564002/Time-Off-Request-List_mvu9sw.png",
   },
 ];

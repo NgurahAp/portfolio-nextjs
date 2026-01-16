@@ -6,25 +6,29 @@ import { motion } from "framer-motion";
 import { BsStars } from "react-icons/bs";
 
 export const HeroParallax = ({ products }) => {
-  // Custom slicing for rows
-  const firstRow = products.slice(0, 12);
-  const secondRow = [...products.slice(4), ...products.slice(0, 4)];
-  const thirdRow = [...products.slice(8), ...products.slice(0, 8)];
+  // Custom slicing for 4 rows
+  const firstRow = products.slice(0, 4);
+  const secondRow = products.slice(4, 8);
+  const thirdRow = products.slice(8, 12);
+  const fourthRow = products.slice(12, 16);
 
-  const cardWidth = 48 * 16;
-  const cardSpacing = 10 * 4;
+  // Ukuran card lebih kecil untuk 4 baris
+  const cardWidth = 22 * 16; // 22rem
+  const cardSpacing = 5 * 4; // 20px
   const singleCardWithSpacing = cardWidth + cardSpacing;
   const rowWidth = singleCardWithSpacing * firstRow.length;
 
   const [position1, setPosition1] = useState(-singleCardWithSpacing / 2);
   const [position2, setPosition2] = useState(0);
   const [position3, setPosition3] = useState(-singleCardWithSpacing / 2);
+  const [position4, setPosition4] = useState(0);
 
   useEffect(() => {
     const animateRows = () => {
       setPosition1((prev) => (prev - 0.5 < -rowWidth ? 0 : prev - 0.5));
       setPosition2((prev) => (prev + 0.4 > rowWidth ? 0 : prev + 0.4));
       setPosition3((prev) => (prev - 0.6 < -rowWidth ? 0 : prev - 0.6));
+      setPosition4((prev) => (prev + 0.5 > rowWidth ? 0 : prev + 0.5));
       requestAnimationFrame(animateRows);
     };
 
@@ -33,7 +37,7 @@ export const HeroParallax = ({ products }) => {
   }, [rowWidth]);
 
   return (
-    <div className="min-h-[100vh] lg:h-[100vh] overflow-hidden antialiased relative flex flex-col bg-gray-50">
+    <div className="min-h-[80vh] lg:h-[80vh] overflow-hidden antialiased relative flex flex-col bg-gray-50">
       {/* White diagonal overlay - hanya tampil di desktop */}
       <div
         className="hidden lg:block absolute inset-0 bg-white z-40 pointer-events-none"
@@ -72,7 +76,7 @@ export const HeroParallax = ({ products }) => {
           <h2 className="text-3xl md:text-4xl lg:text-4xl font-semibold text-gray-900 mb-4 leading-tight">
             My Development Works
           </h2>
-          <p className="text-md text-gray-800 font-light leading-relaxed mb-8">
+          <p className="text-md text-gray-800 font-light leading-relaxed mb-8 lg:mr-32">
             A showcase of my web and mobile development projects, built with
             modern technologies and a focus on seamless user experience.
           </p>
@@ -97,9 +101,9 @@ export const HeroParallax = ({ products }) => {
       <div className="hidden lg:block [perspective:1200px] [transform-style:preserve-3d] relative z-30">
         {/* First row */}
         <div
-          className="flex flex-row space-x-10 mb-2"
+          className="flex flex-row space-x-3 mb-1"
           style={{
-            transform: `rotateX(8deg) rotateZ(20deg) translateY(-700px) translateX(${position1}px)`,
+            transform: `rotateX(8deg) rotateZ(20deg) translateY(-800px) translateX(${position1}px)`,
             transition: "transform 0.05s linear",
           }}
         >
@@ -109,13 +113,16 @@ export const HeroParallax = ({ products }) => {
           {firstRow.map((product, index) => (
             <ProductCard product={product} key={`row1-dup-${index}`} />
           ))}
+          {firstRow.map((product, index) => (
+            <ProductCard product={product} key={`row1-dup2-${index}`} />
+          ))}
         </div>
 
         {/* Second row */}
         <div
-          className="flex flex-row-reverse space-x-reverse space-x-10 mb-5"
+          className="flex flex-row-reverse space-x-reverse space-x-3 mb-1"
           style={{
-            transform: `rotateX(8deg) rotateZ(20deg) translateY(-700px) translateX(${position2}px)`,
+            transform: `rotateX(8deg) rotateZ(20deg) translateY(-800px) translateX(${position2}px)`,
             transition: "transform 0.05s linear",
           }}
         >
@@ -125,13 +132,16 @@ export const HeroParallax = ({ products }) => {
           {secondRow.map((product, index) => (
             <ProductCard product={product} key={`row2-dup-${index}`} />
           ))}
+          {secondRow.map((product, index) => (
+            <ProductCard product={product} key={`row2-dup2-${index}`} />
+          ))}
         </div>
 
         {/* Third row */}
         <div
-          className="flex flex-row space-x-10"
+          className="flex flex-row space-x-3 mb-1"
           style={{
-            transform: `rotateX(8deg) rotateZ(20deg) translateY(-700px) translateX(${position3}px)`,
+            transform: `rotateX(8deg) rotateZ(20deg) translateY(-800px) translateX(${position3}px)`,
             transition: "transform 0.05s linear",
           }}
         >
@@ -141,6 +151,28 @@ export const HeroParallax = ({ products }) => {
           {thirdRow.map((product, index) => (
             <ProductCard product={product} key={`row3-dup-${index}`} />
           ))}
+          {thirdRow.map((product, index) => (
+            <ProductCard product={product} key={`row3-dup2-${index}`} />
+          ))}
+        </div>
+
+        {/* Fourth row */}
+        <div
+          className="flex flex-row-reverse space-x-reverse space-x-3"
+          style={{
+            transform: `rotateX(8deg) rotateZ(20deg) translateY(-800px) translateX(${position4}px)`,
+            transition: "transform 0.05s linear",
+          }}
+        >
+          {fourthRow.map((product, index) => (
+            <ProductCard product={product} key={`row4-${index}`} />
+          ))}
+          {fourthRow.map((product, index) => (
+            <ProductCard product={product} key={`row4-dup-${index}`} />
+          ))}
+          {fourthRow.map((product, index) => (
+            <ProductCard product={product} key={`row4-dup2-${index}`} />
+          ))}
         </div>
       </div>
     </div>
@@ -149,34 +181,37 @@ export const HeroParallax = ({ products }) => {
 
 export const ProductCard = ({ product }) => {
   return (
-    <div className="group/product h-[24rem] w-[48rem] relative flex-shrink-0">
-      <Link href={product.link} className="block h-full w-full">
+    // Card lebih kecil: 22rem x 13rem
+    <div className="group/product h-[14rem] w-[28rem] relative flex-shrink-0">
+      <div className="block h-full w-full">
         <div className="relative h-full w-full overflow-hidden rounded-lg shadow-2xl border border-gray-200/50">
           {/* Card background */}
           <div className="absolute inset-0 bg-white"></div>
 
           {/* Image */}
-          <div className="relative h-full w-full p-4">
+          <div className="relative h-full w-full">
             <div className="h-full w-full relative overflow-hidden rounded-md shadow-lg">
               <Image
                 src={product.thumbnail || "/api/placeholder/768/384"}
                 fill
+                quality={100}
                 className="object-cover object-center transition-transform duration-500 group-hover/product:scale-105"
                 alt={product.title}
+                sizes="28rem"
               />
             </div>
           </div>
 
           {/* Project title overlay on hover */}
-          <div className="absolute bottom-4 left-4 right-4 transform translate-y-2 opacity-0 group-hover/product:translate-y-0 group-hover/product:opacity-100 transition-all duration-300">
-            <div className="bg-white/95 backdrop-blur-sm rounded-md p-3 shadow-lg border border-gray-200/50">
-              <h3 className="text-sm font-medium text-gray-900 truncate">
+          <div className="absolute bottom-2 left-2 right-2 transform translate-y-2 opacity-0 group-hover/product:translate-y-0 group-hover/product:opacity-100 transition-all duration-300">
+            <div className="bg-white/95 backdrop-blur-sm rounded-md p-2 shadow-lg border border-gray-200/50">
+              <h3 className="text-xs font-medium text-gray-900 truncate">
                 {product.title}
               </h3>
             </div>
           </div>
         </div>
-      </Link>
+      </div>
     </div>
   );
 };

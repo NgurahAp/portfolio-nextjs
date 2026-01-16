@@ -93,6 +93,6 @@ export const products = [
     id: 16,
     title: "DMX Attendance",
     thumbnail:
-      "/https://res.cloudinary.com/do5hgkrgi/image/upload/v1768564002/Time-Off-Request-List_mvu9sw.png",
+      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768564002/Time-Off-Request-List_mvu9sw.png",
   },
 ];

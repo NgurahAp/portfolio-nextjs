@@ -37,7 +37,7 @@ export const HeroParallax = ({ products }) => {
   }, [rowWidth]);
 
   return (
-    <div className="min-h-[80vh] lg:h-[80vh] overflow-hidden antialiased relative flex flex-col bg-gray-50">
+    <div id="projects" className="min-h-[80vh] lg:h-[80vh] overflow-hidden antialiased relative flex flex-col bg-gray-50">
       {/* White diagonal overlay - hanya tampil di desktop */}
       <div
         className="hidden lg:block absolute inset-0 bg-white z-40 pointer-events-none"

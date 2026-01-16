@@ -1,5 +1,6 @@
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
+import { Navbar } from "@/components/ui/Navbar";
 
 // Font configurations
 const inter = Inter({
@@ -23,8 +24,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body className={`${inter.variable} ${poppins.variable}`}>
+        <Navbar />
         {children}
       </body>
     </html>

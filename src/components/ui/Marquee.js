@@ -18,7 +18,7 @@ export default function MarqueeSection() {
   ];
 
   return (
-    <div className="relative w-full overflow-hidden py-12 bg-white border-y border-gray-100">
+    <div id="expertise" className="relative w-full overflow-hidden py-12 bg-white border-y border-gray-100">
       {/* Subtle gradient overlay left */}
       <div className="absolute left-0 top-0 h-full w-36 z-10 bg-gradient-to-r from-white to-transparent"></div>
 

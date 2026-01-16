@@ -20,7 +20,7 @@ export default function ContactForm() {
   ];
 
   return (
-    <section className="relative min-h-screen w-full bg-white">
+    <section id="contact" className="relative min-h-screen w-full bg-white">
       <div className="relative z-10 container mx-auto px-6 md:px-12 pt-72 pb-20">
         {/* Main Content */}
         <div className="flex flex-col lg:flex-row justify-between w-full items-end gap-12 lg:gap-0">

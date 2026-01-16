@@ -1,4 +1,5 @@
 "use client";
+import { Navbar } from "@/components/ui/Navbar";
 import HeroSection from "@/components/section/Hero";
 import MarqueeSection from "@/components/ui/Marquee";
 import ExperienceSection from "@/components/section/Experience";
@@ -16,6 +17,7 @@ export default function Home() {
       transition={{ duration: 0.8 }}
       className="bg-gray-100 min-h-screen overflow-hidden"
     >
+      <Navbar />
       <HeroSection />
       <ExperienceSection />
       <MarqueeSection />

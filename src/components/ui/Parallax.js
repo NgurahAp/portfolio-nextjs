@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { BsStars } from "react-icons/bs";
-import TextType from "./TextType";
 
 export const HeroParallax = ({ products }) => {
   // Custom slicing for 4 rows
@@ -77,14 +76,9 @@ export const HeroParallax = ({ products }) => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="max-w-full lg:max-w-xl mb-20"
         >
-          <TextType
-            text={["My Development Works"]}
-            typingSpeed={75}
-            pauseDuration={1500}
-            showCursor={true}
-            cursorCharacter="|"
-            className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 leading-tight"
-          />
+          <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 leading-tight">
+            My Development Works
+          </h2>
           <p className="text-md text-gray-800 font-light leading-relaxed mb-8 lg:mr-32">
             A showcase of my web and mobile development projects, built with
             modern technologies and a focus on seamless user experience.

@@ -1,10 +1,11 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { BsStars } from "react-icons/bs";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import BlurText from "../ui/BlurText";
 
 const HeroSection = () => {
-  // Base delay untuk menunggu splash screen selesai (3 detik)
   const baseDelay = 3;
 
   return (
@@ -12,11 +13,8 @@ const HeroSection = () => {
       id="home"
       className="relative min-h-screen w-full bg-white overflow-hidden"
     >
-      {/* 🔹 Dotted Background */}
       <motion.div
-        className="absolute inset-0 z-0
-        bg-[radial-gradient(#d1d5db_1px,transparent_1px)]
-        bg-[size:20px_20px]"
+        className="absolute inset-0 z-0 bg-[radial-gradient(#d1d5db_1px,transparent_1px)] bg-[size:20px_20px]"
         animate={{
           backgroundPosition: ["0px 0px", "40px 40px"],
         }}
@@ -27,10 +25,9 @@ const HeroSection = () => {
         }}
       />
 
-      {/* 🔹 Content */}
       <div className="relative z-10 container mx-auto px-6 md:px-12 pt-32 pb-20">
         <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* Left Column */}
+          {/* Left */}
           <div className="max-w-xl pt-12">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -52,7 +49,7 @@ const HeroSection = () => {
               <BlurText
                 text="Ngurah Arya Pratama"
                 delay={200}
-                initialDelay={baseDelay + 0.2} 
+                initialDelay={baseDelay + 0.2}
                 animateBy="words"
                 direction="top"
                 className="text-4xl md:text-5xl font-semibold text-gray-900 mb-6 leading-tight"
@@ -70,22 +67,34 @@ const HeroSection = () => {
               solve real problems.
             </motion.p>
 
+            {/* Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: baseDelay + 0.6 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <button className="px-6 py-3 bg-gray-900 text-white text-sm font-medium rounded hover:bg-gray-800 transition-colors">
+              <a
+                href="https://drive.google.com/file/d/1dglxdZRlthV6l1HnP4K3NxcR9odKfX6F/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 bg-gray-900 text-white text-sm font-medium rounded hover:bg-gray-800 transition-colors text-center"
+              >
                 Download CV
-              </button>
-              <button className="px-6 py-3 border border-gray-300 text-gray-700 text-sm font-medium rounded hover:bg-gray-50 transition-colors">
+              </a>
+
+              <a
+                href="https://wa.me/6285158724409"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 border border-gray-300 text-gray-700 text-sm font-medium rounded hover:bg-gray-50 transition-colors text-center"
+              >
                 Contact Me
-              </button>
+              </a>
             </motion.div>
           </div>
 
-          {/* Right Column */}
+          {/* Right */}
           <div className="flex flex-col justify-center space-y-12 pt-14">
             <motion.div
               initial={{ opacity: 0, x: 20 }}
@@ -113,6 +122,7 @@ const HeroSection = () => {
               <p className="text-xs text-gray-500 mb-3 uppercase tracking-wide">
                 Tech Stack
               </p>
+
               <div className="space-y-2">
                 {[
                   "Vue / Nuxt.js",
@@ -146,12 +156,14 @@ const HeroSection = () => {
                   Years Experience
                 </div>
               </div>
+
               <div>
                 <div className="text-2xl font-light text-gray-900">10+</div>
                 <div className="text-xs text-gray-500 uppercase tracking-wide">
                   Projects Completed
                 </div>
               </div>
+
               <div>
                 <div className="text-2xl font-light text-gray-900">BSI</div>
                 <div className="text-xs text-gray-500 uppercase tracking-wide">
@@ -160,7 +172,7 @@ const HeroSection = () => {
               </div>
             </div>
 
-            <div className="flex gap-3">
+            <div className="flex gap-3 text-gray-600 text-lg">
               <FaGithub />
               <FaLinkedin />
               <FaInstagram />

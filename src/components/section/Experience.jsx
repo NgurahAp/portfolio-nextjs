@@ -143,10 +143,12 @@ export default function ExperienceSection() {
       company: "PT Estetindo Global Indonesia (Contract)",
       period: "Oct 2025 — Now",
       details: [
-        "Developed a complete clinic web platform for treatment booking, product sales, and multi branch management using NextJS (frontend) and NestJS (backend).",
-        "Implemented secure authentication, JWT token flow, and role based access.",
-        "Integrated external services such as Midtrans, Biteship, and Google Maps API into the system architecture.",
-        "Collaborate directly with clinic management to translate operational workflows into efficient system features.",
+        "Led end-to-end development as a solo developer, building a complete clinic e-commerce and booking platform from Figma design implementation to production deployment",
+        "Developed the system using Next.js and NestJS, with a separate lightweight admin dashboard built in React for efficient internal operations.",
+        "Reduced reliance on third-party marketplaces by launching an independent e-commerce platform, lowering operational fees and improving profit margins.",
+        "Transformed manual offline treatment booking into a fully integrated online system, increasing operational efficiency and service accessibility.",
+        "Implemented CI/CD pipelines using Docker and GitHub Actions to ensure streamlined and reliable deployment processes.",
+        "ntegrated third-party services including Midtrans (payment gateway), Biteship (logistics), and Google Maps API to support secure transactions and operational scalability.",
       ],
     },
     {

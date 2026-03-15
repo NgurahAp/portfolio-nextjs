@@ -3,7 +3,7 @@ export const products = [
     id: 1,
     title: "DMX Attendance",
     thumbnail:
-      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768563300/Login_kkrw2v.png",
+      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1773548864/agency_heudi2.png",
   },
   {
     id: 2,
@@ -37,9 +37,9 @@ export const products = [
   },
   {
     id: 7,
-    title: "The Aesthetics Skin",
+    title: "Glams",
     thumbnail:
-      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768562548/phylosophy_xybenw.png",
+      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1773548855/Screenshot_2026-03-14_000408_rpwxkp.png",
   },
   {
     id: 8,

@@ -2,13 +2,25 @@
 
 import { motion } from "framer-motion";
 import { BsStars } from "react-icons/bs";
-import { FiExternalLink, FiGithub } from "react-icons/fi";
+import { FiExternalLink } from "react-icons/fi";
 import Image from "next/image";
 
 const PlaygroundSection = () => {
   const projects = [
     {
       id: 1,
+      title: "GLAMS Models Management",
+      description:
+        "Company profile for a leading modeling academy and talent agency.",
+      techDescription: "Developed using ReactJS & Framer Motion.",
+
+      image:
+        "https://res.cloudinary.com/do5hgkrgi/image/upload/v1773549397/Glams_uthwj7.png",
+      tags: ["Next.js", "Tailwind", "Vercel"],
+      link: "https://glams-zeta.vercel.app/",
+    },
+    {
+      id: 2,
       title: "The Aesthetics Skin",
       description:
         "A platform for booking aesthetic treatments and purchasing skincare products.",
@@ -16,11 +28,10 @@ const PlaygroundSection = () => {
       image:
         "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768555105/The_Aesthetics_jmrhjl.png",
       tags: ["Next.js", "Nest.js", "PostgreSQL"],
-      link: "#",
-      github: "#",
+      link: "https://theaestheticsskin.com/",
     },
     {
-      id: 2,
+      id: 3,
       title: "Attendance Dreamation",
       description:
         "A web-based application for managing and tracking attendance records",
@@ -29,10 +40,9 @@ const PlaygroundSection = () => {
         "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768555124/Attendance_DMX_kli5wa.png",
       tags: ["Nuxt.js", "Nest.js", "PostgreSQL"],
       link: "#",
-      github: "#",
     },
     {
-      id: 3,
+      id: 4,
       title: "LXP M-Knows",
       description:
         "A web-based Learning Management System that facilitates online education",
@@ -40,11 +50,10 @@ const PlaygroundSection = () => {
       image:
         "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768555117/M_Knows_LXP_cisygq.png",
       tags: ["React", "Node.js", "Tailwind"],
-      link: "#",
-      github: "#",
+      link: "https://lxp-mknows.vercel.app/",
     },
     {
-      id: 4,
+      id: 5,
       title: "BersihBersama",
       description:
         "A platform that allows public to report cases of environmental cleanliness",
@@ -53,7 +62,6 @@ const PlaygroundSection = () => {
         "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768555084/Berber_yycxvl.png",
       tags: ["Laravel", "Tailwind", "MySQL"],
       link: "#",
-      github: "#",
     },
   ];
 
@@ -81,7 +89,6 @@ const PlaygroundSection = () => {
   return (
     <section id="playground" className="relative w-full bg-white py-20">
       <div className="container mx-auto px-6 md:px-12">
-        {/* Section Header */}
         <div className="max-w-xl mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -113,12 +120,11 @@ const PlaygroundSection = () => {
             viewport={{ once: true }}
             className="text-md text-gray-800 font-light leading-relaxed"
           >
-            A collection of mobile and web applications I've built, showcasing
-            various technologies and problem-solving approaches.
+            A collection of mobile and web applications I&apos;ve built,
+            showcasing various technologies and problem-solving approaches.
           </motion.p>
         </div>
 
-        {/* Projects Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -130,47 +136,40 @@ const PlaygroundSection = () => {
             <motion.div
               key={project.id}
               variants={itemVariants}
-              // UPDATED: Menghapus hover:shadow-lg dan hover:border-gray-200
               className="group bg-white overflow-hidden transition-all duration-300"
             >
-              {/* Top Border Line */}
               <div className="h-[3px] bg-gray-200 rounded-full"></div>
 
-              {/* Project Info */}
               <div className="p-6 pb-4">
                 <div className="flex items-start justify-between mb-3">
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-1 group-hover:text-gray-700 transition-colors">
                       {project.title}
                     </h3>
-                    <div className="flex items-center gap-3 text-xs text-gray-500"></div>
                   </div>
 
-                  <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <a
-                      href={project.link}
-                      className="w-8 h-8 rounded-full flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-all"
-                    >
-                      <FiExternalLink size={14} />
-                    </a>
-                    <a
-                      href={project.github}
-                      className="w-8 h-8 rounded-full flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-all"
-                    >
-                      <FiGithub size={14} />
-                    </a>
-                  </div>
+                  {project.link !== "#" && (
+                    <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-8 h-8 rounded-full flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-all"
+                      >
+                        <FiExternalLink size={14} />
+                      </a>
+                    </div>
+                  )}
                 </div>
 
-                <p className="text-xs text-gray-900 mt-6 ">
+                <p className="text-xs text-gray-900 mt-6">
                   {project.description}
                 </p>
-                <p className="text-xs text-gray-400  mb-4">
+                <p className="text-xs text-gray-400 mb-4">
                   {project.techDescription}
                 </p>
               </div>
 
-              {/* Project Image */}
               <div className="aspect-video bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden mx-6 mb-6 rounded-lg">
                 <div className="relative w-full h-full bg-gray-100 overflow-hidden rounded-lg">
                   <Image
@@ -178,7 +177,6 @@ const PlaygroundSection = () => {
                     alt={project.title}
                     fill
                     quality={100}
-                    // UPDATED: Menambahkan efek zoom saat group di-hover
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />

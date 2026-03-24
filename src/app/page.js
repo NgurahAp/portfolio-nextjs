@@ -9,6 +9,7 @@ import { HeroParallax } from "@/components/ui/Parallax";
 import { products } from "@/components/ui/product";
 import ContactForm from "@/components/section/ContactUs";
 import CurvedLoop from "@/components/ui/CurvedLoop";
+import RibbonSection from "@/components/section/Ribbon";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
     >
       <Navbar />
       <HeroSection />
+      <RibbonSection />
       <ExperienceSection />
       <CurvedLoop
         marqueeText="✦  NextJS  ✦  NestJS  ✦  NuxtJS  ✦  Flutter  ✦  Laravel  ✦   Go  ✦  Firebase  ✦  Docker  ✦  MongoDB  ✦  PostgreSQL  ✦  MySQL  ✦  REST API  ✦  Git  ✦  Jenkins "

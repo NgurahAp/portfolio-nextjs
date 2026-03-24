@@ -10,6 +10,8 @@ import { products } from "@/components/ui/product";
 import ContactForm from "@/components/section/ContactUs";
 import CurvedLoop from "@/components/ui/CurvedLoop";
 import RibbonSection from "@/components/section/Ribbon";
+import { ParallaxHeroImagesDemo } from "@/components/section/ParallaxHero";
+import { AboutSection } from "@/components/section/AboutUs";
 
 export default function Home() {
   return (
@@ -20,7 +22,8 @@ export default function Home() {
       className="bg-gray-100 min-h-screen overflow-hidden"
     >
       <Navbar />
-      <HeroSection />
+      <ParallaxHeroImagesDemo />
+      <AboutSection />
       <RibbonSection />
       <ExperienceSection />
       <CurvedLoop

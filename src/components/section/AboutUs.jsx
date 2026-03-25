@@ -21,27 +21,27 @@ export function AboutSection() {
 
   const demoItems = [
     {
-      link: "#",
+      link: "/project/the-aesthetics-skin",
       text: "The Aesthetics Skin",
       image: "https://picsum.photos/600/400?random=1",
     },
     {
-      link: "#",
+      link: "/project/glams-company-profile",
       text: "Glams Company Profile",
       image: "https://picsum.photos/600/400?random=2",
     },
     {
-      link: "#",
+      link: "/project/attendance-dreamaxtion",
       text: "Attendance Dreamaxtion",
       image: "https://picsum.photos/600/400?random=3",
     },
     {
-      link: "#",
+      link: "/project/lms-m-knows",
       text: "LMS M-Knows",
       image: "https://picsum.photos/600/400?random=4",
     },
     {
-      link: "#",
+      link: "/project/bersih-bersama",
       text: "Bersih Bersama",
       image: "https://picsum.photos/600/400?random=5",
     },
@@ -182,19 +182,17 @@ export function AboutSection() {
               />
             </svg>
           </motion.div>
-              {/* ===== SEPARATOR ===== */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, ease: [0.43, 0.13, 0.23, 0.96] }}
-          className=""
-        >
-          <div className="h-px bg-gradient-to-r mt-4 from-transparent via-neutral-700 dark:via-neutral-400 to-transparent" />
-        </motion.div>
+          {/* ===== SEPARATOR ===== */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.43, 0.13, 0.23, 0.96] }}
+            className=""
+          >
+            <div className="h-px bg-gradient-to-r mt-4 from-transparent via-neutral-700 dark:via-neutral-400 to-transparent" />
+          </motion.div>
         </div>
-
-    
 
         {/* ===== WORKS ===== */}
         <div ref={worksRef} className="pt-20 pb-20">

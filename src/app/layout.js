@@ -1,7 +1,7 @@
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/ui/Navbar";
-import SplashScreen from "@/components/section/SplashScreen";
+import { TransitionOverlay } from "@/components/ui/PageTransition";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,10 +26,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.variable} ${poppins.variable}`}>
-        <SplashScreen>
-          <Navbar />
-          {children}
-        </SplashScreen>
+        <TransitionOverlay />
+        <Navbar />
+        {children}
       </body>
     </html>
   );

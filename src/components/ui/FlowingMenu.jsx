@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
+import { usePageTransition } from "./PageTransition";
 
 function FlowingMenu({
   items = [],
@@ -10,26 +11,31 @@ function FlowingMenu({
   marqueeTextColor = "#060010",
   borderColor = "#fff",
 }) {
+  const { navigateWithTransition } = usePageTransition();
+
   return (
-    <div
-      className="w-full h-full overflow-hidden"
-      style={{ backgroundColor: bgColor }}
-    >
-      <nav className="flex flex-col h-full m-0 p-0">
-        {items.map((item, idx) => (
-          <MenuItem
-            key={idx}
-            {...item}
-            speed={speed}
-            textColor={textColor}
-            marqueeBgColor={marqueeBgColor}
-            marqueeTextColor={marqueeTextColor}
-            borderColor={borderColor}
-            isFirst={idx === 0}
-          />
-        ))}
-      </nav>
-    </div>
+    <>
+      <div
+        className="w-full h-full overflow-hidden"
+        style={{ backgroundColor: bgColor }}
+      >
+        <nav className="flex flex-col h-full m-0 p-0">
+          {items.map((item, idx) => (
+            <MenuItem
+              key={idx}
+              {...item}
+              speed={speed}
+              textColor={textColor}
+              marqueeBgColor={marqueeBgColor}
+              marqueeTextColor={marqueeTextColor}
+              borderColor={borderColor}
+              isFirst={idx === 0}
+              onNavigate={navigateWithTransition}
+            />
+          ))}
+        </nav>
+      </div>
+    </>
   );
 }
 
@@ -43,6 +49,7 @@ function MenuItem({
   marqueeTextColor,
   borderColor,
   isFirst,
+  onNavigate,
 }) {
   const itemRef = useRef(null);
   const marqueeRef = useRef(null);
@@ -56,6 +63,13 @@ function MenuItem({
     const topEdgeDist = (mouseX - width / 2) ** 2 + mouseY ** 2;
     const bottomEdgeDist = (mouseX - width / 2) ** 2 + (mouseY - height) ** 2;
     return topEdgeDist < bottomEdgeDist ? "top" : "bottom";
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate(link, text);
+    }
   };
 
   useEffect(() => {
@@ -149,6 +163,7 @@ function MenuItem({
       <a
         className="flex items-center justify-center h-full relative cursor-pointer uppercase no-underline font-normal text-[4vh]"
         href={link}
+        onClick={handleClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         style={{ color: textColor }}

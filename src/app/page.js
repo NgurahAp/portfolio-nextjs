@@ -13,24 +13,26 @@ import { ParallaxHeroImagesDemo } from "@/components/section/ParallaxHero";
 import { AboutSection } from "@/components/section/AboutUs";
 import { ExperienceSection } from "@/components/section/WorkExperience";
 import { ColorTransitionSection } from "@/components/section/Transition";
+import SplashScreen from "@/components/section/SplashScreen";
 
 export default function Home() {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-      className="bg-neutral-50 min-h-screen overflow-hidden"
-    >
-      <Navbar />
-      <ParallaxHeroImagesDemo />
-      <AboutSection />
-      <ColorTransitionSection>
-        <ExperienceSection />
-      </ColorTransitionSection>
-      <RibbonSection />
-      <ServicesSection />
-      {/* <CurvedLoop
+    <SplashScreen>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="bg-neutral-50 min-h-screen overflow-hidden"
+      >
+        <Navbar />
+        <ParallaxHeroImagesDemo />
+        <AboutSection />
+        <ColorTransitionSection>
+          <ExperienceSection />
+        </ColorTransitionSection>
+        <RibbonSection />
+        <ServicesSection />
+        {/* <CurvedLoop
         marqueeText="✦  NextJS  ✦  NestJS  ✦  NuxtJS  ✦  Flutter  ✦  Laravel  ✦   Go  ✦  Firebase  ✦  Docker  ✦  MongoDB  ✦  PostgreSQL  ✦  MySQL  ✦  REST API  ✦  Git  ✦  Jenkins "
         speed={1.1}
         className="text-2xl md:text-5xl fill-gray-900"
@@ -38,8 +40,9 @@ export default function Home() {
         direction="left"
         interactive={true}
       /> */}
-      {/* <HeroParallax products={products} /> */}
-      <ContactForm />
-    </motion.div>
+        {/* <HeroParallax products={products} /> */}
+        <ContactForm />
+      </motion.div>
+    </SplashScreen>
   );
 }

@@ -2,7 +2,6 @@
 import { Navbar } from "@/components/ui/Navbar";
 import HeroSection from "@/components/section/Hero";
 import MarqueeSection from "@/components/ui/Marquee";
-import ExperienceSection from "@/components/section/Experience";
 import ServicesSection from "@/components/section/Service";
 import { motion } from "framer-motion";
 import { HeroParallax } from "@/components/ui/Parallax";
@@ -12,6 +11,7 @@ import CurvedLoop from "@/components/ui/CurvedLoop";
 import RibbonSection from "@/components/section/Ribbon";
 import { ParallaxHeroImagesDemo } from "@/components/section/ParallaxHero";
 import { AboutSection } from "@/components/section/AboutUs";
+import { ExperienceSection } from "@/components/section/WorkExperience";
 
 export default function Home() {
   return (
@@ -24,8 +24,8 @@ export default function Home() {
       <Navbar />
       <ParallaxHeroImagesDemo />
       <AboutSection />
-      <RibbonSection />
       <ExperienceSection />
+      <RibbonSection />
       <CurvedLoop
         marqueeText="✦  NextJS  ✦  NestJS  ✦  NuxtJS  ✦  Flutter  ✦  Laravel  ✦   Go  ✦  Firebase  ✦  Docker  ✦  MongoDB  ✦  PostgreSQL  ✦  MySQL  ✦  REST API  ✦  Git  ✦  Jenkins "
         speed={1.1}

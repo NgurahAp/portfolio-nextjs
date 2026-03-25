@@ -20,7 +20,7 @@ export default function Home() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="bg-gray-100 min-h-screen overflow-hidden"
+      className="bg-neutral-50 min-h-screen overflow-hidden"
     >
       <Navbar />
       <ParallaxHeroImagesDemo />
@@ -30,14 +30,14 @@ export default function Home() {
       </ColorTransitionSection>
       <RibbonSection />
       <ServicesSection />
-      <CurvedLoop
+      {/* <CurvedLoop
         marqueeText="✦  NextJS  ✦  NestJS  ✦  NuxtJS  ✦  Flutter  ✦  Laravel  ✦   Go  ✦  Firebase  ✦  Docker  ✦  MongoDB  ✦  PostgreSQL  ✦  MySQL  ✦  REST API  ✦  Git  ✦  Jenkins "
         speed={1.1}
         className="text-2xl md:text-5xl fill-gray-900"
         curveAmount={200}
         direction="left"
         interactive={true}
-      />
+      /> */}
       <HeroParallax products={products} />
       <ContactForm />
     </motion.div>

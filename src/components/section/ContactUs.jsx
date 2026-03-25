@@ -20,10 +20,26 @@ export default function ContactForm() {
   ];
 
   return (
-    <section id="contact" className="relative min-h-screen w-full bg-white">
-      <div className="relative z-10 container mx-auto px-6 md:px-12 pt-72 pb-20">
+    <section
+      id="contact"
+      className="relative w-full bg-neutral-50 overflow-hidden"
+    >
+      {/* Background Pattern */}
+      <motion.div
+        className="absolute inset-0 z-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-[size:20px_20px] opacity-40"
+        animate={{
+          backgroundPosition: ["0px 0px", "40px 40px"],
+        }}
+        transition={{
+          duration: 40,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      />
+
+      <div className="relative z-10 container mx-auto px-6 md:px-12 py-10">
         {/* Main Content */}
-        <div className="flex flex-col lg:flex-row justify-between w-full items-end gap-12 lg:gap-0">
+        <div className="flex flex-col lg:flex-row justify-between w-full items-start gap-16 lg:gap-0 mb-20">
           {/* Left Side - Empty space for balance */}
           <div className="flex-1"></div>
 
@@ -35,7 +51,7 @@ export default function ContactForm() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex-shrink-0 lg:mr-32"
           >
-            <div className="space-y-4 min-w-[200px] ">
+            <div className="space-y-6 min-w-[200px]">
               {contactLinks.map((link, index) => (
                 <motion.div
                   key={link.label}
@@ -46,13 +62,17 @@ export default function ContactForm() {
                 >
                   <a
                     href={link.href}
-                    className="group flex items-center justify-between"
+                    className="group flex items-center justify-between gap-4 relative"
                     onMouseEnter={() => setHoveredLink(index)}
                     onMouseLeave={() => setHoveredLink(null)}
                   >
-                    <span className="text-sm text-gray-900 font-light group-hover:text-black transition-colors">
+                    <span className="text-base text-gray-700 font-light group-hover:text-gray-900 transition-all duration-300 group-hover:translate-x-1">
                       {link.label}
                     </span>
+                    <ArrowUpRight
+                      size={16}
+                      className="text-gray-400 group-hover:text-gray-900 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                    />
                   </a>
                 </motion.div>
               ))}
@@ -61,28 +81,15 @@ export default function ContactForm() {
         </div>
 
         {/* Bottom Section - Title and Arrow aligned */}
-        <div className="flex justify-between items-end  w-full h-full">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 w-full">
           {/* Left - Main Title with Contact label */}
-          <div className="">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-4 mb-4"
-            >
-              <BsStars className="text-gray-400 text-xs w-4 h-4" />
-              <span className="text-xs font-medium text-gray-600 uppercase tracking-wide">
-                Contact
-              </span>
-            </motion.div>
-
+          <div className="max-w-3xl">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900 mb-6 leading-tight"
+              className="text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-8 leading-[1.1]"
             >
               LET'S TALK
             </motion.h1>
@@ -92,7 +99,7 @@ export default function ContactForm() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-md text-gray-800 font-light leading-relaxed max-w-2xl"
+              className="text-base md:text-lg text-gray-600 font-light leading-relaxed max-w-2xl"
             >
               Ready to bring your ideas to life? I'm always excited to discuss
               new opportunities, collaborate on interesting projects, or just
@@ -102,58 +109,70 @@ export default function ContactForm() {
 
           {/* Right - Large Arrow Icon */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="flex items-end justify-end h-full"
+            transition={{
+              duration: 0.8,
+              delay: 0.6,
+              type: "spring",
+              stiffness: 100,
+            }}
+            className="flex items-end justify-end"
           >
-            <ArrowUpRight size={90} className="text-gray-400" />
+            <ArrowUpRight
+              size={120}
+              className="text-gray-300"
+              strokeWidth={1.5}
+            />
           </motion.div>
         </div>
 
+        {/* Stats Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 1.2 }}
-          className="mt-12 pt-8 border-t border-contact-border border-gray-300"
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="mt-20 pt-12 border-t border-gray-200"
         >
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
             {/* Left - Status */}
-            <div className="flex items-center gap-8">
+            <div className="flex items-center gap-12">
               <div>
-                <div className="text-2xl font-light text-contact-text text-gray-600">
+                <div className="text-3xl font-light text-gray-900 mb-1">
                   Available
                 </div>
-                <div className="text-xs text-contact-light uppercase text-gray-400 tracking-wide">
+                <div className="text-xs text-gray-500 uppercase tracking-[0.3em]">
                   For Projects
                 </div>
               </div>
               <div>
-                <div className="text-2xl font-light text-contact-text text-gray-600">
+                <div className="text-3xl font-light text-gray-900 mb-1">
                   24h
                 </div>
-                <div className="text-xs text-contact-light uppercase tracking-wide text-gray-400">
+                <div className="text-xs text-gray-500 uppercase tracking-[0.3em]">
                   Response Time
                 </div>
               </div>
             </div>
 
             {/* Middle - Response indicator */}
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-gray-700 animate-pulse" />
-              <span className="text-xs text-contact-medium font-medium">
+            <div className="flex items-center gap-3">
+              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-sm text-gray-600 font-medium">
                 Usually responds within hours
               </span>
             </div>
 
             {/* Right - Location */}
-            <div className="text-right">
-              <div className="text-xs text-gray-400 uppercase tracking-wide mb-1">
+            <div className="text-left md:text-right">
+              <div className="text-xs text-gray-500 uppercase tracking-[0.3em] mb-2">
                 Based in
               </div>
-              <div className="text-sm text-gray-600">Indonesia</div>
+              <div className="text-base text-gray-900 font-medium">
+                Indonesia
+              </div>
             </div>
           </div>
         </motion.div>

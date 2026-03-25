@@ -38,7 +38,7 @@ export default function Home() {
         direction="left"
         interactive={true}
       /> */}
-      <HeroParallax products={products} />
+      {/* <HeroParallax products={products} /> */}
       <ContactForm />
     </motion.div>
   );

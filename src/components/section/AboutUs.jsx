@@ -80,7 +80,7 @@ export function AboutSection() {
         </div>
 
         {/* ===== CONTENT ===== */}
-        <div ref={contentRef} className="pt-14 pb-20 px-6">
+        <div ref={contentRef} className="pt-20 pb-32 px-6">
           <div className="mx-auto max-w-3xl text-center space-y-8">
             <motion.p
               custom={0}
@@ -150,11 +150,55 @@ export function AboutSection() {
               </a>
             </motion.div>
           </div>
+
+          {/* Scroll Indicator */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.8,
+              delay: 1.5,
+              repeat: Infinity,
+              repeatType: "reverse",
+            }}
+            className="flex flex-col items-center gap-2 mt-28"
+          >
+            <span className="text-xs text-neutral-500 uppercase tracking-[0.3em]">
+              Scroll
+            </span>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              className="text-neutral-500"
+            >
+              <path
+                d="M10 4V16M10 16L6 12M10 16L14 12"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </motion.div>
+              {/* ===== SEPARATOR ===== */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: [0.43, 0.13, 0.23, 0.96] }}
+          className=""
+        >
+          <div className="h-px bg-gradient-to-r mt-4 from-transparent via-neutral-700 dark:via-neutral-400 to-transparent" />
+        </motion.div>
         </div>
 
+    
+
         {/* ===== WORKS ===== */}
-        <div ref={worksRef} className=" pt-10">
-          <div className="text-center mb-12">
+        <div ref={worksRef} className="pt-20 pb-20">
+          <div className="text-center mb-16 px-6">
             <motion.p
               custom={0}
               variants={fadeUp}

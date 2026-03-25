@@ -1,20 +1,65 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useSpring,
+  useInView,
+} from "framer-motion";
 import { ArrowLeft, ExternalLink, Github } from "lucide-react";
 import Link from "next/link";
+import BackButton from "@/components/ui/Back";
 
+// ─── Reusable scroll-animated block ───────────────────────────────────────────
+function FadeBlock({ children, delay = 0, className = "" }) {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  const rawOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.7, 1],
+    [0, 1, 1, 0],
+  );
+  const rawY = useTransform(scrollYProgress, [0, 0.2, 0.7, 1], [40, 0, 0, -40]);
+  const opacity = useSpring(rawOpacity, { stiffness: 70, damping: 18 });
+  const y = useSpring(rawY, { stiffness: 70, damping: 18 });
+
+  return (
+    <motion.div ref={ref} style={{ opacity, y }} className={className}>
+      {children}
+    </motion.div>
+  );
+}
+
+// ─── Main component ────────────────────────────────────────────────────────────
 export default function ProjectDetail() {
-  // Hardcoded data untuk demo
+  const heroRef = useRef(null);
+  const heroInView = useInView(heroRef, { once: true, margin: "-60px" });
+
+  const sectionRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "start start"],
+  });
+  const curveDepth = useTransform(scrollYProgress, [0, 1], [150, 50]);
+
+  // ─── Project data ────────────────────────────────────────────────────────────
   const project = {
     title: "The Aesthetics Skin",
     subtitle: "E-Commerce Platform for Skincare Products",
     description:
       "A modern e-commerce platform designed for skincare enthusiasts. Built with a focus on user experience, performance, and scalability. The platform features a clean interface, smooth animations, and seamless checkout process.",
-    image: "https://picsum.photos/1200/600?random=1",
+    image:
+      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768555105/The_Aesthetics_jmrhjl.png",
     repoLink: "https://github.com/username/project",
     liveLink: "https://project-demo.com",
-    year: "2024",
+    year: "2025",
     role: "Full Stack Developer",
     coreFeatures: [
       "Product catalog with advanced filtering",
@@ -44,215 +89,299 @@ export default function ProjectDetail() {
     ],
   };
 
+  const fadeUp = {
+    hidden: { opacity: 0, y: 32 },
+    show: (i = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1, ease: [0.25, 0.1, 0.25, 1], delay: i * 0.2 },
+    }),
+  };
+
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <motion.header
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-200"
-      >
-        <div className="container mx-auto px-6 py-4">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900 transition-colors"
+    <div className="min-h-screen bg-neutral-50 dark:bg-neutral-950">
+      <BackButton />
+
+      {/* ── Hero ──────────────────────────────────────────────────────────  ────── */}
+      <section ref={heroRef} className="container mx-auto px-6 pt-32 pb-24">
+        <div className="max-w-4xl">
+          {/* Meta row */}
+          <motion.div
+            custom={0}
+            variants={fadeUp}
+            initial="hidden"
+            animate={heroInView ? "show" : "hidden"}
+            className="flex items-center gap-4 mb-8"
           >
-            <ArrowLeft size={16} />
-            Back to Home
-          </Link>
-        </div>
-      </motion.header>
-
-      {/* Hero Section */}
-      <section className="container mx-auto px-6 pt-12 pb-20">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl"
-        >
-          <div className="flex items-center gap-4 mb-6">
-            <span className="text-xs text-gray-500 uppercase tracking-[0.3em]">
-              {project.year}
+            <div className="h-px w-10 bg-neutral-300 dark:bg-neutral-700" />
+            <span className="text-xs tracking-[0.3em] uppercase text-neutral-400">
+              Project Detail
             </span>
-            <div className="h-px w-12 bg-gray-300" />
-            <span className="text-xs text-gray-500 uppercase tracking-[0.3em]">
-              {project.role}
-            </span>
-          </div>
+          </motion.div>
 
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-6 leading-[1.1]">
-            {project.title}
-          </h1>
+          {/* Title */}
+          <motion.h1
+            custom={1}
+            variants={fadeUp}
+            initial="hidden"
+            animate={heroInView ? "show" : "hidden"}
+            className="text-5xl md:text-6xl lg:text-7xl font-light leading-[1.1] text-neutral-900 dark:text-neutral-100 mb-6"
+          >
+            {project.title.split(" ").map((word, i, arr) =>
+              i === arr.length - 1 ? (
+                <span key={i} className="font-semibold italic">
+                  {word}
+                </span>
+              ) : (
+                <span key={i}>{word} </span>
+              ),
+            )}
+          </motion.h1>
 
-          <p className="text-xl md:text-2xl text-gray-600 font-light mb-8 leading-relaxed">
+          {/* Subtitle */}
+          <motion.p
+            custom={2}
+            variants={fadeUp}
+            initial="hidden"
+            animate={heroInView ? "show" : "hidden"}
+            className="text-xl md:text-2xl font-light text-neutral-500 dark:text-neutral-400 mb-10 leading-relaxed max-w-2xl"
+          >
             {project.subtitle}
-          </p>
+          </motion.p>
 
-          <div className="flex flex-wrap gap-4">
+          {/* CTAs */}
+          <motion.div
+            custom={3}
+            variants={fadeUp}
+            initial="hidden"
+            animate={heroInView ? "show" : "hidden"}
+            className="flex flex-wrap gap-4"
+          >
             <a
               href={project.liveLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white text-sm font-medium rounded hover:bg-gray-800 transition-colors"
+              className="inline-flex items-center gap-2 rounded-full bg-[#CBFF4D] px-7 py-3 text-sm font-semibold text-neutral-900 transition hover:opacity-90"
             >
-              <ExternalLink size={16} />
+              <ExternalLink size={15} />
               View Live
             </a>
             <a
               href={project.repoLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 text-gray-700 text-sm font-medium rounded hover:bg-gray-50 transition-colors"
+              className="inline-flex items-center gap-2 rounded-full border border-neutral-300 dark:border-neutral-700 px-7 py-3 text-sm font-medium text-neutral-700 dark:text-neutral-300 transition hover:bg-neutral-100 dark:hover:bg-neutral-900"
             >
-              <Github size={16} />
+              <Github size={15} />
               View Code
             </a>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </section>
 
-      {/* Project Image */}
-      <motion.section
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="container mx-auto px-6 pb-20"
-      >
-        <div className="relative w-full aspect-video rounded-lg overflow-hidden bg-gray-100">
+      {/* ── Cover Image ───────────────────────────────────────────────────────── */}
+      <FadeBlock className="container mx-auto px-6 pb-48">
+        <div className="relative w-full aspect-video overflow-hidden bg-neutral-200 dark:bg-neutral-800">
           <img
             src={project.image}
             alt={project.title}
             className="w-full h-full object-cover"
           />
+          {/* subtle overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/20 to-transparent" />
         </div>
-      </motion.section>
+      </FadeBlock>
 
-      {/* Content Grid */}
-      <section className="container mx-auto px-6 pb-32">
-        <div className="grid md:grid-cols-3 gap-12 md:gap-16">
-          {/* Left Column - Description */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="md:col-span-2 space-y-12"
-          >
-            {/* Overview */}
-            <div>
-              <h2 className="text-xs text-gray-500 uppercase tracking-[0.3em] mb-4">
-                Overview
-              </h2>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                {project.description}
-              </p>
-            </div>
-
-            {/* Core Features */}
-            <div>
-              <h2 className="text-xs text-gray-500 uppercase tracking-[0.3em] mb-6">
-                Core Features
-              </h2>
-              <ul className="space-y-3">
-                {project.coreFeatures.map((feature, index) => (
-                  <motion.li
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="flex items-start gap-3"
-                  >
-                    <div className="w-1.5 h-1.5 rounded-full bg-gray-900 mt-2 flex-shrink-0" />
-                    <span className="text-gray-700">{feature}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Responsibilities */}
-            <div>
-              <h2 className="text-xs text-gray-500 uppercase tracking-[0.3em] mb-6">
-                My Responsibilities
-              </h2>
-              <ul className="space-y-3">
-                {project.responsibilities.map((responsibility, index) => (
-                  <motion.li
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="flex items-start gap-3"
-                  >
-                    <div className="w-1.5 h-1.5 rounded-full bg-gray-900 mt-2 flex-shrink-0" />
-                    <span className="text-gray-700">{responsibility}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
-
-          {/* Right Column - Tech Stack */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-8"
-          >
-            <div className="sticky top-24">
-              <h2 className="text-xs text-gray-500 uppercase tracking-[0.3em] mb-6">
-                Tech Stack
-              </h2>
-              <div className="flex flex-wrap gap-2">
-                {project.techStack.map((tech, index) => (
-                  <motion.span
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
-                    className="px-3 py-1.5 bg-gray-100 text-gray-700 text-sm rounded-full"
-                  >
-                    {tech}
-                  </motion.span>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Footer CTA */}
-      <motion.section
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="container mx-auto px-6 pb-20"
+      {/* ── Dark Band (matching AboutSection style) ────────────────────────────── */}
+      <div
+        ref={sectionRef}
+        className="relative bg-neutral-50 dark:bg-neutral-950"
       >
-        <div className="border-t border-gray-200 pt-12">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-            <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2">
-                Interested in working together?
+        <div className="relative bg-neutral-900 dark:bg-neutral-100">
+          {/* Curve top */}
+          <div className="absolute -top-[100px] left-0 w-full h-[100px]">
+            <svg
+              viewBox="0 0 1440 100"
+              preserveAspectRatio="none"
+              className="w-full h-full"
+            >
+              <motion.path
+                d={useTransform(
+                  curveDepth,
+                  (v) => `M0,100 Q720,${100 - v} 1440,100 L1440,100 L0,100 Z`,
+                )}
+                className="fill-neutral-900 dark:fill-neutral-100"
+              />
+            </svg>
+          </div>
+
+          {/* ── Content Grid ──────────────────────────────────────────────────── */}
+          <div className="container mx-auto px-6 pt-24 pb-32">
+            <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 md:gap-16">
+              {/* Left 2/3 – Overview, Features, Responsibilities */}
+              <div className="md:col-span-2 space-y-20">
+                {/* Overview */}
+                <FadeBlock>
+                  <p className="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-6">
+                    Overview
+                  </p>
+                  <p className="text-lg font-light leading-relaxed text-neutral-300 dark:text-neutral-600">
+                    {project.description}
+                  </p>
+                </FadeBlock>
+
+                {/* Separator */}
+                <div className="h-px bg-gradient-to-r from-transparent via-neutral-700 dark:via-neutral-400 to-transparent" />
+
+                {/* Core Features */}
+                <FadeBlock>
+                  <p className="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-8">
+                    Core Features
+                  </p>
+                  <ul className="space-y-4">
+                    {project.coreFeatures.map((feature, index) => (
+                      <motion.li
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: index * 0.08 }}
+                        className="flex items-start gap-4"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#CBFF4D] mt-2 flex-shrink-0" />
+                        <span className="text-neutral-300 dark:text-neutral-600 text-sm leading-relaxed">
+                          {feature}
+                        </span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </FadeBlock>
+
+                {/* Separator */}
+                <div className="h-px bg-gradient-to-r from-transparent via-neutral-700 dark:via-neutral-400 to-transparent" />
+
+                {/* Responsibilities */}
+                <FadeBlock>
+                  <p className="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-8">
+                    My Responsibilities
+                  </p>
+                  <ul className="space-y-4">
+                    {project.responsibilities.map((item, index) => (
+                      <motion.li
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: index * 0.08 }}
+                        className="flex items-start gap-4"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#CBFF4D] mt-2 flex-shrink-0" />
+                        <span className="text-neutral-300 dark:text-neutral-600 text-sm leading-relaxed">
+                          {item}
+                        </span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </FadeBlock>
+              </div>
+
+              {/* Right 1/3 – Tech Stack (sticky) */}
+              <FadeBlock>
+                <div className="sticky top-24 space-y-8">
+                  <div>
+                    <p className="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-6">
+                      Tech Stack
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.techStack.map((tech, index) => (
+                        <motion.span
+                          key={index}
+                          initial={{ opacity: 0, scale: 0.85 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.3, delay: index * 0.05 }}
+                          className="px-4 py-1.5 border border-neutral-700 dark:border-neutral-300 text-neutral-300 dark:text-neutral-600 text-xs tracking-wide"
+                        >
+                          {tech}
+                        </motion.span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Quick info */}
+                  <div className="space-y-4 pt-4 border-t border-neutral-800 dark:border-neutral-300">
+                    {[
+                      { label: "Year", value: project.year },
+                      { label: "Role", value: project.role },
+                    ].map(({ label, value }) => (
+                      <div key={label}>
+                        <p className="text-[10px] tracking-[0.3em] uppercase text-neutral-500 mb-1">
+                          {label}
+                        </p>
+                        <p className="text-sm text-neutral-300 dark:text-neutral-600">
+                          {value}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </FadeBlock>
+            </div>
+          </div>
+
+          {/* Curve bottom */}
+          <div className="absolute -bottom-[100px] left-0 w-full h-[100px]">
+            <svg
+              viewBox="0 0 1440 100"
+              preserveAspectRatio="none"
+              className="w-full h-full"
+            >
+              <motion.path
+                d={useTransform(
+                  curveDepth,
+                  (v) => `M0,0 Q720,${v} 1440,0 L1440,0 L0,0 Z`,
+                )}
+                className="fill-neutral-900 dark:fill-neutral-100"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Footer CTA ────────────────────────────────────────────────────────── */}
+      <FadeBlock className="container mx-auto px-6 pt-40 pb-20">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.43, 0.13, 0.23, 0.96] }}
+            className="h-px bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent mb-12"
+          />
+
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+            <div className="space-y-3">
+              <p className="text-xs tracking-[0.3em] uppercase text-neutral-400">
+                Next Step
+              </p>
+              <h3 className="text-3xl md:text-4xl font-light text-neutral-900 dark:text-neutral-100 leading-tight">
+                Interested in{" "}
+                <span className="font-semibold italic">working together?</span>
               </h3>
-              <p className="text-gray-600">
-                Let's discuss your next project
+              <p className="text-neutral-500 dark:text-neutral-400 text-sm">
+                Let's discuss your next project.
               </p>
             </div>
+
             <Link
               href="/#contact"
-              className="px-6 py-3 bg-gray-900 text-white text-sm font-medium rounded hover:bg-gray-800 transition-colors text-center"
+              className="rounded-full bg-[#CBFF4D] px-8 py-3 text-sm font-semibold text-neutral-900 transition hover:opacity-90 text-center whitespace-nowrap"
             >
-              Get in Touch
+              Get in Touch ↗
             </Link>
           </div>
         </div>
-      </motion.section>
+      </FadeBlock>
     </div>
   );
 }

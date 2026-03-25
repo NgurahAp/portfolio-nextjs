@@ -10,15 +10,15 @@ export function ColorTransitionSection({ children }) {
     offset: ["start end", "end end"],
   });
 
-  // Transisi cepet di tengah scroll
-  const bgOpacity = useTransform(scrollYProgress, [0.3, 0.4], [0, 1]);
+  const backgroundColor = useTransform(
+    scrollYProgress,
+    [0.3, 0.35],
+    ["#171717", "#fafafa"], // neutral-900 → neutral-50
+  );
 
   return (
-    <section ref={ref} className="relative bg-neutral-900">
-      <motion.div
-        style={{ opacity: bgOpacity }}
-        className="absolute inset-0 bg-neutral-50"
-      />
+    <section ref={ref} className="relative">
+      <motion.div style={{ backgroundColor }} className="absolute inset-0" />
       <div className="relative z-10">
         <div className="h-[100vh]" />
         {children}

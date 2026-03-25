@@ -59,7 +59,7 @@ export function AboutSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-neutral-50 dark:bg-neutral-950 pt-32 pb-32"
+      className="relative bg-neutral-50 dark:bg-neutral-950 pt-32 "
     >
       <div className="relative bg-neutral-900 dark:bg-neutral-100">
         {/* ===== CURVE TOP ===== */}
@@ -153,7 +153,7 @@ export function AboutSection() {
         </div>
 
         {/* ===== WORKS ===== */}
-        <div ref={worksRef} className="pb-24 pt-10">
+        <div ref={worksRef} className=" pt-10">
           <div className="text-center mb-12">
             <motion.p
               custom={0}

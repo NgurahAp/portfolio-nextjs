@@ -221,7 +221,7 @@ export function ExperienceSection() {
   const smoothHeaderY = useSpring(headerY, { stiffness: 80, damping: 20 });
 
   return (
-    <section className="relative bg-neutral-50 dark:bg-neutral-950 py-32 px-6">
+    <section className="relative py-32 px-6">
       <motion.div
         ref={headerRef}
         style={{ opacity: smoothHeaderOpacity, y: smoothHeaderY }}
@@ -237,10 +237,10 @@ export function ExperienceSection() {
           </span>{" "}
           to help build their top-notch products.
         </h2>
-        <p className="text-base md:text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-2xl mx-auto">
+        {/* <p className="text-base md:text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-2xl mx-auto">
           Gaining valuable experience in various technologies through real-world
           projects and collaborative development.
-        </p>
+        </p> */}
       </motion.div>
 
       <div ref={timelineRef} className="mx-auto max-w-6xl relative">

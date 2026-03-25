@@ -67,7 +67,6 @@ const MarqueeTrack = ({ items, direction = "left", offsetY = 0 }) => {
         paddingBottom: "20px",
         zIndex: 1,
         willChange: "transform",
-        boxShadow: "0 8px 40px rgba(0,0,0,0.35)",
       }}
     >
       <div
@@ -93,7 +92,6 @@ const MarqueeTrack = ({ items, direction = "left", offsetY = 0 }) => {
               letterSpacing: "0.1em",
               textTransform: "uppercase",
               color: "#fff",
-              whiteSpace: "nowrap",
             }}
           >
             {text}
@@ -122,7 +120,7 @@ export default function DiagonalMarquee() {
         position: "relative",
         width: "100%",
         height: "40vh",
-        backgroundColor: "#ffffff",
+        backgroundColor: "#fafafa",
         overflow: "hidden",
       }}
     >

@@ -37,7 +37,7 @@ export default function ServicesSection() {
   ];
 
   return (
-    <section id="services" className="min-h-screen bg-white">
+    <section id="services" className="min-h-screen bg-neutral-50">
       <div className="container mx-auto px-6 md:px-12 pt-32 pb-20">
         {/* Header */}
         <motion.div

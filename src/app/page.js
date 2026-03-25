@@ -12,6 +12,7 @@ import RibbonSection from "@/components/section/Ribbon";
 import { ParallaxHeroImagesDemo } from "@/components/section/ParallaxHero";
 import { AboutSection } from "@/components/section/AboutUs";
 import { ExperienceSection } from "@/components/section/WorkExperience";
+import { ColorTransitionSection } from "@/components/section/Transition";
 
 export default function Home() {
   return (
@@ -24,8 +25,11 @@ export default function Home() {
       <Navbar />
       <ParallaxHeroImagesDemo />
       <AboutSection />
-      <ExperienceSection />
+      <ColorTransitionSection>
+        <ExperienceSection />
+      </ColorTransitionSection>
       <RibbonSection />
+      <ServicesSection />
       <CurvedLoop
         marqueeText="✦  NextJS  ✦  NestJS  ✦  NuxtJS  ✦  Flutter  ✦  Laravel  ✦   Go  ✦  Firebase  ✦  Docker  ✦  MongoDB  ✦  PostgreSQL  ✦  MySQL  ✦  REST API  ✦  Git  ✦  Jenkins "
         speed={1.1}
@@ -34,7 +38,6 @@ export default function Home() {
         direction="left"
         interactive={true}
       />
-      <ServicesSection />
       <HeroParallax products={products} />
       <ContactForm />
     </motion.div>

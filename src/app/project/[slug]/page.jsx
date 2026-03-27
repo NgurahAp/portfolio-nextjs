@@ -8,12 +8,112 @@ import {
   useSpring,
   useInView,
 } from "framer-motion";
-import { ArrowLeft, ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import BackButton from "@/components/ui/Back";
 
-// ─── Reusable scroll-animated block ───────────────────────────────────────────
-function FadeBlock({ children, delay = 0, className = "" }) {
+const projects = [
+  {
+    id: 1,
+    slug: "the-aesthetics-skin",
+    title: "The Aesthetics Skin",
+    subtitle: "Luxury skincare storefront with a serene editorial mood",
+    description:
+      "A premium beauty commerce experience focused on trust, clarity, and high-end presentation. The interface combines soft gradients, refined spacing, and fast product discovery so the brand feels calm, elevated, and easy to shop on any screen.",
+    image:
+      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768555105/The_Aesthetics_jmrhjl.png",
+    repoLink: "https://github.com/username/the-aesthetics-skin",
+    liveLink: "https://theaestheticsskin.com/",
+    year: "2025",
+    role: "Product Designer & Full Stack Developer",
+    coreFeatures: [
+      "Hero section that blends branding, product focus, and appointment entry points",
+      "Luxury product cards with clear pricing, routines, and skin concern labels",
+      "Booking flow designed to reduce friction for treatment appointments",
+      "Ingredient and benefit sections that support customer confidence",
+      "Reusable layout blocks for promotions, new arrivals, and featured collections",
+      "Motion details that feel polished without competing with the content",
+    ],
+    techStack: [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "NestJS",
+      "PostgreSQL",
+      "Framer Motion",
+      "Cloudinary",
+      "Stripe",
+    ],
+    responsibilities: [
+      "Built the landing page and project detail structure",
+      "Created reusable content sections for products and treatments",
+      "Defined the premium visual rhythm across desktop and mobile",
+      "Prepared the route structure so each project can have its own slug",
+    ],
+  },
+  {
+    id: 2,
+    slug: "glams-company-profile",
+    title: "GLAMS Models Management",
+    subtitle: "Fashion agency site with a sharp runway-inspired identity",
+    description:
+      "A company profile and talent showcase built to feel like a fashion magazine cover. The layout uses strong imagery, bold section breaks, and elegant whitespace so the agency can present models, classes, and services with confidence.",
+    image:
+      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1773549397/Glams_uthwj7.png",
+    repoLink: "https://github.com/username/glams-company-profile",
+    liveLink: "https://glams-zeta.vercel.app/",
+    year: "2024",
+    role: "Frontend Developer",
+    coreFeatures: [
+      "Hero section with oversized type and striking visual focus",
+      "Talent gallery that makes image content the main attraction",
+      "Service and academy sections arranged for quick scanning",
+      "Transitions and reveal timing tuned for a premium feel",
+      "Mobile layout that keeps navigation and CTAs immediately visible",
+    ],
+    techStack: [
+      "Next.js",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Cloudinary",
+      "Vercel",
+    ],
+    responsibilities: [
+      "Designed the landing flow and section rhythm",
+      "Implemented the motion system for a cinematic presentation",
+      "Kept the layout flexible so new agency sections can be added easily",
+    ],
+  },
+  {
+    id: 3,
+    slug: "attendance-dreamation",
+    title: "Attendance Dreamation",
+    subtitle: "Attendance dashboard for teams that need fast operational clarity",
+    description:
+      "A web-based dashboard for attendance tracking with a utility-first design. The goal is to keep everything fast to scan, simple to act on, and easy to trust for day-to-day operations in a school or office environment.",
+    image:
+      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768555124/Attendance_DMX_kli5wa.png",
+    repoLink: "https://github.com/username/attendance-dreamation",
+    liveLink: "https://example.com",
+    year: "2024",
+    role: "Full Stack Developer",
+    coreFeatures: [
+      "Daily attendance summary that makes status changes easy to read",
+      "Admin panels for records, exports, and student or employee lists",
+      "Searchable data views that reduce time spent hunting for entries",
+      "Responsive components that stay usable on desktop and tablet",
+    ],
+    techStack: ["Nuxt.js", "Express.js", "PostgreSQL", "Tailwind CSS"],
+    responsibilities: [
+      "Built the operational dashboard structure",
+      "Focused on usability, hierarchy, and fast scanning",
+      "Prepared the project to scale with more modules later",
+    ],
+  },
+];
+
+function FadeBlock({ children, className = "" }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -36,58 +136,22 @@ function FadeBlock({ children, delay = 0, className = "" }) {
   );
 }
 
-// ─── Main component ────────────────────────────────────────────────────────────
 export default function ProjectDetail() {
   const heroRef = useRef(null);
   const heroInView = useInView(heroRef, { once: true, margin: "-60px" });
-
   const sectionRef = useRef(null);
+  const params = useParams();
+  const slug = Array.isArray(params?.slug) ? params.slug[0] : params?.slug;
+
+  const project =
+    projects.find((item) => item.slug === slug) ?? projects[0];
+  const projectExists = projects.some((item) => item.slug === slug);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "start start"],
   });
   const curveDepth = useTransform(scrollYProgress, [0, 1], [150, 50]);
-
-  // ─── Project data ────────────────────────────────────────────────────────────
-  const project = {
-    title: "The Aesthetics Skin",
-    subtitle: "E-Commerce Platform for Skincare Products",
-    description:
-      "A modern e-commerce platform designed for skincare enthusiasts. Built with a focus on user experience, performance, and scalability. The platform features a clean interface, smooth animations, and seamless checkout process.",
-    image:
-      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768555105/The_Aesthetics_jmrhjl.png",
-    repoLink: "https://github.com/username/project",
-    liveLink: "https://project-demo.com",
-    year: "2025",
-    role: "Full Stack Developer",
-    coreFeatures: [
-      "Product catalog with advanced filtering",
-      "Shopping cart with real-time updates",
-      "Secure payment integration",
-      "User authentication & profile management",
-      "Admin dashboard for inventory management",
-      "Responsive design for all devices",
-    ],
-    techStack: [
-      "Next.js",
-      "React",
-      "Tailwind CSS",
-      "Node.js",
-      "Express",
-      "PostgreSQL",
-      "Stripe API",
-      "JWT Authentication",
-    ],
-    responsibilities: [
-      "Designed and implemented the frontend architecture",
-      "Built RESTful APIs for product and user management",
-      "Integrated payment gateway with Stripe",
-      "Implemented authentication and authorization system",
-      "Optimized database queries for better performance",
-      "Deployed and maintained the application on cloud infrastructure",
-    ],
-  };
 
   const fadeUp = {
     hidden: { opacity: 0, y: 32 },
@@ -98,14 +162,14 @@ export default function ProjectDetail() {
     }),
   };
 
+  const displayTitle = project.title.split(" ");
+
   return (
     <div className="min-h-screen bg-neutral-50 dark:bg-neutral-950">
       <BackButton />
 
-      {/* ── Hero ──────────────────────────────────────────────────────────  ────── */}
       <section ref={heroRef} className="container mx-auto px-6 pt-32 pb-24">
         <div className="max-w-4xl">
-          {/* Meta row */}
           <motion.div
             custom={0}
             variants={fadeUp}
@@ -119,7 +183,6 @@ export default function ProjectDetail() {
             </span>
           </motion.div>
 
-          {/* Title */}
           <motion.h1
             custom={1}
             variants={fadeUp}
@@ -127,18 +190,23 @@ export default function ProjectDetail() {
             animate={heroInView ? "show" : "hidden"}
             className="text-5xl md:text-6xl lg:text-7xl font-light leading-[1.1] text-neutral-900 dark:text-neutral-100 mb-6"
           >
-            {project.title.split(" ").map((word, i, arr) =>
-              i === arr.length - 1 ? (
-                <span key={i} className="font-semibold italic">
+            {displayTitle.map((word, index) =>
+              index === displayTitle.length - 1 ? (
+                <span
+                  key={`${word}-${index}`}
+                  className="font-semibold italic"
+                >
                   {word}
                 </span>
               ) : (
-                <span key={i}>{word} </span>
+                <span key={`${word}-${index}`}>
+                  {word}
+                  {" "}
+                </span>
               ),
             )}
           </motion.h1>
 
-          {/* Subtitle */}
           <motion.p
             custom={2}
             variants={fadeUp}
@@ -149,7 +217,6 @@ export default function ProjectDetail() {
             {project.subtitle}
           </motion.p>
 
-          {/* CTAs */}
           <motion.div
             custom={3}
             variants={fadeUp}
@@ -179,7 +246,15 @@ export default function ProjectDetail() {
         </div>
       </section>
 
-      {/* ── Cover Image ───────────────────────────────────────────────────────── */}
+      {!projectExists && (
+        <div className="container mx-auto px-6 pb-6">
+          <div className="max-w-4xl rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/50 px-5 py-4 text-sm text-neutral-600 dark:text-neutral-400">
+            Slug <span className="font-medium text-neutral-900 dark:text-neutral-100">{slug}</span>{" "}
+            belum ada, jadi saya tampilkan project pertama sebagai fallback.
+          </div>
+        </div>
+      )}
+
       <FadeBlock className="container mx-auto px-6 pb-48">
         <div className="relative w-full aspect-video overflow-hidden bg-neutral-200 dark:bg-neutral-800">
           <img
@@ -187,18 +262,15 @@ export default function ProjectDetail() {
             alt={project.title}
             className="w-full h-full object-cover"
           />
-          {/* subtle overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/20 to-transparent" />
         </div>
       </FadeBlock>
 
-      {/* ── Dark Band (matching AboutSection style) ────────────────────────────── */}
       <div
         ref={sectionRef}
         className="relative bg-neutral-50 dark:bg-neutral-950"
       >
         <div className="relative bg-neutral-900 dark:bg-neutral-100">
-          {/* Curve top */}
           <div className="absolute -top-[100px] left-0 w-full h-[100px]">
             <svg
               viewBox="0 0 1440 100"
@@ -215,12 +287,9 @@ export default function ProjectDetail() {
             </svg>
           </div>
 
-          {/* ── Content Grid ──────────────────────────────────────────────────── */}
           <div className="container mx-auto px-6 pt-24 pb-32">
             <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 md:gap-16">
-              {/* Left 2/3 – Overview, Features, Responsibilities */}
               <div className="md:col-span-2 space-y-20">
-                {/* Overview */}
                 <FadeBlock>
                   <p className="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-6">
                     Overview
@@ -230,10 +299,8 @@ export default function ProjectDetail() {
                   </p>
                 </FadeBlock>
 
-                {/* Separator */}
                 <div className="h-px bg-gradient-to-r from-transparent via-neutral-700 dark:via-neutral-400 to-transparent" />
 
-                {/* Core Features */}
                 <FadeBlock>
                   <p className="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-8">
                     Core Features
@@ -241,7 +308,7 @@ export default function ProjectDetail() {
                   <ul className="space-y-4">
                     {project.coreFeatures.map((feature, index) => (
                       <motion.li
-                        key={index}
+                        key={feature}
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
@@ -257,10 +324,8 @@ export default function ProjectDetail() {
                   </ul>
                 </FadeBlock>
 
-                {/* Separator */}
                 <div className="h-px bg-gradient-to-r from-transparent via-neutral-700 dark:via-neutral-400 to-transparent" />
 
-                {/* Responsibilities */}
                 <FadeBlock>
                   <p className="text-xs tracking-[0.3em] uppercase text-neutral-500 mb-8">
                     My Responsibilities
@@ -268,7 +333,7 @@ export default function ProjectDetail() {
                   <ul className="space-y-4">
                     {project.responsibilities.map((item, index) => (
                       <motion.li
-                        key={index}
+                        key={item}
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
@@ -285,7 +350,6 @@ export default function ProjectDetail() {
                 </FadeBlock>
               </div>
 
-              {/* Right 1/3 – Tech Stack (sticky) */}
               <FadeBlock>
                 <div className="sticky top-24 space-y-8">
                   <div>
@@ -293,14 +357,14 @@ export default function ProjectDetail() {
                       Tech Stack
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      {project.techStack.map((tech, index) => (
+                      {project.techStack.map((tech) => (
                         <motion.span
-                          key={index}
+                          key={tech}
                           initial={{ opacity: 0, scale: 0.85 }}
                           whileInView={{ opacity: 1, scale: 1 }}
                           viewport={{ once: true }}
-                          transition={{ duration: 0.3, delay: index * 0.05 }}
-                          className="px-4 py-1.5 border border-neutral-700 dark:border-neutral-300 text-neutral-300 dark:text-neutral-600 text-xs tracking-wide"
+                          transition={{ duration: 0.3 }}
+                          className="px-4 py-1.5 border border-neutral-700 dark:border-neutral-300 text-neutral-300 dark:text-neutral-600 text-xs tracking-wide rounded-full"
                         >
                           {tech}
                         </motion.span>
@@ -308,9 +372,9 @@ export default function ProjectDetail() {
                     </div>
                   </div>
 
-                  {/* Quick info */}
                   <div className="space-y-4 pt-4 border-t border-neutral-800 dark:border-neutral-300">
                     {[
+                      { label: "Slug", value: project.slug },
                       { label: "Year", value: project.year },
                       { label: "Role", value: project.role },
                     ].map(({ label, value }) => (
@@ -329,7 +393,6 @@ export default function ProjectDetail() {
             </div>
           </div>
 
-          {/* Curve bottom */}
           <div className="absolute -bottom-[100px] left-0 w-full h-[100px]">
             <svg
               viewBox="0 0 1440 100"
@@ -348,7 +411,6 @@ export default function ProjectDetail() {
         </div>
       </div>
 
-      {/* ── Footer CTA ────────────────────────────────────────────────────────── */}
       <FadeBlock className="container mx-auto px-6 pt-40 pb-20">
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -377,7 +439,7 @@ export default function ProjectDetail() {
               href="/#contact"
               className="rounded-full bg-[#CBFF4D] px-8 py-3 text-sm font-semibold text-neutral-900 transition hover:opacity-90 text-center whitespace-nowrap"
             >
-              Get in Touch ↗
+              Get in Touch
             </Link>
           </div>
         </div>

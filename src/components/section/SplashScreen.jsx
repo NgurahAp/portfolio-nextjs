@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const SplashScreen = ({ children }) => {
-  const [showSplash, setShowSplash] = useState(true);
+const SplashScreen = ({ children, enabled = true, onComplete }) => {
+  const [showSplash, setShowSplash] = useState(enabled);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const greetings = [
@@ -19,6 +19,14 @@ const SplashScreen = ({ children }) => {
   ];
 
   useEffect(() => {
+    if (!enabled) {
+      setShowSplash(false);
+      return undefined;
+    }
+
+    setShowSplash(true);
+    setCurrentIndex(0);
+
     // Ganti text setiap 300ms
     const interval = setInterval(() => {
       setCurrentIndex((prev) => {
@@ -31,6 +39,7 @@ const SplashScreen = ({ children }) => {
 
     // Auto hide splash screen setelah semua greeting muncul
     const timer = setTimeout(() => {
+      onComplete?.();
       setShowSplash(false);
     }, greetings.length * 300 + 800);
 
@@ -38,7 +47,7 @@ const SplashScreen = ({ children }) => {
       clearInterval(interval);
       clearTimeout(timer);
     };
-  }, []);
+  }, [enabled, onComplete]);
 
   return (
     <>

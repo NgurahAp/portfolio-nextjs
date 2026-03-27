@@ -2,6 +2,7 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/ui/Navbar";
 import { TransitionOverlay } from "@/components/ui/PageTransition";
+import { AppStateProvider } from "@/components/providers/AppStateProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,9 +27,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.variable} ${poppins.variable}`}>
-        <TransitionOverlay />
-        <Navbar />
-        {children}
+        <AppStateProvider>
+          <TransitionOverlay />
+          <Navbar />
+          {children}
+        </AppStateProvider>
       </body>
     </html>
   );

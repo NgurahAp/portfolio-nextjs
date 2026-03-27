@@ -14,10 +14,16 @@ import { AboutSection } from "@/components/section/AboutUs";
 import { ExperienceSection } from "@/components/section/WorkExperience";
 import { ColorTransitionSection } from "@/components/section/Transition";
 import SplashScreen from "@/components/section/SplashScreen";
+import { useAppState } from "@/components/providers/AppStateProvider";
 
 export default function Home() {
+  const { hasSeenSplash, markSplashSeen } = useAppState();
+
   return (
-    <SplashScreen>
+    <SplashScreen
+      enabled={!hasSeenSplash}
+      onComplete={markSplashSeen}
+    >
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

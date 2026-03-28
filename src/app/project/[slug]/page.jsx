@@ -12,106 +12,7 @@ import { ExternalLink, Github } from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import BackButton from "@/components/ui/Back";
-
-const projects = [
-  {
-    id: 1,
-    slug: "the-aesthetics-skin",
-    title: "The Aesthetics Skin",
-    subtitle: "Luxury skincare storefront with a serene editorial mood",
-    description:
-      "A premium beauty commerce experience focused on trust, clarity, and high-end presentation. The interface combines soft gradients, refined spacing, and fast product discovery so the brand feels calm, elevated, and easy to shop on any screen.",
-    image:
-      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768555105/The_Aesthetics_jmrhjl.png",
-    repoLink: "https://github.com/username/the-aesthetics-skin",
-    liveLink: "https://theaestheticsskin.com/",
-    year: "2025",
-    role: "Product Designer & Full Stack Developer",
-    coreFeatures: [
-      "Hero section that blends branding, product focus, and appointment entry points",
-      "Luxury product cards with clear pricing, routines, and skin concern labels",
-      "Booking flow designed to reduce friction for treatment appointments",
-      "Ingredient and benefit sections that support customer confidence",
-      "Reusable layout blocks for promotions, new arrivals, and featured collections",
-      "Motion details that feel polished without competing with the content",
-    ],
-    techStack: [
-      "Next.js",
-      "React",
-      "Tailwind CSS",
-      "NestJS",
-      "PostgreSQL",
-      "Framer Motion",
-      "Cloudinary",
-      "Stripe",
-    ],
-    responsibilities: [
-      "Built the landing page and project detail structure",
-      "Created reusable content sections for products and treatments",
-      "Defined the premium visual rhythm across desktop and mobile",
-      "Prepared the route structure so each project can have its own slug",
-    ],
-  },
-  {
-    id: 2,
-    slug: "glams-company-profile",
-    title: "GLAMS Models Management",
-    subtitle: "Fashion agency site with a sharp runway-inspired identity",
-    description:
-      "A company profile and talent showcase built to feel like a fashion magazine cover. The layout uses strong imagery, bold section breaks, and elegant whitespace so the agency can present models, classes, and services with confidence.",
-    image:
-      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1773549397/Glams_uthwj7.png",
-    repoLink: "https://github.com/username/glams-company-profile",
-    liveLink: "https://glams-zeta.vercel.app/",
-    year: "2024",
-    role: "Frontend Developer",
-    coreFeatures: [
-      "Hero section with oversized type and striking visual focus",
-      "Talent gallery that makes image content the main attraction",
-      "Service and academy sections arranged for quick scanning",
-      "Transitions and reveal timing tuned for a premium feel",
-      "Mobile layout that keeps navigation and CTAs immediately visible",
-    ],
-    techStack: [
-      "Next.js",
-      "Tailwind CSS",
-      "Framer Motion",
-      "Cloudinary",
-      "Vercel",
-    ],
-    responsibilities: [
-      "Designed the landing flow and section rhythm",
-      "Implemented the motion system for a cinematic presentation",
-      "Kept the layout flexible so new agency sections can be added easily",
-    ],
-  },
-  {
-    id: 3,
-    slug: "attendance-dreamation",
-    title: "Attendance Dreamation",
-    subtitle: "Attendance dashboard for teams that need fast operational clarity",
-    description:
-      "A web-based dashboard for attendance tracking with a utility-first design. The goal is to keep everything fast to scan, simple to act on, and easy to trust for day-to-day operations in a school or office environment.",
-    image:
-      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768555124/Attendance_DMX_kli5wa.png",
-    repoLink: "https://github.com/username/attendance-dreamation",
-    liveLink: "https://example.com",
-    year: "2024",
-    role: "Full Stack Developer",
-    coreFeatures: [
-      "Daily attendance summary that makes status changes easy to read",
-      "Admin panels for records, exports, and student or employee lists",
-      "Searchable data views that reduce time spent hunting for entries",
-      "Responsive components that stay usable on desktop and tablet",
-    ],
-    techStack: ["Nuxt.js", "Express.js", "PostgreSQL", "Tailwind CSS"],
-    responsibilities: [
-      "Built the operational dashboard structure",
-      "Focused on usability, hierarchy, and fast scanning",
-      "Prepared the project to scale with more modules later",
-    ],
-  },
-];
+import { projects } from "@/data/project";
 
 function FadeBlock({ children, className = "" }) {
   const ref = useRef(null);
@@ -143,8 +44,7 @@ export default function ProjectDetail() {
   const params = useParams();
   const slug = Array.isArray(params?.slug) ? params.slug[0] : params?.slug;
 
-  const project =
-    projects.find((item) => item.slug === slug) ?? projects[0];
+  const project = projects.find((item) => item.slug === slug) ?? projects[0];
   const projectExists = projects.some((item) => item.slug === slug);
 
   const { scrollYProgress } = useScroll({
@@ -192,17 +92,11 @@ export default function ProjectDetail() {
           >
             {displayTitle.map((word, index) =>
               index === displayTitle.length - 1 ? (
-                <span
-                  key={`${word}-${index}`}
-                  className="font-semibold italic"
-                >
+                <span key={`${word}-${index}`} className="font-semibold italic">
                   {word}
                 </span>
               ) : (
-                <span key={`${word}-${index}`}>
-                  {word}
-                  {" "}
-                </span>
+                <span key={`${word}-${index}`}>{word} </span>
               ),
             )}
           </motion.h1>
@@ -249,7 +143,10 @@ export default function ProjectDetail() {
       {!projectExists && (
         <div className="container mx-auto px-6 pb-6">
           <div className="max-w-4xl rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/50 px-5 py-4 text-sm text-neutral-600 dark:text-neutral-400">
-            Slug <span className="font-medium text-neutral-900 dark:text-neutral-100">{slug}</span>{" "}
+            Slug{" "}
+            <span className="font-medium text-neutral-900 dark:text-neutral-100">
+              {slug}
+            </span>{" "}
             belum ada, jadi saya tampilkan project pertama sebagai fallback.
           </div>
         </div>

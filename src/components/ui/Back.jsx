@@ -1,12 +1,15 @@
+"use client";
+
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
+
 export default function BackButton() {
   const router = useRouter();
 
   return (
     <button
       onClick={() => router.back()}
-      className="group fixed top-6 left-6 z-50 flex items-center gap-2 px-4 py-2 
+      className="group fixed top-6 left-6 z-[9999] pointer-events-auto flex items-center gap-2 px-4 py-2 
       rounded-full backdrop-blur-md bg-white/70 dark:bg-neutral-900/70 
       border border-neutral-200 dark:border-neutral-800
       text-neutral-700 dark:text-neutral-300

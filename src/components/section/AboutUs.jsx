@@ -21,14 +21,14 @@ export function AboutSection() {
 
   const demoItems = [
     {
+      link: "/project/glams-company-profile",
+      text: "Glams Corp",
+      image: "https://picsum.photos/600/400?random=2",
+    },
+    {
       link: "/project/the-aesthetics-skin",
       text: "The Aesthetics Skin",
       image: "https://picsum.photos/600/400?random=1",
-    },
-    {
-      link: "/project/glams-company-profile",
-      text: "Glams Company Profile",
-      image: "https://picsum.photos/600/400?random=2",
     },
     {
       link: "/project/attendance-dreamaxtion",
@@ -36,14 +36,9 @@ export function AboutSection() {
       image: "https://picsum.photos/600/400?random=3",
     },
     {
-      link: "/project/lms-m-knows",
+      link: "/project/lms-mknows",
       text: "LMS M-Knows",
       image: "https://picsum.photos/600/400?random=4",
-    },
-    {
-      link: "/project/bersih-bersama",
-      text: "Bersih Bersama",
-      image: "https://picsum.photos/600/400?random=5",
     },
   ];
 

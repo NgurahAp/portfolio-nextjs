@@ -1,7 +1,12 @@
-// Plain JS external store — tidak pakai Context supaya tidak trigger re-render berlebihan
+// Plain JS external store - tidak pakai Context supaya tidak trigger re-render berlebihan
 
 let listeners = [];
-let state = { isActive: false, title: "" };
+let state = {
+  isActive: false,
+  title: "",
+  pendingHref: null,
+  phase: "idle",
+};
 
 export const transitionStore = {
   getState: () => state,

@@ -75,7 +75,7 @@ export function AboutSection() {
         </div>
 
         {/* ===== CONTENT ===== */}
-        <div ref={contentRef} className="pt-20 pb-32 px-6">
+        <div id="about" ref={contentRef} className="pt-20 pb-32 px-6">
           <div className="mx-auto max-w-3xl text-center space-y-8">
             <motion.p
               custom={0}
@@ -132,16 +132,18 @@ export function AboutSection() {
               className="flex items-center justify-center gap-3 pt-4"
             >
               <a
-                href="#works"
+                href="https://drive.google.com/file/d/1hH-etED5Da9NRQG7TrfriRw6AC78T_Tf/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="rounded-full bg-[#CBFF4D] px-8 py-3 text-sm font-semibold text-neutral-900 transition hover:opacity-90"
               >
-                My Works
+                Curriculum Vitae ↗
               </a>
               <a
                 href="#contact"
                 className="rounded-full border border-neutral-600 px-6 py-3 text-sm font-medium text-neutral-300 transition hover:bg-neutral-800 dark:border-neutral-400 dark:text-neutral-600"
               >
-                Contact ↗
+                Contact
               </a>
             </motion.div>
           </div>
@@ -190,7 +192,7 @@ export function AboutSection() {
         </div>
 
         {/* ===== WORKS ===== */}
-        <div ref={worksRef} className="pt-20 pb-20">
+        <div id="works" ref={worksRef} className="pt-20 pb-20">
           <div className="text-center mb-16 px-6">
             <motion.p
               custom={0}

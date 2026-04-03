@@ -17,36 +17,36 @@ export function ParallaxHeroImagesDemo() {
     <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-neutral-50 dark:bg-neutral-950">
       <ParallaxHeroImages images={images} />
 
-      <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-2 px-4 text-center">
+      <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-1.5 px-5 text-center sm:gap-2 sm:px-4">
         {/* Greeting badge */}
-        <p className="text-base font-medium text-neutral-600 dark:text-neutral-300">
+        <p className="text-sm font-medium text-neutral-600 sm:text-base dark:text-neutral-300">
           Hey — Arya here 👋
         </p>
 
         {/* Main headline */}
-        <h1 className="text-5xl font-light tracking-tight text-neutral-800 drop-shadow-[0_0_24px_rgba(255,255,255,0.9)] md:text-7xl dark:text-neutral-100 dark:drop-shadow-[0_0_24px_rgba(0,0,0,0.9)]">
+        <h1 className="text-4xl font-light tracking-tight text-neutral-800 drop-shadow-[0_0_24px_rgba(255,255,255,0.9)] sm:text-5xl md:text-7xl dark:text-neutral-100 dark:drop-shadow-[0_0_24px_rgba(0,0,0,0.9)]">
           Full-Stack <span className="font-semibold italic">Developer</span>
           <br />
           &amp; Mobile <span className="font-semibold italic">Developer.</span>
         </h1>
 
         {/* Subtext */}
-        <p className="max-w-sm text-sm leading-relaxed text-neutral-500 drop-shadow-[0_0_10px_rgba(255,255,255,0.6)] dark:text-neutral-400 dark:drop-shadow-[0_0_10px_rgba(0,0,0,0.6)]">
+        <p className="max-w-xs text-xs leading-relaxed text-neutral-500 drop-shadow-[0_0_10px_rgba(255,255,255,0.6)] sm:max-w-sm sm:text-sm dark:text-neutral-400 dark:drop-shadow-[0_0_10px_rgba(0,0,0,0.6)]">
           Building scalable web & mobile experiences — from product design to
           production-ready code.
         </p>
 
         {/* CTA buttons */}
-        <div className="flex items-center gap-3 pt-2">
+        <div className="flex items-center gap-2 pt-1.5 sm:gap-3 sm:pt-2">
           <a
             href="#works"
-            className="rounded-full bg-neutral-900 px-6 py-2.5 text-sm font-medium text-white transition hover:bg-neutral-700 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200"
+            className="rounded-full bg-neutral-900 px-5 py-2 text-xs font-medium text-white transition hover:bg-neutral-700 sm:px-6 sm:py-2.5 sm:text-sm dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200"
           >
             View Works ↗
           </a>
           <a
             href="#about"
-            className="rounded-full border border-neutral-300 px-6 py-2.5 text-sm font-medium text-neutral-700 transition hover:bg-neutral-100 dark:border-neutral-600 dark:text-neutral-300 dark:hover:bg-neutral-800"
+            className="rounded-full border border-neutral-300 px-5 py-2 text-xs font-medium text-neutral-700 transition hover:bg-neutral-100 sm:px-6 sm:py-2.5 sm:text-sm dark:border-neutral-600 dark:text-neutral-300 dark:hover:bg-neutral-800"
           >
             About
           </a>

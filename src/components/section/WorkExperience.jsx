@@ -58,7 +58,6 @@ function TimelineDot({ dotRef, trailDocY }) {
     const unsubscribe = trailDocY.on("change", (currentTrailDocY) => {
       if (!dotRef.current) return;
 
-      // Posisi dot dalam koordinat dokumen
       const rect = dotRef.current.getBoundingClientRect();
       const dotDocY = rect.top + rect.height / 2 + window.scrollY;
 
@@ -71,7 +70,7 @@ function TimelineDot({ dotRef, trailDocY }) {
         setColor("#E5E5E5");
       } else {
         const t = (distance + threshold) / (threshold * 2);
-        const r = Math.round(203 + (229 - 203) * t); // 229 = #E5E5E5
+        const r = Math.round(203 + (229 - 203) * t);
         const g = Math.round(255 + (229 - 255) * t);
         const b = Math.round(77 + (229 - 77) * t);
         setColor(`rgb(${r},${g},${b})`);
@@ -83,16 +82,8 @@ function TimelineDot({ dotRef, trailDocY }) {
   return (
     <div
       ref={dotRef}
-      style={{
-        width: 12,
-        height: 12,
-        borderRadius: "50%",
-        backgroundColor: color,
-        flexShrink: 0,
-        zIndex: 10,
-        position: "relative",
-        transition: "background-color 0.05s linear",
-      }}
+      className="w-3 h-3 rounded-full transition-colors duration-75 z-10"
+      style={{ backgroundColor: color }}
     />
   );
 }
@@ -116,50 +107,70 @@ function ExperienceItem({ item, trailDocY }) {
     [0, 0.25, 0.6, 1],
     [60, 0, 0, -60],
   );
+
   const opacity = useSpring(rawOpacity, { stiffness: 70, damping: 18 });
   const y = useSpring(rawY, { stiffness: 70, damping: 18 });
 
   const isLeft = item.side === "left";
 
   const content = (
-    <>
+    <div>
       <p className="text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-2">
         {item.period}
       </p>
-      <h3 className="text-lg md:text-5xl font-semibold text-neutral-900 dark:text-neutral-100 mb-1">
+      <h3 className="text-lg sm:text-xl md:text-5xl font-semibold text-neutral-900 dark:text-neutral-100 mb-1">
         {item.company}
       </h3>
-      <p className="text-2xl text-neutral-500 dark:text-neutral-400 italic mb-3">
+      <p className="text-base sm:text-lg md:text-2xl text-neutral-500 dark:text-neutral-400 italic mb-3">
         {item.role}
       </p>
       <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-md">
         {item.description}
       </p>
-    </>
+    </div>
   );
 
   return (
     <div
       ref={ref}
-      className="relative grid grid-cols-[1fr_auto_1fr] items-start gap-x-6 md:gap-x-10"
+      className="
+        relative 
+        grid 
+        grid-cols-[1fr_auto] 
+        md:grid-cols-[1fr_auto_1fr] 
+        gap-x-6 md:gap-x-10
+        items-start
+      "
     >
+      {/* MOBILE ONLY */}
       <motion.div
         style={{ opacity, y }}
-        className={`py-8 ${isLeft ? "text-right" : ""}`}
+        className="py-8 md:hidden"
       >
-        {isLeft ? (
-          <div className="flex flex-col items-end">{content}</div>
-        ) : (
-          <div className="h-full" />
-        )}
+        {content}
       </motion.div>
 
-      <div className="flex items-start justify-center pt-36">
+      {/* DESKTOP LEFT */}
+      <motion.div
+        style={{ opacity, y }}
+        className={`hidden md:block py-12 ${
+          isLeft ? "text-right" : ""
+        }`}
+      >
+        {isLeft ? content : <div />}
+      </motion.div>
+
+      {/* DOT */}
+      <div className="flex items-start justify-center pt-10 md:pt-36">
         <TimelineDot dotRef={dotRef} trailDocY={trailDocY} />
       </div>
 
-      <motion.div style={{ opacity, y }} className="py-8">
-        {!isLeft ? content : <div className="h-full" />}
+      {/* DESKTOP RIGHT */}
+      <motion.div
+        style={{ opacity, y }}
+        className="hidden md:block py-12"
+      >
+        {!isLeft ? content : <div />}
       </motion.div>
     </div>
   );
@@ -169,7 +180,6 @@ export function ExperienceSection() {
   const headerRef = useRef(null);
   const timelineRef = useRef(null);
 
-  // trailDocY = posisi ujung trail dalam koordinat dokumen
   const trailDocY = useMotionValue(0);
 
   const { scrollYProgress: timelineProgress } = useScroll({
@@ -182,7 +192,6 @@ export function ExperienceSection() {
     { stiffness: 60, damping: 20 },
   );
 
-  // Sync trailDocY setiap scroll: top timeline (doc) + (height timeline * progress)
   useEffect(() => {
     const updateTrailDocY = () => {
       if (!timelineRef.current) return;
@@ -193,7 +202,6 @@ export function ExperienceSection() {
       trailDocY.set(timelineTopDoc + timelineHeight * progress);
     };
 
-    // Subscribe ke timelineProgress biar update tiap frame
     const unsubscribe = timelineProgress.on("change", updateTrailDocY);
     updateTrailDocY();
     return unsubscribe;
@@ -214,6 +222,7 @@ export function ExperienceSection() {
     [0, 0.25, 0.6, 1],
     [32, 0, 0, -32],
   );
+
   const smoothHeaderOpacity = useSpring(headerOpacity, {
     stiffness: 80,
     damping: 20,
@@ -221,41 +230,37 @@ export function ExperienceSection() {
   const smoothHeaderY = useSpring(headerY, { stiffness: 80, damping: 20 });
 
   return (
-    <section className="relative py-32 px-6">
+    <section className="relative py-24 sm:py-32 px-5 sm:px-6">
       <motion.div
         ref={headerRef}
         style={{ opacity: smoothHeaderOpacity, y: smoothHeaderY }}
-        className="mx-auto max-w-3xl text-center mb-20 space-y-6"
+        className="mx-auto max-w-3xl text-center mb-16 sm:mb-20 space-y-6"
       >
         <p className="text-xs tracking-[0.3em] uppercase text-neutral-400">
           Experience
         </p>
-        <h2 className="text-3xl md:text-4xl font-light leading-tight text-neutral-900 dark:text-neutral-100">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-light leading-tight text-neutral-900 dark:text-neutral-100">
           I have worked with some of the most{" "}
           <span className="font-semibold italic">
             innovative industry leaders
           </span>{" "}
           to help build their top-notch products.
         </h2>
-        {/* <p className="text-base md:text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-2xl mx-auto">
-          Gaining valuable experience in various technologies through real-world
-          projects and collaborative development.
-        </p> */}
       </motion.div>
 
       <div ref={timelineRef} className="mx-auto max-w-6xl relative">
-        {/* Trail kuning */}
+        {/* TRAIL */}
         <motion.div
-          style={{
-            height: trailHeightPercent,
-            position: "absolute",
-            top: 0,
-            left: "50%",
-            translateX: "-50%",
-            width: 3,
-            background: "#CBFF4D",
-            zIndex: 1,
-          }}
+          style={{ height: trailHeightPercent }}
+          className="
+            absolute 
+            top-0 
+            right-2 
+            md:left-1/2 md:-translate-x-1/2 
+            w-[2px] md:w-[3px] 
+            bg-[#CBFF4D] 
+            z-[1]
+          "
         />
 
         {experiences.map((item, index) => (

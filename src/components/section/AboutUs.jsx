@@ -8,7 +8,6 @@ export function AboutSection() {
   const contentRef = useRef(null);
   const worksRef = useRef(null);
 
-  // Pisah inView per blok biar timing-nya lebih natural
   const contentInView = useInView(contentRef, { once: true, margin: "-80px" });
   const worksInView = useInView(worksRef, { once: true, margin: "-80px" });
 
@@ -54,7 +53,7 @@ export function AboutSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-neutral-50 dark:bg-neutral-950 pt-32 "
+      className="relative bg-neutral-50 dark:bg-neutral-950 pt-24 sm:pt-32"
     >
       <div className="relative bg-neutral-900 dark:bg-neutral-100">
         {/* ===== CURVE TOP ===== */}
@@ -75,8 +74,8 @@ export function AboutSection() {
         </div>
 
         {/* ===== CONTENT ===== */}
-        <div id="about" ref={contentRef} className="pt-20 pb-32 px-6">
-          <div className="mx-auto max-w-3xl text-center space-y-8">
+        <div id="about" ref={contentRef} className="pt-16 pb-24 px-5 sm:pt-20 sm:pb-32 sm:px-6">
+          <div className="mx-auto max-w-3xl text-center space-y-6 sm:space-y-8">
             <motion.p
               custom={0}
               variants={fadeUp}
@@ -92,7 +91,7 @@ export function AboutSection() {
               variants={fadeUp}
               initial="hidden"
               animate={contentInView ? "show" : "hidden"}
-              className="text-3xl md:text-4xl font-light leading-tight text-white dark:text-neutral-900"
+              className="text-2xl sm:text-3xl md:text-4xl font-light leading-tight text-white dark:text-neutral-900"
             >
               I'm Arya —{" "}
               <span className="font-semibold italic">
@@ -106,7 +105,7 @@ export function AboutSection() {
               variants={fadeUp}
               initial="hidden"
               animate={contentInView ? "show" : "hidden"}
-              className="max-w-2xl mx-auto text-neutral-400 dark:text-neutral-600 text-base md:text-lg leading-relaxed"
+              className="max-w-2xl mx-auto text-neutral-400 dark:text-neutral-600 text-sm sm:text-base md:text-lg leading-relaxed"
             >
               I specialize in building modern web & mobile apps using
               technologies like{" "}
@@ -129,19 +128,19 @@ export function AboutSection() {
               variants={fadeUp}
               initial="hidden"
               animate={contentInView ? "show" : "hidden"}
-              className="flex items-center justify-center gap-3 pt-4"
+              className="flex items-center justify-center gap-2 sm:gap-3 pt-3 sm:pt-4"
             >
               <a
                 href="https://drive.google.com/file/d/1hH-etED5Da9NRQG7TrfriRw6AC78T_Tf/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full bg-[#CBFF4D] px-8 py-3 text-sm font-semibold text-neutral-900 transition hover:opacity-90"
+                className="rounded-full bg-[#CBFF4D] px-6 py-2.5 text-xs sm:px-8 sm:py-3 sm:text-sm font-semibold text-neutral-900 transition hover:opacity-90"
               >
                 Curriculum Vitae ↗
               </a>
               <a
                 href="#contact"
-                className="rounded-full border border-neutral-600 px-6 py-3 text-sm font-medium text-neutral-300 transition hover:bg-neutral-800 dark:border-neutral-400 dark:text-neutral-600"
+                className="rounded-full border border-neutral-600 px-5 py-2.5 text-xs sm:px-6 sm:py-3 sm:text-sm font-medium text-neutral-300 transition hover:bg-neutral-800 dark:border-neutral-400 dark:text-neutral-600"
               >
                 Contact
               </a>
@@ -158,7 +157,7 @@ export function AboutSection() {
               repeat: Infinity,
               repeatType: "reverse",
             }}
-            className="flex flex-col items-center gap-2 mt-28"
+            className="flex flex-col items-center gap-2 mt-16 sm:mt-28"
           >
             <span className="text-xs text-neutral-500 uppercase tracking-[0.3em]">
               Scroll
@@ -179,27 +178,27 @@ export function AboutSection() {
               />
             </svg>
           </motion.div>
+
           {/* ===== SEPARATOR ===== */}
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.43, 0.13, 0.23, 0.96] }}
-            className=""
           >
             <div className="h-px bg-gradient-to-r mt-4 from-transparent via-neutral-700 dark:via-neutral-400 to-transparent" />
           </motion.div>
         </div>
 
         {/* ===== WORKS ===== */}
-        <div id="works" ref={worksRef} className="pt-20 pb-20">
-          <div className="text-center mb-16 px-6">
+        <div id="works" ref={worksRef} className="pt-14 pb-14 sm:pt-20 sm:pb-20">
+          <div className="text-center mb-10 px-5 sm:mb-16 sm:px-6">
             <motion.p
               custom={0}
               variants={fadeUp}
               initial="hidden"
               animate={worksInView ? "show" : "hidden"}
-              className="text-xs tracking-[0.4em] uppercase text-neutral-500 mb-4"
+              className="text-xs tracking-[0.4em] uppercase text-neutral-500 mb-3 sm:mb-4"
             >
               Selected Projects
             </motion.p>
@@ -209,7 +208,7 @@ export function AboutSection() {
               variants={fadeUp}
               initial="hidden"
               animate={worksInView ? "show" : "hidden"}
-              className="text-xl md:text-2xl font-light leading-relaxed text-white dark:text-neutral-900 max-w-2xl mx-auto"
+              className="text-lg sm:text-xl md:text-2xl font-light leading-relaxed text-white dark:text-neutral-900 max-w-2xl mx-auto"
             >
               A showcase of my{" "}
               <span className="font-medium italic">
@@ -225,7 +224,7 @@ export function AboutSection() {
             variants={fadeUp}
             initial="hidden"
             animate={worksInView ? "show" : "hidden"}
-            className="relative h-[400px] overflow-hidden border-y border-neutral-800 dark:border-neutral-300"
+            className="relative h-[280px] sm:h-[400px] overflow-hidden border-y border-neutral-800 dark:border-neutral-300"
           >
             <FlowingMenu
               items={demoItems}

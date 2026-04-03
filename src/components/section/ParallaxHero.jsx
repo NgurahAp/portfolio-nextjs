@@ -19,7 +19,6 @@ export function ParallaxHeroImagesDemo() {
 
       <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-2 px-4 text-center">
         {/* Greeting badge */}
-        {/* Greeting */}
         <p className="text-base font-medium text-neutral-600 dark:text-neutral-300">
           Hey — Arya here 👋
         </p>

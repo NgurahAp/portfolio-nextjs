@@ -143,19 +143,14 @@ function ExperienceItem({ item, trailDocY }) {
       "
     >
       {/* MOBILE ONLY */}
-      <motion.div
-        style={{ opacity, y }}
-        className="py-8 md:hidden"
-      >
+      <motion.div style={{ opacity, y }} className="py-8 md:hidden">
         {content}
       </motion.div>
 
       {/* DESKTOP LEFT */}
       <motion.div
         style={{ opacity, y }}
-        className={`hidden md:block py-12 ${
-          isLeft ? "text-right" : ""
-        }`}
+        className={`hidden md:block py-12 ${isLeft ? "text-right" : ""}`}
       >
         {isLeft ? content : <div />}
       </motion.div>
@@ -166,10 +161,7 @@ function ExperienceItem({ item, trailDocY }) {
       </div>
 
       {/* DESKTOP RIGHT */}
-      <motion.div
-        style={{ opacity, y }}
-        className="hidden md:block py-12"
-      >
+      <motion.div style={{ opacity, y }} className="hidden md:block py-12">
         {!isLeft ? content : <div />}
       </motion.div>
     </div>
@@ -255,7 +247,7 @@ export function ExperienceSection() {
           className="
             absolute 
             top-0 
-            right-2 
+            right-[5px] 
             md:left-1/2 md:-translate-x-1/2 
             w-[2px] md:w-[3px] 
             bg-[#CBFF4D] 

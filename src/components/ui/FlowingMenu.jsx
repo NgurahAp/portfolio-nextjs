@@ -75,6 +75,7 @@ function MenuItem({
     if (isTouchRef.current) {
       e.preventDefault();
       if (!tappedRef.current) {
+        // TAP PERTAMA → tampilkan animasi
         tappedRef.current = true;
         gsap.killTweensOf([marqueeRef.current, marqueeInnerRef.current]);
         gsap
@@ -82,14 +83,22 @@ function MenuItem({
           .set(marqueeRef.current, { y: "101%" })
           .set(marqueeInnerRef.current, { y: "-101%" })
           .to([marqueeRef.current, marqueeInnerRef.current], { y: "0%" }, 0);
-        // Auto-dismiss after 2s
+        // Auto-dismiss after 2s jika tidak di-tap lagi
         setTimeout(() => {
-          gsap
-            .timeline({ defaults: animationDefaults })
-            .to(marqueeRef.current, { y: "101%" }, 0)
-            .to(marqueeInnerRef.current, { y: "-101%" }, 0);
-          tappedRef.current = false;
+          if (tappedRef.current) {
+            gsap
+              .timeline({ defaults: animationDefaults })
+              .to(marqueeRef.current, { y: "101%" }, 0)
+              .to(marqueeInnerRef.current, { y: "-101%" }, 0);
+            tappedRef.current = false;
+          }
         }, 2000);
+      } else {
+        // TAP KEDUA → navigasi
+        tappedRef.current = false;
+        if (onNavigate) {
+          onNavigate(link, text);
+        }
       }
       return;
     }

@@ -12,10 +12,9 @@ const normalizePath = (value) => {
   return path !== "/" ? path.replace(/\/+$/, "") || "/" : "/";
 };
 
-// Taruh <TransitionOverlay /> di app/layout.js
 // di luar slot {children}
 export function TransitionOverlay() {
-  const router = useRouter();
+    const router = useRouter();
   const pathname = usePathname();
   const [s, setS] = useState(transitionStore.getState());
 

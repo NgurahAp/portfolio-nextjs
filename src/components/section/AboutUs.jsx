@@ -21,22 +21,22 @@ export function AboutSection() {
   const demoItems = [
     {
       link: "/project/glams-company-profile",
-      text: "Glams Corp",
+      text: "Glams Corp – Landing Page",
       image: "https://picsum.photos/600/400?random=2",
     },
     {
       link: "/project/the-aesthetics-skin",
-      text: "The Aesthetics Skin",
+      text: "The Aesthetics Skin – E-commerce",
       image: "https://picsum.photos/600/400?random=1",
     },
     {
       link: "/project/attendance-dreamaxtion",
-      text: "Attendance Dreamaxtion",
+      text: "Dream People – HR Management System",
       image: "https://picsum.photos/600/400?random=3",
     },
     {
       link: "/project/lms-mknows",
-      text: "LMS M-Knows",
+      text: "M-Knows – Learning Management System",
       image: "https://picsum.photos/600/400?random=4",
     },
   ];
@@ -139,7 +139,9 @@ export function AboutSection() {
                 Curriculum Vitae ↗
               </a>
               <a
-                href="#contact"
+                href="https://wa.me/6285158724409"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="rounded-full border border-neutral-600 px-5 py-2.5 text-xs sm:px-6 sm:py-3 sm:text-sm font-medium text-neutral-300 transition hover:bg-neutral-800 dark:border-neutral-400 dark:text-neutral-600"
               >
                 Contact

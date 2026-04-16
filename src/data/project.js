@@ -3,6 +3,7 @@ export const projects = [
     id: 1,
     slug: "the-aesthetics-skin",
     title: "The Aesthetics Skin",
+    category: "E-commerce",
     subtitle:
       "Clinic e-commerce & booking platform built to streamline operations and reduce marketplace dependency",
     description:
@@ -55,8 +56,9 @@ export const projects = [
     id: 2,
     slug: "glams-company-profile",
     title: "GLAMS Corp",
+    category: "Landing Page",
     subtitle:
-      "Fashion agency company profile designed to showcase talent, academy programs, and creative services",
+      "Modeling agency company profile designed to showcase talent, academy programs, and creative services",
     description:
       "A clean and minimalist company profile website built for a fashion and modeling agency to present their brand, services, and talent in a structured and visually compelling way. The platform highlights GLAMS Academy programs, modeling services, and creative production offerings while maintaining a modern editorial aesthetic that aligns with the fashion industry.",
 
@@ -64,10 +66,10 @@ export const projects = [
       "https://res.cloudinary.com/do5hgkrgi/image/upload/v1773549397/Glams_uthwj7.png",
 
     repoLink: "https://github.com/username/glams-company-profile",
-    liveLink: "https://glams-zeta.vercel.app/",
+    liveLink: "https://glams-eight.vercel.app/",
 
-    year: "2024",
-    role: "Freelance Frontend Developer",
+    year: "2026",
+    role: "Freelance Web Developer",
 
     coreFeatures: [
       "Company profile pages presenting agency identity and brand positioning",
@@ -99,7 +101,8 @@ export const projects = [
   {
     id: 3,
     slug: "attendance-dreamaxtion",
-    title: "Attendance Dreamaxtion",
+    title: "Dream People",
+    category: "HR Management System",
     subtitle:
       "Web-based attendance system designed to simplify tracking, reporting, and employee requests",
     description:
@@ -109,9 +112,9 @@ export const projects = [
       "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768555124/Attendance_DMX_kli5wa.png",
 
     repoLink: "https://github.com/username/attendance-dreamation",
-    liveLink: "https://example.com",
+    liveLink: "https://dreampeople.id/admin",
 
-    year: "2024",
+    year: "2025",
     role: "Full Stack Developer Intern",
 
     coreFeatures: [
@@ -141,7 +144,8 @@ export const projects = [
   {
     id: 4,
     slug: "lms-mknows",
-    title: "LMS MKnows",
+    title: "M-Knows",
+    category: "Learning Management System",
     subtitle:
       "Learning Management System focused on seamless learning experience and responsive design",
     description:
@@ -151,7 +155,7 @@ export const projects = [
       "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768555117/M_Knows_LXP_cisygq.png",
 
     repoLink: "https://github.com/username/lms-mknows",
-    liveLink: "https://example.com",
+    liveLink: "https://lxp-mknows.vercel.app/",
 
     year: "2024",
     role: "Frontend Web Developer Intern",

@@ -62,12 +62,11 @@ export default function ProjectDetail() {
     }),
   };
 
-  const displayTitle = project.title.split(" ");
-
   return (
     <div className="min-h-screen bg-neutral-50 dark:bg-neutral-950">
       <BackButton />
 
+      {/* Hero Section */}
       <section ref={heroRef} className="container mx-auto px-6 pt-32 pb-24">
         <div className="max-w-4xl">
           <motion.div
@@ -88,17 +87,10 @@ export default function ProjectDetail() {
             variants={fadeUp}
             initial="hidden"
             animate={heroInView ? "show" : "hidden"}
-            className="text-5xl md:text-6xl lg:text-7xl font-light leading-[1.1] text-neutral-900 dark:text-neutral-100 mb-6"
+            className="text-5xl md:text-6xl lg:text-7xl w-[90%] font-light leading-[1.1] text-neutral-900 dark:text-neutral-100 mb-6"
           >
-            {displayTitle.map((word, index) =>
-              index === displayTitle.length - 1 ? (
-                <span key={`${word}-${index}`} className="font-semibold italic">
-                  {word}
-                </span>
-              ) : (
-                <span key={`${word}-${index}`}>{word} </span>
-              ),
-            )}
+            {project.title}{" – "}
+            <span className="font-semibold italic">{project.category}</span>
           </motion.h1>
 
           <motion.p
@@ -127,32 +119,12 @@ export default function ProjectDetail() {
               <ExternalLink size={15} />
               View Live
             </a>
-            <a
-              href={project.repoLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-neutral-300 dark:border-neutral-700 px-7 py-3 text-sm font-medium text-neutral-700 dark:text-neutral-300 transition hover:bg-neutral-100 dark:hover:bg-neutral-900"
-            >
-              <Github size={15} />
-              View Code
-            </a>
           </motion.div>
         </div>
       </section>
 
-      {!projectExists && (
-        <div className="container mx-auto px-6 pb-6">
-          <div className="max-w-4xl rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/50 px-5 py-4 text-sm text-neutral-600 dark:text-neutral-400">
-            Slug{" "}
-            <span className="font-medium text-neutral-900 dark:text-neutral-100">
-              {slug}
-            </span>{" "}
-            belum ada, jadi saya tampilkan project pertama sebagai fallback.
-          </div>
-        </div>
-      )}
-
-      <FadeBlock className="container mx-auto px-6 pb-48">
+      {/* Project Image — no bottom padding, flush ke section gelap */}
+      <FadeBlock className="container mx-auto px-6 pb-20">
         <div className="relative w-full aspect-video overflow-hidden bg-neutral-200 dark:bg-neutral-800">
           <img
             src={project.image}
@@ -163,12 +135,18 @@ export default function ProjectDetail() {
         </div>
       </FadeBlock>
 
+      {/* Spacer yang warnanya sama dengan bg halaman supaya tidak ada gap warna lain */}
+      <div className="h-24 bg-neutral-50 dark:bg-neutral-950" />
+
+      {/* Dark Section */}
       <div
         ref={sectionRef}
-        className="relative bg-neutral-50 dark:bg-neutral-950"
+        className="relative bg-neutral-50 dark:bg-neutral-950 -mb-px"
       >
         <div className="relative bg-neutral-900 dark:bg-neutral-100">
-          <div className="absolute -top-[100px] left-0 w-full h-[100px]">
+
+          {/* Top curve — fill harus match bg-neutral-900 / dark:bg-neutral-100 */}
+          <div className="absolute -top-[99px] left-0 w-full h-[100px] overflow-hidden">
             <svg
               viewBox="0 0 1440 100"
               preserveAspectRatio="none"
@@ -184,6 +162,7 @@ export default function ProjectDetail() {
             </svg>
           </div>
 
+          {/* Content */}
           <div className="container mx-auto px-6 pt-24 pb-32">
             <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 md:gap-16">
               <div className="md:col-span-2 space-y-20">
@@ -271,7 +250,6 @@ export default function ProjectDetail() {
 
                   <div className="space-y-4 pt-4 border-t border-neutral-800 dark:border-neutral-300">
                     {[
-                      { label: "Slug", value: project.slug },
                       { label: "Year", value: project.year },
                       { label: "Role", value: project.role },
                     ].map(({ label, value }) => (
@@ -290,7 +268,8 @@ export default function ProjectDetail() {
             </div>
           </div>
 
-          <div className="absolute -bottom-[100px] left-0 w-full h-[100px]">
+          {/* Bottom curve */}
+          <div className="absolute -bottom-[99px] left-0 w-full h-[100px] overflow-hidden">
             <svg
               viewBox="0 0 1440 100"
               preserveAspectRatio="none"
@@ -308,7 +287,11 @@ export default function ProjectDetail() {
         </div>
       </div>
 
-      <FadeBlock className="container mx-auto px-6 pt-40 pb-20">
+      {/* Spacer bawah section gelap */}
+      <div className="h-40 bg-neutral-50 dark:bg-neutral-950" />
+
+      {/* CTA Section */}
+      <FadeBlock className="container mx-auto px-6 pb-20">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ scaleX: 0 }}
@@ -332,12 +315,14 @@ export default function ProjectDetail() {
               </p>
             </div>
 
-            <Link
-              href="/#contact"
+            <a
+              href="https://wa.me/6285158724409"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-[#CBFF4D] px-8 py-3 text-sm font-semibold text-neutral-900 transition hover:opacity-90 text-center whitespace-nowrap"
             >
               Get in Touch
-            </Link>
+            </a>
           </div>
         </div>
       </FadeBlock>

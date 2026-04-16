@@ -2,10 +2,10 @@
 
 let listeners = [];
 let state = {
-  isActive: false,
+  // "idle" | "entering" | "holding" | "exiting"
+  phase: "idle",
   title: "",
   pendingHref: null,
-  phase: "idle",
 };
 
 export const transitionStore = {
@@ -13,7 +13,7 @@ export const transitionStore = {
 
   setState: (partial) => {
     state = { ...state, ...partial };
-    listeners.forEach((l) => l(state));
+    listeners.forEach((l) => l({ ...state }));
   },
 
   subscribe: (listener) => {

@@ -178,4 +178,55 @@ export const projects = [
       "Delivered the project within a 3-month timeline aligned with business requirements",
     ],
   },
+  {
+    id: 5,
+    slug: "adsvisor",
+    title: "Adsvisor",
+    category: "SaaS",
+    subtitle:
+      "AI-powered ads performance analyzer that turns raw campaign data into actionable optimization insights",
+
+    description:
+      "Adsvisor is a web-based SaaS application that helps businesses and digital marketers analyze advertising campaign performance and receive AI-generated optimization recommendations in seconds. The platform transforms raw ad metrics into clear KPIs and structured insights, eliminating the need for manual analysis or a dedicated ads analyst. Users can store analysis history, review past reports, and export results for client presentations.",
+
+    image:
+      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1777887413/adsvisor_fn97hz.png",
+
+    repoLink: "https://github.com/NgurahAp/adsvisor",
+    liveLink: "https://adsvisor.vercel.app",
+
+    year: "2026",
+    role: "Solo Developer",
+
+    coreFeatures: [
+      "Manual campaign data input for Facebook, Google, TikTok, and Instagram Ads",
+      "Automatic KPI calculation including CTR, CPC, CPA, and ROAS",
+      "AI-generated campaign analysis with prioritized optimization recommendations",
+      "Structured AI report including performance summary and action plan",
+      "History page to store and revisit past campaign analyses",
+      "Export analysis results as text report for sharing or client presentation",
+      "Authentication system to keep user data isolated and secure",
+      "Clean dashboard interface designed for fast analysis workflow",
+    ],
+
+    techStack: [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "PostgreSQL",
+      "OpenAI API",
+      "Vercel",
+      "Cloudinary",
+    ],
+
+    responsibilities: [
+      "Designed and developed the product from concept, PRD, and UX flow to production deployment",
+      "Built authentication and user-scoped data architecture",
+      "Implemented KPI calculation engine for advertising performance metrics",
+      "Integrated AI API to generate structured campaign analysis and recommendations",
+      "Developed analysis history and export features for report management",
+      "Designed a clean and intuitive dashboard focused on speed and usability",
+      "Deployed and maintained the application in a production environment",
+    ],
+  },
 ];

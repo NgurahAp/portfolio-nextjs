@@ -20,6 +20,11 @@ export function AboutSection() {
 
   const demoItems = [
     {
+      link: "/project/adsvisor",
+      text: "Adsvisor – SAAS",
+      image: "https://picsum.photos/600/400?random=5",
+    },
+    {
       link: "/project/glams-company-profile",
       text: "Glams Corp – Landing Page",
       image: "https://picsum.photos/600/400?random=2",
@@ -74,7 +79,11 @@ export function AboutSection() {
         </div>
 
         {/* ===== CONTENT ===== */}
-        <div id="about" ref={contentRef} className="pt-16 pb-24 px-5 sm:pt-20 sm:pb-32 sm:px-6">
+        <div
+          id="about"
+          ref={contentRef}
+          className="pt-16 pb-24 px-5 sm:pt-20 sm:pb-32 sm:px-6"
+        >
           <div className="mx-auto max-w-3xl text-center space-y-6 sm:space-y-8">
             <motion.p
               custom={0}
@@ -193,7 +202,11 @@ export function AboutSection() {
         </div>
 
         {/* ===== WORKS ===== */}
-        <div id="works" ref={worksRef} className="pt-14 pb-14 sm:pt-20 sm:pb-20">
+        <div
+          id="works"
+          ref={worksRef}
+          className="pt-14 pb-14 sm:pt-20 sm:pb-20"
+        >
           <div className="text-center mb-10 px-5 sm:mb-16 sm:px-6">
             <motion.p
               custom={0}

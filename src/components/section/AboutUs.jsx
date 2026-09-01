@@ -14,6 +14,14 @@ const selectedProjectSlugs = [
   "lms-mknows",
 ];
 
+const projectPreviewImages = {
+  "the-aesthetics-skin": "/parallax/The Aesthetics Skin.png",
+  "glams-company-profile": "/parallax/Glams.png",
+  adsvisor: "/parallax/Adsvisor.png",
+  "attendance-dreamaxtion": "/parallax/Attendance DMX.png",
+  "lms-mknows": "/parallax/M Knows LXP.png",
+};
+
 const selectedProjects = selectedProjectSlugs
   .map((slug) => projects.find((project) => project.slug === slug))
   .filter(Boolean);
@@ -229,7 +237,7 @@ export function AboutSection() {
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#CBFF4D] text-neutral-950">
                   <ArrowUpRight size={16} aria-hidden="true" />
                 </span>
-                Click any project to open the full case study.
+                Click any project to see the full project details.
               </motion.div>
             </div>
 
@@ -250,7 +258,7 @@ export function AboutSection() {
                   >
                     <Link
                       href={`/project/${project.slug}`}
-                      aria-label={`View ${project.title} case study`}
+                      aria-label={`View ${project.title} project`}
                       className="group grid gap-7 rounded-[2rem] outline-none md:grid-cols-12 md:items-center md:gap-12 focus-visible:ring-2 focus-visible:ring-[#CBFF4D] focus-visible:ring-offset-8 focus-visible:ring-offset-neutral-900 dark:focus-visible:ring-offset-neutral-100"
                     >
                       <div
@@ -260,7 +268,7 @@ export function AboutSection() {
                       >
                         <div className="relative aspect-[16/10] overflow-hidden">
                           <Image
-                            src={project.image}
+                            src={projectPreviewImages[project.slug]}
                             alt={`${project.title} project preview`}
                             fill
                             sizes="(min-width: 768px) 58vw, 100vw"
@@ -278,9 +286,6 @@ export function AboutSection() {
                           />
                         </span>
 
-                        <span className="absolute bottom-4 left-4 rounded-full border border-white/25 bg-black/35 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-white backdrop-blur sm:bottom-6 sm:left-6">
-                          Case study {String(index + 1).padStart(2, "0")}
-                        </span>
                       </div>
 
                       <div
@@ -318,7 +323,7 @@ export function AboutSection() {
                             imageOnRight ? "md:flex-row-reverse" : ""
                           }`}
                         >
-                          View case study
+                          View project
                           <ArrowUpRight
                             size={16}
                             className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"

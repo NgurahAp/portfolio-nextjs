@@ -9,8 +9,7 @@ export const projects = [
     description:
       "A full-scale digital platform developed for a beauty clinic to unify e-commerce and treatment booking into a single seamless experience. This project replaces manual processes and third-party marketplace reliance with a modern, scalable system that improves operational efficiency, reduces costs, and enhances customer accessibility across devices.",
 
-    image:
-      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768555105/The_Aesthetics_jmrhjl.png",
+    image: "/hero/theaestheticsskin.png",
 
     repoLink: "https://github.com/username/the-aesthetics-skin",
     liveLink: "https://theaestheticsskin.com/",
@@ -62,8 +61,7 @@ export const projects = [
     description:
       "A clean and minimalist company profile website built for a fashion and modeling agency to present their brand, services, and talent in a structured and visually compelling way. The platform highlights GLAMS Academy programs, modeling services, and creative production offerings while maintaining a modern editorial aesthetic that aligns with the fashion industry.",
 
-    image:
-      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1773549397/Glams_uthwj7.png",
+    image: "/hero/glams.png",
 
     repoLink: "https://github.com/username/glams-company-profile",
     liveLink: "https://glams-eight.vercel.app/",
@@ -108,8 +106,7 @@ export const projects = [
     description:
       "A web-based attendance management system developed during an internship program to streamline daily attendance tracking and reporting processes. The platform focuses on usability, efficiency, and clarity, enabling organizations to manage attendance records, handle leave requests, and monitor activity through a centralized dashboard.",
 
-    image:
-      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768555124/Attendance_DMX_kli5wa.png",
+    image: "/hero/attendance.png",
 
     repoLink: "https://github.com/username/attendance-dreamation",
     liveLink: "https://dreampeople.id/admin",
@@ -151,8 +148,7 @@ export const projects = [
     description:
       "A web-based Learning Management System (LMS) developed during an internship program to support online learning activities through a clean and user-friendly interface. The platform emphasizes accessibility, performance, and smooth user experience, enabling users to manage courses, track learning progress, and interact with educational content efficiently.",
 
-    image:
-      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768555117/M_Knows_LXP_cisygq.png",
+    image: "/hero/lxp.png",
 
     repoLink: "https://github.com/username/lms-mknows",
     liveLink: "https://lxp-mknows.vercel.app/",
@@ -189,8 +185,7 @@ export const projects = [
     description:
       "Adsvisor is a web-based SaaS application that helps businesses and digital marketers analyze advertising campaign performance and receive AI-generated optimization recommendations in seconds. The platform transforms raw ad metrics into clear KPIs and structured insights, eliminating the need for manual analysis or a dedicated ads analyst. Users can store analysis history, review past reports, and export results for client presentations.",
 
-    image:
-      "https://res.cloudinary.com/do5hgkrgi/image/upload/v1777887413/adsvisor_fn97hz.png",
+    image: "/hero/adsvisor.png",
 
     repoLink: "https://github.com/NgurahAp/adsvisor",
     liveLink: "https://adsvisor.vercel.app",

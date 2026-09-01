@@ -2,14 +2,14 @@
 import { ParallaxHeroImages } from "@/components/ui/parallax-hero-images";
 
 const images = [
-  "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768562387/home_ed9vul.png",
-  "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768562844/lxp-landing_zbzsdf.jpg",
-  "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768562977/review_uw3au8.png",
-  "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768563951/Attendances_ix67rs.png",
-  "https://res.cloudinary.com/do5hgkrgi/image/upload/v1774386847/Apply_On_Boarding_zpah4s.png",
-  "https://res.cloudinary.com/do5hgkrgi/image/upload/v1773548857/hero_lrb8wu.png",
-  "https://res.cloudinary.com/do5hgkrgi/image/upload/v1773548855/Screenshot_2026-03-14_000408_rpwxkp.png",
-  "https://res.cloudinary.com/do5hgkrgi/image/upload/v1768563884/bersihbersama_ds4xyb.jpg",
+  "/hero/theaestheticsskin.png",
+  "/hero/society.png",
+  "/hero/glams.png",
+  "/hero/adsvisor.png",
+  "/hero/attendance.png",
+  "/hero/dashboard.png",
+  "/hero/lxp.png",
+  "/hero/creative-production.png",
 ];
 
 export function ParallaxHeroImagesDemo() {
